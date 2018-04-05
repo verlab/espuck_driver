@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "memory.h": "c",
+        "runbreitenberg_adv.h": "c",
+        "runwallfollow.h": "c"
+    }
+}
