@@ -2,10 +2,11 @@
 
 //#define IR_RECIEVER
 
-#include "stdio.h"
-#include "string.h"
-#include "math.h"
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 #include <time.h>
+#include <stdlib.h>
 
 #include <codec/e_sound.h>
 #include <motor_led/e_init_port.h>
@@ -38,6 +39,7 @@ char buffer[BUFFER_SIZE]; // 3456 bytes
 extern int selector;
 char c;
 char epuck_id[4];
+int epuck_index = 0;
 
 #ifdef IR_RECIEVER
 	#include <motor_led/advance_one_timer/e_remote_control.h>
@@ -92,11 +94,13 @@ int main() {
 	uart1_send_text(buffer);
 	uart2_send_text(buffer);
 	
-	/* Read Epuck ID */
-    //e_bt_read_local_pin_number(epuck_id);
 	
 	if (selector==0) {
 		//run_accelerometer();
+		/* Read Epuck ID */
+    	e_bt_read_local_pin_number(epuck_id);
+		epuck_index = atoi(epuck_id);
+		uart2_send_text(epuck_id);
 		e_init_uart2(BAUD230400);   // the gumstix communicate with the robot at 230400 bauds
 		run_asercom(USE_UART_2);
 	} else if (selector==1) {

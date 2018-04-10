@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "typeinfo": "c",
+        "string.h": "c",
+        "stdio.h": "c",
+        "e_motors.h": "c"
+    }
+}

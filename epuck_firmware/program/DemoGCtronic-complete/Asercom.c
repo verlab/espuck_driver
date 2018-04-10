@@ -42,7 +42,7 @@ extern int selector;
 extern char c;
 extern int e_ambient_ir[10];						// ambient light measurement
 extern int e_ambient_and_reflected_ir[10];		// light when led is on
-extern char epuck_id[4];
+extern int epuck_index;
 
 #define uart1_send_static_text(msg) do { e_send_uart1_char(msg,sizeof(msg)-1); while(e_uart1_sending()); } while(0)
 #define uart1_send_text(msg) do { e_send_uart1_char(msg,strlen(msg)); while(e_uart1_sending()); } while(0)
@@ -274,7 +274,7 @@ int run_asercom(int use_bt) {
                         break;
                         
                     case 'O': // read light sensors
-                        for (j = 0; j < 10; j++) {
+                        for (j = 0; j < 8; j++) {
                             n = e_get_ambient_light(j);
                             buffer[i++] = n & 0xff;
                             buffer[i++] = n >> 8;
@@ -309,6 +309,11 @@ int run_asercom(int use_bt) {
                         n = e_get_steps_right();
                         buffer[i++] = n & 0xff;
                         buffer[i++] = n >> 8;
+                        break;
+
+                    case 'v': // read encoders
+                        buffer[i++] = epuck_index & 0xff;
+                        buffer[i++] = epuck_index >> 8;
                         break;
 
                     case 't': // temperature
@@ -888,7 +893,7 @@ int run_asercom(int use_bt) {
                     } else {
                         uart2_send_static_text("v,Version 1.2.3 April 2018 Verlab\r\n");
                     }
-                    sprintf(buffer, "HW version: %X\r\n", HWversion);
+                    sprintf(buffer, "HW version: %X\r\nID: %d\r\n", HWversion, epuck_index);
                     if (use_bt) {
                         uart1_send_text(buffer);
                     } else {

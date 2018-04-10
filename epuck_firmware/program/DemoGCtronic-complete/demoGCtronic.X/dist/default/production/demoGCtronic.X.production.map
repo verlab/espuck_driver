@@ -154,7 +154,7 @@ Archive member included because of file (symbol)
 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xgetmem.XX_eo)
                               /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_eo) (__Getmem)
 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xstoul.XX_eo)
-                              build/default/production/_ext/663421589/e_bluetooth.o (__Stoul)
+                              build/default/production/_ext/1472/main_c.o (__Stoul)
 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(isspace.XX_elso)
                               /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xstoul.XX_eo) (_isspace)
 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(tolower.XX_elso)
@@ -314,13 +314,13 @@ Program Memory  [Origin = 0x100, Length = 0x17f00]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100              0x3212          0x4b1b  (19227)
-.const                      0x3312              0x1136          0x19d1  (6609)
-.sound_samples              0x4448              0x94c8          0xdf2c  (57132)
-.text                       0xd910              0x67d2          0x9bbb  (39867)
-.dinit                     0x140e2               0x37c           0x53a  (1338)
-.text                      0x1445e              0x25e0          0x38d0  (14544)
+.const                      0x3312              0x113e          0x19dd  (6621)
+.sound_samples              0x4450              0x94c8          0xdf2c  (57132)
+.text                       0xd918              0x6820          0x9c30  (39984)
+.dinit                     0x14138               0x37c           0x53a  (1338)
+.text                      0x144b4              0x25e0          0x38d0  (14544)
 
-                 Total program memory used (bytes):        0x21ddd  (138717) 94%
+                 Total program memory used (bytes):        0x21e5e  (138846) 94%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x7c]
@@ -348,40 +348,40 @@ section                    address      alignment gaps    total length  (dec)
 .ndata                       0x888                   0             0x8  (8)
 .data                        0x890                   0             0xc  (12)
 .nbss                        0x89c                   0             0x8  (8)
-.bss                         0x8a4                   0          0x145a  (5210)
-.data                       0x1cfe                   0           0x1c4  (452)
-.bss                        0x1ec2                   0            0x8a  (138)
-.data                       0x1f4c                   0            0x40  (64)
-.bss                        0x1f8c                   0            0x34  (52)
-.data                       0x1fc0                   0            0x68  (104)
-.bss                        0x2028                   0            0x20  (32)
-.data                       0x2048                   0            0x1a  (26)
-.bss                        0x2062                   0            0x40  (64)
-.data                       0x20a2                   0            0x24  (36)
-.bss                        0x20c6                   0             0x8  (8)
-.data                       0x20ce                   0             0x6  (6)
-.bss                        0x20d4                   0            0x18  (24)
-.data                       0x20ec                   0             0xa  (10)
-.bss                        0x20f6                   0             0x4  (4)
-.data                       0x20fa                   0             0x4  (4)
-.bss                        0x20fe                   0             0x2  (2)
-.data                       0x2100                   0             0x2  (2)
-.bss                        0x2102                   0             0x4  (4)
-.data                       0x2106                   0             0x4  (4)
-.bss                        0x210a                   0             0x2  (2)
-.heap                       0x210c                   0            0x80  (128)
+.bss                         0x8a4                   0          0x145c  (5212)
+.data                       0x1d00                   0           0x1c4  (452)
+.bss                        0x1ec4                   0            0x8a  (138)
+.data                       0x1f4e                   0            0x40  (64)
+.bss                        0x1f8e                   0            0x34  (52)
+.data                       0x1fc2                   0            0x68  (104)
+.bss                        0x202a                   0            0x20  (32)
+.data                       0x204a                   0            0x1a  (26)
+.bss                        0x2064                   0            0x40  (64)
+.data                       0x20a4                   0            0x24  (36)
+.bss                        0x20c8                   0             0x8  (8)
+.data                       0x20d0                   0             0x6  (6)
+.bss                        0x20d6                   0            0x18  (24)
+.data                       0x20ee                   0             0xa  (10)
+.bss                        0x20f8                   0             0x4  (4)
+.data                       0x20fc                   0             0x4  (4)
+.bss                        0x2100                   0             0x2  (2)
+.data                       0x2102                   0             0x2  (2)
+.bss                        0x2104                   0             0x4  (4)
+.data                       0x2108                   0             0x4  (4)
+.bss                        0x210c                   0             0x2  (2)
+.heap                       0x210e                   0            0x80  (128)
 
-                 Total data memory used (bytes):         0x198c  (6540) 79%
+                 Total data memory used (bytes):         0x198e  (6542) 79%
 
 
 Dynamic Memory Usage
 
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
-heap                        0x210c                                0x80  (128)
-stack                       0x218c                               0x674  (1652)
+heap                        0x210e                                0x80  (128)
+stack                       0x218e                               0x672  (1650)
 
-                 Maximum dynamic memory (bytes):          0x6f4  (1780)
+                 Maximum dynamic memory (bytes):          0x6f2  (1778)
 
 
 External Symbols in Data Memory (by address):
@@ -408,58 +408,59 @@ External Symbols in Data Memory (by address):
                     0x08a4                  _buffer
                     0x1624                  _c
                     0x1625                  _epuck_id
-                    0x162e                  _e_mic_scan
-                    0x1886                  _e_acc_scan
-                    0x19b2                  _e_last_mic_scan_id
-                    0x19b4                  _e_last_acc_scan_id
-                    0x19b6                  _e_ambient_ir
-                    0x19ca                  _e_ambient_and_reflected_ir
-                    0x19e2                  _selector
-                    0x19e4                  _updateAccI2CCounter
-                    0x19e6                  _tickAdcIsr
-                    0x19ea                  _e_bt_local_paired_device
-                    0x1a1a                  _e_bt_present_device
-                    0x1b3c                  _e_bt_present_epuck
-                    0x1baa                  _local_bt_PIN
-                    0x1bae                  __poxxxx_buffer
-                    0x1bb0                  __poxxxx_img_ready
-                    0x1bb4                  __poxxxx_line_conf
-                    0x1f4c                  _factor_array
-                    0x1f6c                  _matrix_prox
-                    0x1f8c                  _i
-                    0x1f8e                  _s
-                    0x1f90                  _m
-                    0x1f92                  _potential
-                    0x1f9a                  _speed
-                    0x1f9e                  _ProxSensOffBuf
-                    0x1fbe                  _ui_lin
-                    0x2008                  _follow_weightleft
-                    0x2018                  _follow_weightright
-                    0x2028                  _isCalibratingFlag
-                    0x2042                  _lastAccX
-                    0x2044                  _lastAccY
-                    0x2046                  _lastAccZ
-                    0x2076                  _follow_sensorzero
-                    0x2096                  _dpsValue
-                    0x209a                  _soundPlayedFlag
-                    0x209c                  _tempX
-                    0x209e                  _tempY
-                    0x20a0                  _tempZ
-                    0x20c6                  _e_i2c_mode
-                    0x20c8                  _e_interrupts
-                    0x20d4                  _accx0
-                    0x20d6                  _accy0
-                    0x20d8                  _accz0
-                    0x20e6                  _gyroOffsetX
-                    0x20e8                  _gyroOffsetY
-                    0x20ea                  _gyroOffsetZ
-                    0x20ec                  __Atfuns
-                    0x20ee                  __Atcount
-                    0x20f6                  __Aldata
-                    0x2100                  _centre_z
-                    0x2102                  _isPresentFlag
-                    0x2106                  __Size_block
-                    0x210a                  ___curbrk
+                    0x162a                  _epuck_index
+                    0x1630                  _e_mic_scan
+                    0x1888                  _e_acc_scan
+                    0x19b4                  _e_last_mic_scan_id
+                    0x19b6                  _e_last_acc_scan_id
+                    0x19b8                  _e_ambient_ir
+                    0x19cc                  _e_ambient_and_reflected_ir
+                    0x19e4                  _selector
+                    0x19e6                  _updateAccI2CCounter
+                    0x19e8                  _tickAdcIsr
+                    0x19ec                  _e_bt_local_paired_device
+                    0x1a1c                  _e_bt_present_device
+                    0x1b3e                  _e_bt_present_epuck
+                    0x1bac                  _local_bt_PIN
+                    0x1bb0                  __poxxxx_buffer
+                    0x1bb2                  __poxxxx_img_ready
+                    0x1bb6                  __poxxxx_line_conf
+                    0x1f4e                  _factor_array
+                    0x1f6e                  _matrix_prox
+                    0x1f8e                  _i
+                    0x1f90                  _s
+                    0x1f92                  _m
+                    0x1f94                  _potential
+                    0x1f9c                  _speed
+                    0x1fa0                  _ProxSensOffBuf
+                    0x1fc0                  _ui_lin
+                    0x200a                  _follow_weightleft
+                    0x201a                  _follow_weightright
+                    0x202a                  _isCalibratingFlag
+                    0x2044                  _lastAccX
+                    0x2046                  _lastAccY
+                    0x2048                  _lastAccZ
+                    0x2078                  _follow_sensorzero
+                    0x2098                  _dpsValue
+                    0x209c                  _soundPlayedFlag
+                    0x209e                  _tempX
+                    0x20a0                  _tempY
+                    0x20a2                  _tempZ
+                    0x20c8                  _e_i2c_mode
+                    0x20ca                  _e_interrupts
+                    0x20d6                  _accx0
+                    0x20d8                  _accy0
+                    0x20da                  _accz0
+                    0x20e8                  _gyroOffsetX
+                    0x20ea                  _gyroOffsetY
+                    0x20ec                  _gyroOffsetZ
+                    0x20ee                  __Atfuns
+                    0x20f0                  __Atcount
+                    0x20f8                  __Aldata
+                    0x2102                  _centre_z
+                    0x2104                  _isPresentFlag
+                    0x2108                  __Size_block
+                    0x210c                  ___curbrk
 
 External Symbols in Data Memory (by name):
 
@@ -469,71 +470,72 @@ External Symbols in Data Memory (by name):
                     0x0898                  U2TXLength
                     0x089a                  U2TXOk
                     0x0896                  U2TXPtr
-                    0x1f9e                  _ProxSensOffBuf
+                    0x1fa0                  _ProxSensOffBuf
                     0x0844                  _U1RXBuf
                     0x0884                  _U1RXRcvCnt
                     0x0886                  _U1RXReadCnt
                     0x0800                  _U2RXBuf
                     0x0840                  _U2RXRcvCnt
                     0x0842                  _U2RXReadCnt
-                    0x20f6                  __Aldata
-                    0x20ee                  __Atcount
-                    0x20ec                  __Atfuns
-                    0x2106                  __Size_block
-                    0x210a                  ___curbrk
-                    0x1bae                  __poxxxx_buffer
+                    0x20f8                  __Aldata
+                    0x20f0                  __Atcount
+                    0x20ee                  __Atfuns
+                    0x2108                  __Size_block
+                    0x210c                  ___curbrk
+                    0x1bb0                  __poxxxx_buffer
                     0x089c                  __poxxxx_current_row
-                    0x1bb0                  __poxxxx_img_ready
-                    0x1bb4                  __poxxxx_line_conf
+                    0x1bb2                  __poxxxx_img_ready
+                    0x1bb6                  __poxxxx_line_conf
                     0x089e                  __poxxxx_row
-                    0x20d4                  _accx0
-                    0x20d6                  _accy0
-                    0x20d8                  _accz0
+                    0x20d6                  _accx0
+                    0x20d8                  _accy0
+                    0x20da                  _accz0
                     0x08a4                  _buffer
                     0x1624                  _c
-                    0x2100                  _centre_z
-                    0x2096                  _dpsValue
-                    0x1886                  _e_acc_scan
-                    0x19ca                  _e_ambient_and_reflected_ir
-                    0x19b6                  _e_ambient_ir
-                    0x19ea                  _e_bt_local_paired_device
-                    0x1a1a                  _e_bt_present_device
-                    0x1b3c                  _e_bt_present_epuck
+                    0x2102                  _centre_z
+                    0x2098                  _dpsValue
+                    0x1888                  _e_acc_scan
+                    0x19cc                  _e_ambient_and_reflected_ir
+                    0x19b8                  _e_ambient_ir
+                    0x19ec                  _e_bt_local_paired_device
+                    0x1a1c                  _e_bt_present_device
+                    0x1b3e                  _e_bt_present_epuck
                     0x088a                  _e_dci_unavailable
-                    0x20c6                  _e_i2c_mode
-                    0x20c8                  _e_interrupts
-                    0x19b4                  _e_last_acc_scan_id
-                    0x19b2                  _e_last_mic_scan_id
-                    0x162e                  _e_mic_scan
+                    0x20c8                  _e_i2c_mode
+                    0x20ca                  _e_interrupts
+                    0x19b6                  _e_last_acc_scan_id
+                    0x19b4                  _e_last_mic_scan_id
+                    0x1630                  _e_mic_scan
                     0x0888                  _e_stop_flag
                     0x1625                  _epuck_id
-                    0x1f4c                  _factor_array
-                    0x2076                  _follow_sensorzero
-                    0x2008                  _follow_weightleft
-                    0x2018                  _follow_weightright
-                    0x20e6                  _gyroOffsetX
-                    0x20e8                  _gyroOffsetY
-                    0x20ea                  _gyroOffsetZ
-                    0x1f8c                  _i
-                    0x2028                  _isCalibratingFlag
-                    0x2102                  _isPresentFlag
-                    0x2042                  _lastAccX
-                    0x2044                  _lastAccY
-                    0x2046                  _lastAccZ
-                    0x1baa                  _local_bt_PIN
-                    0x1f90                  _m
-                    0x1f6c                  _matrix_prox
-                    0x1f92                  _potential
-                    0x1f8e                  _s
-                    0x19e2                  _selector
-                    0x209a                  _soundPlayedFlag
-                    0x1f9a                  _speed
-                    0x209c                  _tempX
-                    0x209e                  _tempY
-                    0x20a0                  _tempZ
-                    0x19e6                  _tickAdcIsr
-                    0x1fbe                  _ui_lin
-                    0x19e4                  _updateAccI2CCounter
+                    0x162a                  _epuck_index
+                    0x1f4e                  _factor_array
+                    0x2078                  _follow_sensorzero
+                    0x200a                  _follow_weightleft
+                    0x201a                  _follow_weightright
+                    0x20e8                  _gyroOffsetX
+                    0x20ea                  _gyroOffsetY
+                    0x20ec                  _gyroOffsetZ
+                    0x1f8e                  _i
+                    0x202a                  _isCalibratingFlag
+                    0x2104                  _isPresentFlag
+                    0x2044                  _lastAccX
+                    0x2046                  _lastAccY
+                    0x2048                  _lastAccZ
+                    0x1bac                  _local_bt_PIN
+                    0x1f92                  _m
+                    0x1f6e                  _matrix_prox
+                    0x1f94                  _potential
+                    0x1f90                  _s
+                    0x19e4                  _selector
+                    0x209c                  _soundPlayedFlag
+                    0x1f9c                  _speed
+                    0x209e                  _tempX
+                    0x20a0                  _tempY
+                    0x20a2                  _tempZ
+                    0x19e8                  _tickAdcIsr
+                    0x1fc0                  _ui_lin
+                    0x19e6                  _updateAccI2CCounter
                     0x088e                  e_actual_page
                     0x088c                  e_samples_count
                     0x08a0                  e_tone_ptr
@@ -665,292 +667,292 @@ External Symbols in Program Memory (by address):
                   0x003258                  ___floatdidf
                   0x003278                  ___floatundidf
                   0x0032ce                  ___umuldi3
-                  0x004448                  e_sound_sample
-                  0x00d910                  _run_asercom
-                  0x00f464                  _e_bt_find_epuck
-                  0x00f5d8                  _e_bt_connect_epuck
-                  0x00f600                  _e_bt_reset
-                  0x00f69a                  _e_bt_factory_reset
-                  0x00f6fe                  _e_bt_tranparent_mode
-                  0x00f766                  _e_bt_exit_tranparent_mode
-                  0x00f7a6                  _e_bt_read_local_pin_number
-                  0x00f836                  _e_bt_read_local_name
-                  0x00f8bc                  _e_bt_write_local_pin_number
-                  0x00f96c                  _e_bt_write_local_name
-                  0x00fa22                  _e_bt_inquiry
-                  0x00fb22                  _e_bt_get_friendly_name
-                  0x00fbd2                  _e_bt_etablish_SPP_link
-                  0x00fc8a                  _e_bt_release_SPP_link
-                  0x00fd60                  _e_bt_send_SPP_data
-                  0x00fe12                  _e_bt_list_local_paired_device
-                  0x00fea2                  _e_bt_remove_local_paired_device
-                  0x00ff5a                  _e_bt_set_event_filter
-                  0x00ffce                  _e_bt_get_event_filter
-                  0x010032                  _e_po3030k_write_cam_registers
-                  0x010068                  _e_po3030k_read_cam_registers
-                  0x0100a0                  _e_po3030k_set_color_mode
-                  0x0100d4                  _e_po3030k_set_sampling_mode
-                  0x010100                  _e_po3030k_set_speed
-                  0x010152                  _e_po3030k_set_wx
-                  0x0101a6                  _e_po3030k_set_wy
-                  0x0101f4                  _e_po3030k_set_vsync
-                  0x010266                  _e_po3030k_set_mirror
-                  0x0102a4                  _e_po3030k_set_register
-                  0x0102d8                  _e_po3030k_get_register
-                  0x01030e                  _e_po3030k_set_bias
-                  0x010322                  _e_po3030k_set_color_gain
-                  0x01035c                  _e_po3030k_set_integr_time
-                  0x01038a                  _e_po3030k_set_adc_offset
-                  0x010396                  _e_po3030k_set_sepia
-                  0x0103be                  _e_po3030k_set_lens_gain
-                  0x0103da                  _e_po3030k_set_edge_prop
-                  0x0103f6                  _e_po3030k_set_gamma_coef
-                  0x010430                  _e_po3030k_write_gamma_coef
-                  0x01045c                  _e_po3030k_sync_register_array
-                  0x0104ba                  _e_po3030k_SetColorMatrix
-                  0x0104e2                  _e_po3030k_set_cb_cr_gain
-                  0x0104f6                  _e_po3030k_set_brigh_contr
-                  0x01050a                  _e_po3030k_set_sepia_tone
-                  0x01051e                  _e_po3030k_set_ww
-                  0x010532                  _e_po3030k_set_awb_ae_tol
-                  0x01054c                  _e_po3030k_set_ae_speed
-                  0x010566                  _e_po3030k_set_exposure
-                  0x010592                  _e_po3030k_set_ref_exposure
-                  0x01059e                  _e_po3030k_set_max_min_exp
-                  0x0105cc                  _e_po3030k_set_max_min_awb
-                  0x010600                  _e_po3030k_set_weight_win
-                  0x0106be                  _e_po3030k_set_awb_ae
-                  0x0106fc                  _e_po3030k_set_flicker_mode
-                  0x010724                  _e_po3030k_set_flicker_detection
-                  0x01080e                  _e_po3030k_set_flicker_man_set
-                  0x0108e4                  _main
-                  0x0110a8                  _e_set_led
-                  0x011352                  _e_led_clear
-                  0x011368                  _e_set_body_led
-                  0x0113a8                  _e_set_front_led
-                  0x0113e8                  _e_blink_led
-                  0x0114bc                  _e_blink_led0
-                  0x0114dc                  _e_blink_led1
-                  0x0114fc                  _e_blink_led2
-                  0x01151c                  _e_blink_led3
-                  0x01153c                  _e_blink_led4
-                  0x01155c                  _e_blink_led5
-                  0x01157c                  _e_blink_led6
-                  0x01159c                  _e_blink_led7
-                  0x0115ba                  _e_start_led_blinking
-                  0x0115ca                  _e_stop_led_blinking
-                  0x0115d6                  _e_set_blinking_cycle
-                  0x0115ec                  _snake_led
-                  0x01165c                  _flow_led
-                  0x0116d8                  _k2000_led
-                  0x011778                  _right_led
-                  0x0117dc                  _left_led
-                  0x011840                  _e_get_acc
-                  0x011918                  _e_get_acc_filtered
-                  0x011a3c                  _calculate_acc_raw
-                  0x011a82                  _calculate_acc_spherical
-                  0x011bb0                  _e_acc_calibr
-                  0x011bf2                  _e_read_acc_spheric
-                  0x011c34                  _e_read_inclination
-                  0x011c40                  _e_read_orientation
-                  0x011c4c                  _e_read_acc
-                  0x011c58                  _e_read_acc_xyz
-                  0x011c7c                  _e_read_acc_x
-                  0x011c86                  _e_read_acc_y
-                  0x011c90                  _e_read_acc_z
-                  0x011c9a                  _e_display_angle
-                  0x011f0e                  _e_po8030d_config_cam
-                  0x012582                  _e_po8030d_get_bytes_per_pixel
-                  0x0125a6                  _execDemoZ
-                  0x0128b0                  _execDemoY
-                  0x012a2c                  _execDemoX
-                  0x012ba8                  _run_gyroscope
-                  0x012c12                  _run_CameraTurn
-                  0x012dfc                  _run_SensDispl
-                  0x012fca                  _run_DustCleaner
-                  0x0131ec                  _e_po8030d_set_bank
-                  0x013208                  _e_po8030d_write_register
-                  0x01322e                  _e_po8030d_read_register
-                  0x013252                  _testWriteReg
-                  0x013272                  _enablePO8030
-                  0x0132be                  _init_po8030
-                  0x0132d6                  _e_po8030d_set_bayer_clkdiv
-                  0x0132e6                  _e_po8030d_set_pclkdiv
-                  0x0133c2                  _e_po8030d_set_mode
-                  0x013406                  _e_po8030d_set_wx
-                  0x013464                  _e_po8030d_set_wy
-                  0x013470                  _e_po8030d_set_vsync
-                  0x0134c8                  _e_po8030d_set_sketch_mode
-                  0x0134ea                  _e_po8030d_set_mirror
-                  0x01351e                  _e_po8030d_set_awb_ae
-                  0x013566                  _e_po8030d_set_rgb_gain
-                  0x01358a                  _e_po8030d_set_exposure
-                  0x0135ce                  _e_po8030d_set_brightness
-                  0x0135e0                  _e_po6030k_set_bank
-                  0x0135fc                  _e_po6030k_write_register
-                  0x013622                  _e_po6030k_read_register
-                  0x013646                  _e_po6030k_set_bayer_clkdiv
-                  0x013656                  _e_po6030k_set_pclkdiv
-                  0x013762                  _e_po6030k_set_mode
-                  0x0137a6                  _e_po6030k_set_wx
-                  0x0137f4                  _e_po6030k_set_wy
-                  0x013800                  _e_po6030k_set_vsync
-                  0x013858                  _e_po6030k_set_sketch_mode
-                  0x0138b8                  _e_po6030k_set_mirror
-                  0x0138ec                  _e_po6030k_set_awb_ae
-                  0x013934                  _e_po6030k_set_rgb_gain
-                  0x013958                  _e_po6030k_set_exposure
-                  0x01399c                  _writeReg
-                  0x0139ba                  _readReg
-                  0x0139d8                  _readRegMulti
-                  0x013a74                  _initAccAndGyro
-                  0x013ab4                  _getAllAxesAccRaw
-                  0x013ace                  _getAllAxesAcc
-                  0x013b1c                  _getXAxisAcc
-                  0x013b42                  _getYAxisAcc
-                  0x013b68                  _getZAxisAcc
-                  0x013b8e                  _getAllAxesGyroRaw
-                  0x013ba8                  _getAllAxesGyro
-                  0x013c02                  _getXAxisGyro
-                  0x013c2c                  _getYAxisGyro
-                  0x013c56                  _getZAxisGyro
-                  0x013c80                  _getTemperature
-                  0x013c8c                  _calibrateGyroscope
-                  0x013d12                  _rawToDps
-                  0x013d2a                  _rawToDpms
-                  0x013d42                  _acc_calibrate
-                  0x013e1c                  _run_accelerometer
-                  0x01445e                  _run_left_motor
-                  0x014532                  _run_right_motor
-                  0x014606                  _e_init_motors
-                  0x01461c                  _e_set_speed_left
-                  0x0146b0                  _e_set_speed_right
-                  0x014744                  _e_set_speed
-                  0x014774                  _e_get_steps_left
-                  0x01477c                  _e_set_steps_left
-                  0x014788                  _e_get_steps_right
-                  0x014790                  _e_set_steps_right
-                  0x01479c                  _idle_i2c
-                  0x0147ce                  _e_i2c_init
-                  0x014808                  _e_i2c_deinit
-                  0x01481a                  _e_i2c_reset
-                  0x014864                  _e_i2c_enable
-                  0x014870                  _e_i2c_disable
-                  0x01487c                  _e_i2c_start
-                  0x0148bc                  _e_i2c_restart
-                  0x0148fc                  _e_i2c_stop
-                  0x014930                  _e_i2c_ack
-                  0x014992                  _e_i2c_nack
-                  0x0149f4                  _e_i2c_read
-                  0x014a8e                  _e_i2c_write
-                  0x014ac8                  _follow_sensor_calibrate
-                  0x014baa                  _followgetSelectorValue
-                  0x014bde                  _followGetSensorValues
-                  0x014c16                  _followsetSpeed
-                  0x014c5c                  _run_wallfollow
-                  0x014dbc                  _shock_neuron
-                  0x014ed0                  _lin_speed_calc
-                  0x014f9a                  _angle_speed_calc
-                  0x014fda                  _follow_neuron
-                  0x015038                  _run_breitenberg_follower
-                  0x015062                  _run_breitenberg_shocker
-                  0x01508c                  _e_po6030k_config_cam
-                  0x0152f6                  _e_po6030k_get_bytes_per_pixel
-                  0x01531a                  _e_poxxxx_config_cam
-                  0x015380                  _e_poxxxx_set_mirror
-                  0x0153bc                  _e_poxxxx_write_cam_registers
-                  0x0153e2                  _e_poxxxx_init_cam
-                  0x01549e                  _e_poxxxx_get_orientation
-                  0x0154e2                  _e_poxxxx_set_awb_ae
-                  0x01551e                  _e_poxxxx_set_rgb_gain
-                  0x015566                  _e_poxxxx_set_exposure
-                  0x01559a                  _getCameraVersion
-                  0x0155a2                  _e_po3030k_config_cam
-                  0x0157d8                  _e_po3030k_get_bytes_per_pixel
-                  0x0157fc                  _e_start_agendas_processing
-                  0x015818                  _e_end_agendas_processing
-                  0x015820                  _e_activate_agenda
-                  0x015882                  _e_destroy_agenda
-                  0x0158d0                  _e_set_agenda_cycle
-                  0x015902                  _e_reset_agenda
-                  0x015932                  _e_pause_agenda
-                  0x015962                  _e_restart_agenda
-                  0x015992                  _run_square
-                  0x015b22                  _e_get_micro
-                  0x015b3e                  _e_get_micro_average
-                  0x015bc2                  _e_get_micro_volume
-                  0x015c42                  _e_get_micro_last_values
-                  0x015ca2                  _e_calibrate_ir
-                  0x015d72                  _e_get_prox
-                  0x015d9a                  _e_get_calibrated_prox
-                  0x015dda                  _e_get_ambient_light
-                  0x015df6                  _e_init_remote_control
-                  0x015e04                  _e_read_remote_control
-                  0x015f0a                  _e_get_check
-                  0x015f14                  _e_get_address
-                  0x015f1e                  _e_get_data
-                  0x015f28                  _run_detectsound
-                  0x01605a                  _e_init_ad_scan
-                  0x016148                  _e_ad_is_acquisition_completed
-                  0x016152                  _e_ad_is_array_filled
-                  0x01615c                  _e_ad_scan_on
-                  0x016164                  _e_ad_scan_off
-                  0x01616c                  _wait
-                  0x016190                  _getselector
-                  0x0161c4                  _getBatteryValueRaw
-                  0x0161e2                  _getBatteryValuePercentage
-                  0x016220                  _resetTime
-                  0x01622a                  _getDiffTimeMs
-                  0x016240                  _getDiffTimeMsAndReset
-                  0x01628e                  _e_poxxxx_launch_capture
-                  0x0162a4                  _e_poxxxx_apply_timer_config
-                  0x016348                  _e_poxxxx_is_img_ready
-                  0x016350                  _testAccGyroPresence
-                  0x016386                  _e_init_port
-                  0x01641e                  _isEpuckVersion1_3
-                  0x016428                  _e_i2cp_init
-                  0x016432                  _e_i2cp_deinit
-                  0x01643c                  _e_i2cp_enable
-                  0x016446                  _e_i2cp_disable
-                  0x016450                  _e_i2cp_read
-                  0x0164b0                  _e_i2cp_write
-                  0x016500                  _ReadEE
-                  0x01651a                  _EraseEE
-                  0x016562                  _WriteEE
-                  0x0165ae                  _e_init_codec_slave
-                  0x01665a                  _run_translatorI2C
-                  0x0166c6                  _run_translatorI2C_b
-                  0x0166ea                  _e_sub_dci_kickoff
-                  0x016760                  __DCIInterrupt
-                  0x0167d6                  __U1TXInterrupt
-                  0x01681a                  _e_send_uart1_char
-                  0x016832                  _e_uart1_sending
-                  0x016836                  __U2TXInterrupt
-                  0x01687a                  _e_send_uart2_char
-                  0x016892                  _e_uart2_sending
-                  0x016896                  __U2RXInterrupt
-                  0x0168b4                  _e_ischar_uart2
-                  0x0168bc                  _e_getchar_uart2
-                  0x0168d8                  __U1RXInterrupt
-                  0x0168f6                  _e_ischar_uart1
-                  0x0168fe                  _e_getchar_uart1
-                  0x01691a                  _e_init_sound
-                  0x01693a                  _e_play_sound
-                  0x016950                  _e_close_sound
-                  0x016958                  _e_init_dci_master
-                  0x016996                  __T4Interrupt
-                  0x0169ce                  _e_init_uart1
-                  0x0169fc                  _e_init_uart2
-                  0x016a28                  _run_grounddirection
+                  0x004450                  e_sound_sample
+                  0x00d918                  _run_asercom
+                  0x00f490                  _e_bt_find_epuck
+                  0x00f604                  _e_bt_connect_epuck
+                  0x00f62c                  _e_bt_reset
+                  0x00f6c6                  _e_bt_factory_reset
+                  0x00f72a                  _e_bt_tranparent_mode
+                  0x00f792                  _e_bt_exit_tranparent_mode
+                  0x00f7d2                  _e_bt_read_local_pin_number
+                  0x00f862                  _e_bt_read_local_name
+                  0x00f8e8                  _e_bt_write_local_pin_number
+                  0x00f998                  _e_bt_write_local_name
+                  0x00fa4e                  _e_bt_inquiry
+                  0x00fb4e                  _e_bt_get_friendly_name
+                  0x00fbfe                  _e_bt_etablish_SPP_link
+                  0x00fcb6                  _e_bt_release_SPP_link
+                  0x00fd8c                  _e_bt_send_SPP_data
+                  0x00fe3e                  _e_bt_list_local_paired_device
+                  0x00fece                  _e_bt_remove_local_paired_device
+                  0x00ff86                  _e_bt_set_event_filter
+                  0x00fffa                  _e_bt_get_event_filter
+                  0x01005e                  _e_po3030k_write_cam_registers
+                  0x010094                  _e_po3030k_read_cam_registers
+                  0x0100cc                  _e_po3030k_set_color_mode
+                  0x010100                  _e_po3030k_set_sampling_mode
+                  0x01012c                  _e_po3030k_set_speed
+                  0x01017e                  _e_po3030k_set_wx
+                  0x0101d2                  _e_po3030k_set_wy
+                  0x010220                  _e_po3030k_set_vsync
+                  0x010292                  _e_po3030k_set_mirror
+                  0x0102d0                  _e_po3030k_set_register
+                  0x010304                  _e_po3030k_get_register
+                  0x01033a                  _e_po3030k_set_bias
+                  0x01034e                  _e_po3030k_set_color_gain
+                  0x010388                  _e_po3030k_set_integr_time
+                  0x0103b6                  _e_po3030k_set_adc_offset
+                  0x0103c2                  _e_po3030k_set_sepia
+                  0x0103ea                  _e_po3030k_set_lens_gain
+                  0x010406                  _e_po3030k_set_edge_prop
+                  0x010422                  _e_po3030k_set_gamma_coef
+                  0x01045c                  _e_po3030k_write_gamma_coef
+                  0x010488                  _e_po3030k_sync_register_array
+                  0x0104e6                  _e_po3030k_SetColorMatrix
+                  0x01050e                  _e_po3030k_set_cb_cr_gain
+                  0x010522                  _e_po3030k_set_brigh_contr
+                  0x010536                  _e_po3030k_set_sepia_tone
+                  0x01054a                  _e_po3030k_set_ww
+                  0x01055e                  _e_po3030k_set_awb_ae_tol
+                  0x010578                  _e_po3030k_set_ae_speed
+                  0x010592                  _e_po3030k_set_exposure
+                  0x0105be                  _e_po3030k_set_ref_exposure
+                  0x0105ca                  _e_po3030k_set_max_min_exp
+                  0x0105f8                  _e_po3030k_set_max_min_awb
+                  0x01062c                  _e_po3030k_set_weight_win
+                  0x0106ea                  _e_po3030k_set_awb_ae
+                  0x010728                  _e_po3030k_set_flicker_mode
+                  0x010750                  _e_po3030k_set_flicker_detection
+                  0x01083a                  _e_po3030k_set_flicker_man_set
+                  0x010910                  _main
+                  0x0110fe                  _e_set_led
+                  0x0113a8                  _e_led_clear
+                  0x0113be                  _e_set_body_led
+                  0x0113fe                  _e_set_front_led
+                  0x01143e                  _e_blink_led
+                  0x011512                  _e_blink_led0
+                  0x011532                  _e_blink_led1
+                  0x011552                  _e_blink_led2
+                  0x011572                  _e_blink_led3
+                  0x011592                  _e_blink_led4
+                  0x0115b2                  _e_blink_led5
+                  0x0115d2                  _e_blink_led6
+                  0x0115f2                  _e_blink_led7
+                  0x011610                  _e_start_led_blinking
+                  0x011620                  _e_stop_led_blinking
+                  0x01162c                  _e_set_blinking_cycle
+                  0x011642                  _snake_led
+                  0x0116b2                  _flow_led
+                  0x01172e                  _k2000_led
+                  0x0117ce                  _right_led
+                  0x011832                  _left_led
+                  0x011896                  _e_get_acc
+                  0x01196e                  _e_get_acc_filtered
+                  0x011a92                  _calculate_acc_raw
+                  0x011ad8                  _calculate_acc_spherical
+                  0x011c06                  _e_acc_calibr
+                  0x011c48                  _e_read_acc_spheric
+                  0x011c8a                  _e_read_inclination
+                  0x011c96                  _e_read_orientation
+                  0x011ca2                  _e_read_acc
+                  0x011cae                  _e_read_acc_xyz
+                  0x011cd2                  _e_read_acc_x
+                  0x011cdc                  _e_read_acc_y
+                  0x011ce6                  _e_read_acc_z
+                  0x011cf0                  _e_display_angle
+                  0x011f64                  _e_po8030d_config_cam
+                  0x0125d8                  _e_po8030d_get_bytes_per_pixel
+                  0x0125fc                  _execDemoZ
+                  0x012906                  _execDemoY
+                  0x012a82                  _execDemoX
+                  0x012bfe                  _run_gyroscope
+                  0x012c68                  _run_CameraTurn
+                  0x012e52                  _run_SensDispl
+                  0x013020                  _run_DustCleaner
+                  0x013242                  _e_po8030d_set_bank
+                  0x01325e                  _e_po8030d_write_register
+                  0x013284                  _e_po8030d_read_register
+                  0x0132a8                  _testWriteReg
+                  0x0132c8                  _enablePO8030
+                  0x013314                  _init_po8030
+                  0x01332c                  _e_po8030d_set_bayer_clkdiv
+                  0x01333c                  _e_po8030d_set_pclkdiv
+                  0x013418                  _e_po8030d_set_mode
+                  0x01345c                  _e_po8030d_set_wx
+                  0x0134ba                  _e_po8030d_set_wy
+                  0x0134c6                  _e_po8030d_set_vsync
+                  0x01351e                  _e_po8030d_set_sketch_mode
+                  0x013540                  _e_po8030d_set_mirror
+                  0x013574                  _e_po8030d_set_awb_ae
+                  0x0135bc                  _e_po8030d_set_rgb_gain
+                  0x0135e0                  _e_po8030d_set_exposure
+                  0x013624                  _e_po8030d_set_brightness
+                  0x013636                  _e_po6030k_set_bank
+                  0x013652                  _e_po6030k_write_register
+                  0x013678                  _e_po6030k_read_register
+                  0x01369c                  _e_po6030k_set_bayer_clkdiv
+                  0x0136ac                  _e_po6030k_set_pclkdiv
+                  0x0137b8                  _e_po6030k_set_mode
+                  0x0137fc                  _e_po6030k_set_wx
+                  0x01384a                  _e_po6030k_set_wy
+                  0x013856                  _e_po6030k_set_vsync
+                  0x0138ae                  _e_po6030k_set_sketch_mode
+                  0x01390e                  _e_po6030k_set_mirror
+                  0x013942                  _e_po6030k_set_awb_ae
+                  0x01398a                  _e_po6030k_set_rgb_gain
+                  0x0139ae                  _e_po6030k_set_exposure
+                  0x0139f2                  _writeReg
+                  0x013a10                  _readReg
+                  0x013a2e                  _readRegMulti
+                  0x013aca                  _initAccAndGyro
+                  0x013b0a                  _getAllAxesAccRaw
+                  0x013b24                  _getAllAxesAcc
+                  0x013b72                  _getXAxisAcc
+                  0x013b98                  _getYAxisAcc
+                  0x013bbe                  _getZAxisAcc
+                  0x013be4                  _getAllAxesGyroRaw
+                  0x013bfe                  _getAllAxesGyro
+                  0x013c58                  _getXAxisGyro
+                  0x013c82                  _getYAxisGyro
+                  0x013cac                  _getZAxisGyro
+                  0x013cd6                  _getTemperature
+                  0x013ce2                  _calibrateGyroscope
+                  0x013d68                  _rawToDps
+                  0x013d80                  _rawToDpms
+                  0x013d98                  _acc_calibrate
+                  0x013e72                  _run_accelerometer
+                  0x0144b4                  _run_left_motor
+                  0x014588                  _run_right_motor
+                  0x01465c                  _e_init_motors
+                  0x014672                  _e_set_speed_left
+                  0x014706                  _e_set_speed_right
+                  0x01479a                  _e_set_speed
+                  0x0147ca                  _e_get_steps_left
+                  0x0147d2                  _e_set_steps_left
+                  0x0147de                  _e_get_steps_right
+                  0x0147e6                  _e_set_steps_right
+                  0x0147f2                  _idle_i2c
+                  0x014824                  _e_i2c_init
+                  0x01485e                  _e_i2c_deinit
+                  0x014870                  _e_i2c_reset
+                  0x0148ba                  _e_i2c_enable
+                  0x0148c6                  _e_i2c_disable
+                  0x0148d2                  _e_i2c_start
+                  0x014912                  _e_i2c_restart
+                  0x014952                  _e_i2c_stop
+                  0x014986                  _e_i2c_ack
+                  0x0149e8                  _e_i2c_nack
+                  0x014a4a                  _e_i2c_read
+                  0x014ae4                  _e_i2c_write
+                  0x014b1e                  _follow_sensor_calibrate
+                  0x014c00                  _followgetSelectorValue
+                  0x014c34                  _followGetSensorValues
+                  0x014c6c                  _followsetSpeed
+                  0x014cb2                  _run_wallfollow
+                  0x014e12                  _shock_neuron
+                  0x014f26                  _lin_speed_calc
+                  0x014ff0                  _angle_speed_calc
+                  0x015030                  _follow_neuron
+                  0x01508e                  _run_breitenberg_follower
+                  0x0150b8                  _run_breitenberg_shocker
+                  0x0150e2                  _e_po6030k_config_cam
+                  0x01534c                  _e_po6030k_get_bytes_per_pixel
+                  0x015370                  _e_poxxxx_config_cam
+                  0x0153d6                  _e_poxxxx_set_mirror
+                  0x015412                  _e_poxxxx_write_cam_registers
+                  0x015438                  _e_poxxxx_init_cam
+                  0x0154f4                  _e_poxxxx_get_orientation
+                  0x015538                  _e_poxxxx_set_awb_ae
+                  0x015574                  _e_poxxxx_set_rgb_gain
+                  0x0155bc                  _e_poxxxx_set_exposure
+                  0x0155f0                  _getCameraVersion
+                  0x0155f8                  _e_po3030k_config_cam
+                  0x01582e                  _e_po3030k_get_bytes_per_pixel
+                  0x015852                  _e_start_agendas_processing
+                  0x01586e                  _e_end_agendas_processing
+                  0x015876                  _e_activate_agenda
+                  0x0158d8                  _e_destroy_agenda
+                  0x015926                  _e_set_agenda_cycle
+                  0x015958                  _e_reset_agenda
+                  0x015988                  _e_pause_agenda
+                  0x0159b8                  _e_restart_agenda
+                  0x0159e8                  _run_square
+                  0x015b78                  _e_get_micro
+                  0x015b94                  _e_get_micro_average
+                  0x015c18                  _e_get_micro_volume
+                  0x015c98                  _e_get_micro_last_values
+                  0x015cf8                  _e_calibrate_ir
+                  0x015dc8                  _e_get_prox
+                  0x015df0                  _e_get_calibrated_prox
+                  0x015e30                  _e_get_ambient_light
+                  0x015e4c                  _e_init_remote_control
+                  0x015e5a                  _e_read_remote_control
+                  0x015f60                  _e_get_check
+                  0x015f6a                  _e_get_address
+                  0x015f74                  _e_get_data
+                  0x015f7e                  _run_detectsound
+                  0x0160b0                  _e_init_ad_scan
+                  0x01619e                  _e_ad_is_acquisition_completed
+                  0x0161a8                  _e_ad_is_array_filled
+                  0x0161b2                  _e_ad_scan_on
+                  0x0161ba                  _e_ad_scan_off
+                  0x0161c2                  _wait
+                  0x0161e6                  _getselector
+                  0x01621a                  _getBatteryValueRaw
+                  0x016238                  _getBatteryValuePercentage
+                  0x016276                  _resetTime
+                  0x016280                  _getDiffTimeMs
+                  0x016296                  _getDiffTimeMsAndReset
+                  0x0162e4                  _e_poxxxx_launch_capture
+                  0x0162fa                  _e_poxxxx_apply_timer_config
+                  0x01639e                  _e_poxxxx_is_img_ready
+                  0x0163a6                  _testAccGyroPresence
+                  0x0163dc                  _e_init_port
+                  0x016474                  _isEpuckVersion1_3
+                  0x01647e                  _e_i2cp_init
+                  0x016488                  _e_i2cp_deinit
+                  0x016492                  _e_i2cp_enable
+                  0x01649c                  _e_i2cp_disable
+                  0x0164a6                  _e_i2cp_read
+                  0x016506                  _e_i2cp_write
+                  0x016556                  _ReadEE
+                  0x016570                  _EraseEE
+                  0x0165b8                  _WriteEE
+                  0x016604                  _e_init_codec_slave
+                  0x0166b0                  _run_translatorI2C
+                  0x01671c                  _run_translatorI2C_b
+                  0x016740                  _e_sub_dci_kickoff
+                  0x0167b6                  __DCIInterrupt
+                  0x01682c                  __U1TXInterrupt
+                  0x016870                  _e_send_uart1_char
+                  0x016888                  _e_uart1_sending
+                  0x01688c                  __U2TXInterrupt
+                  0x0168d0                  _e_send_uart2_char
+                  0x0168e8                  _e_uart2_sending
+                  0x0168ec                  __U2RXInterrupt
+                  0x01690a                  _e_ischar_uart2
+                  0x016912                  _e_getchar_uart2
+                  0x01692e                  __U1RXInterrupt
+                  0x01694c                  _e_ischar_uart1
+                  0x016954                  _e_getchar_uart1
+                  0x016970                  _e_init_sound
+                  0x016990                  _e_play_sound
+                  0x0169a6                  _e_close_sound
+                  0x0169ae                  _e_init_dci_master
+                  0x0169ec                  __T4Interrupt
+                  0x016a24                  _e_init_uart1
+                  0x016a52                  _e_init_uart2
+                  0x016a7e                  _run_grounddirection
                   0xf8000a                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x01651a                  _EraseEE
-                  0x016500                  _ReadEE
-                  0x016562                  _WriteEE
+                  0x016570                  _EraseEE
+                  0x016556                  _ReadEE
+                  0x0165b8                  _WriteEE
                   0x0001f0                  __ADCInterrupt
-                  0x016760                  __DCIInterrupt
+                  0x0167b6                  __DCIInterrupt
                   0x00072a                  __DefaultInterrupt
                   0x002230                  __Dnorm
                   0xf8000a                  __FGS.sec
@@ -966,12 +968,12 @@ External Symbols in Program Memory (by name):
                   0x000ea8                  __Stoul
                   0x0029a8                  __Stoull
                   0x0006a6                  __T2Interrupt
-                  0x016996                  __T4Interrupt
+                  0x0169ec                  __T4Interrupt
                   0x000712                  __T5Interrupt
-                  0x0168d8                  __U1RXInterrupt
-                  0x0167d6                  __U1TXInterrupt
-                  0x016896                  __U2RXInterrupt
-                  0x016836                  __U2TXInterrupt
+                  0x01692e                  __U1RXInterrupt
+                  0x01682c                  __U1TXInterrupt
+                  0x0168ec                  __U2RXInterrupt
+                  0x01688c                  __U2TXInterrupt
                   0x00222c                  __Vacopy
                   0x001844                  ___Genld_cdfFnopsuxX
                   0x001844                  ___Genld_cdfFnopuxX
@@ -1062,291 +1064,291 @@ External Symbols in Program Memory (by name):
                   0x001a64                  __sscanf_cdnopsuxX
                   0x001a64                  __sscanf_cdnopuxX
                   0x001a64                  __sscanf_s
-                  0x013d42                  _acc_calibrate
-                  0x014f9a                  _angle_speed_calc
+                  0x013d98                  _acc_calibrate
+                  0x014ff0                  _angle_speed_calc
                   0x00083e                  _atan2f
                   0x000878                  _atanf
-                  0x011a3c                  _calculate_acc_raw
-                  0x011a82                  _calculate_acc_spherical
-                  0x013c8c                  _calibrateGyroscope
+                  0x011a92                  _calculate_acc_raw
+                  0x011ad8                  _calculate_acc_spherical
+                  0x013ce2                  _calibrateGyroscope
                   0x001d96                  _div
-                  0x011bb0                  _e_acc_calibr
-                  0x015820                  _e_activate_agenda
-                  0x016148                  _e_ad_is_acquisition_completed
-                  0x016152                  _e_ad_is_array_filled
-                  0x016164                  _e_ad_scan_off
-                  0x01615c                  _e_ad_scan_on
-                  0x0113e8                  _e_blink_led
-                  0x0114bc                  _e_blink_led0
-                  0x0114dc                  _e_blink_led1
-                  0x0114fc                  _e_blink_led2
-                  0x01151c                  _e_blink_led3
-                  0x01153c                  _e_blink_led4
-                  0x01155c                  _e_blink_led5
-                  0x01157c                  _e_blink_led6
-                  0x01159c                  _e_blink_led7
-                  0x00f5d8                  _e_bt_connect_epuck
-                  0x00fbd2                  _e_bt_etablish_SPP_link
-                  0x00f766                  _e_bt_exit_tranparent_mode
-                  0x00f69a                  _e_bt_factory_reset
-                  0x00f464                  _e_bt_find_epuck
-                  0x00ffce                  _e_bt_get_event_filter
-                  0x00fb22                  _e_bt_get_friendly_name
-                  0x00fa22                  _e_bt_inquiry
-                  0x00fe12                  _e_bt_list_local_paired_device
-                  0x00f836                  _e_bt_read_local_name
-                  0x00f7a6                  _e_bt_read_local_pin_number
-                  0x00fc8a                  _e_bt_release_SPP_link
-                  0x00fea2                  _e_bt_remove_local_paired_device
-                  0x00f600                  _e_bt_reset
-                  0x00fd60                  _e_bt_send_SPP_data
-                  0x00ff5a                  _e_bt_set_event_filter
-                  0x00f6fe                  _e_bt_tranparent_mode
-                  0x00f96c                  _e_bt_write_local_name
-                  0x00f8bc                  _e_bt_write_local_pin_number
-                  0x015ca2                  _e_calibrate_ir
-                  0x016950                  _e_close_sound
-                  0x015882                  _e_destroy_agenda
-                  0x011c9a                  _e_display_angle
-                  0x015818                  _e_end_agendas_processing
-                  0x011840                  _e_get_acc
-                  0x011918                  _e_get_acc_filtered
-                  0x015f14                  _e_get_address
-                  0x015dda                  _e_get_ambient_light
-                  0x015d9a                  _e_get_calibrated_prox
-                  0x015f0a                  _e_get_check
-                  0x015f1e                  _e_get_data
-                  0x015b22                  _e_get_micro
-                  0x015b3e                  _e_get_micro_average
-                  0x015c42                  _e_get_micro_last_values
-                  0x015bc2                  _e_get_micro_volume
-                  0x015d72                  _e_get_prox
-                  0x014774                  _e_get_steps_left
-                  0x014788                  _e_get_steps_right
-                  0x0168fe                  _e_getchar_uart1
-                  0x0168bc                  _e_getchar_uart2
-                  0x014930                  _e_i2c_ack
-                  0x014808                  _e_i2c_deinit
-                  0x014870                  _e_i2c_disable
-                  0x014864                  _e_i2c_enable
-                  0x0147ce                  _e_i2c_init
-                  0x014992                  _e_i2c_nack
-                  0x0149f4                  _e_i2c_read
-                  0x01481a                  _e_i2c_reset
-                  0x0148bc                  _e_i2c_restart
-                  0x01487c                  _e_i2c_start
-                  0x0148fc                  _e_i2c_stop
-                  0x014a8e                  _e_i2c_write
-                  0x016432                  _e_i2cp_deinit
-                  0x016446                  _e_i2cp_disable
-                  0x01643c                  _e_i2cp_enable
-                  0x016428                  _e_i2cp_init
-                  0x016450                  _e_i2cp_read
-                  0x0164b0                  _e_i2cp_write
-                  0x01605a                  _e_init_ad_scan
-                  0x0165ae                  _e_init_codec_slave
-                  0x016958                  _e_init_dci_master
-                  0x014606                  _e_init_motors
-                  0x016386                  _e_init_port
-                  0x015df6                  _e_init_remote_control
-                  0x01691a                  _e_init_sound
-                  0x0169ce                  _e_init_uart1
-                  0x0169fc                  _e_init_uart2
-                  0x0168f6                  _e_ischar_uart1
-                  0x0168b4                  _e_ischar_uart2
-                  0x011352                  _e_led_clear
-                  0x015932                  _e_pause_agenda
-                  0x01693a                  _e_play_sound
-                  0x0104ba                  _e_po3030k_SetColorMatrix
-                  0x0155a2                  _e_po3030k_config_cam
-                  0x0157d8                  _e_po3030k_get_bytes_per_pixel
-                  0x0102d8                  _e_po3030k_get_register
-                  0x010068                  _e_po3030k_read_cam_registers
-                  0x01038a                  _e_po3030k_set_adc_offset
-                  0x01054c                  _e_po3030k_set_ae_speed
-                  0x0106be                  _e_po3030k_set_awb_ae
-                  0x010532                  _e_po3030k_set_awb_ae_tol
-                  0x01030e                  _e_po3030k_set_bias
-                  0x0104f6                  _e_po3030k_set_brigh_contr
-                  0x0104e2                  _e_po3030k_set_cb_cr_gain
-                  0x010322                  _e_po3030k_set_color_gain
-                  0x0100a0                  _e_po3030k_set_color_mode
-                  0x0103da                  _e_po3030k_set_edge_prop
-                  0x010566                  _e_po3030k_set_exposure
-                  0x010724                  _e_po3030k_set_flicker_detection
-                  0x01080e                  _e_po3030k_set_flicker_man_set
-                  0x0106fc                  _e_po3030k_set_flicker_mode
-                  0x0103f6                  _e_po3030k_set_gamma_coef
-                  0x01035c                  _e_po3030k_set_integr_time
-                  0x0103be                  _e_po3030k_set_lens_gain
-                  0x0105cc                  _e_po3030k_set_max_min_awb
-                  0x01059e                  _e_po3030k_set_max_min_exp
-                  0x010266                  _e_po3030k_set_mirror
-                  0x010592                  _e_po3030k_set_ref_exposure
-                  0x0102a4                  _e_po3030k_set_register
-                  0x0100d4                  _e_po3030k_set_sampling_mode
-                  0x010396                  _e_po3030k_set_sepia
-                  0x01050a                  _e_po3030k_set_sepia_tone
-                  0x010100                  _e_po3030k_set_speed
-                  0x0101f4                  _e_po3030k_set_vsync
-                  0x010600                  _e_po3030k_set_weight_win
-                  0x01051e                  _e_po3030k_set_ww
-                  0x010152                  _e_po3030k_set_wx
-                  0x0101a6                  _e_po3030k_set_wy
-                  0x01045c                  _e_po3030k_sync_register_array
-                  0x010032                  _e_po3030k_write_cam_registers
-                  0x010430                  _e_po3030k_write_gamma_coef
-                  0x01508c                  _e_po6030k_config_cam
-                  0x0152f6                  _e_po6030k_get_bytes_per_pixel
-                  0x013622                  _e_po6030k_read_register
-                  0x0138ec                  _e_po6030k_set_awb_ae
-                  0x0135e0                  _e_po6030k_set_bank
-                  0x013646                  _e_po6030k_set_bayer_clkdiv
-                  0x013958                  _e_po6030k_set_exposure
-                  0x0138b8                  _e_po6030k_set_mirror
-                  0x013762                  _e_po6030k_set_mode
-                  0x013656                  _e_po6030k_set_pclkdiv
-                  0x013934                  _e_po6030k_set_rgb_gain
-                  0x013858                  _e_po6030k_set_sketch_mode
-                  0x013800                  _e_po6030k_set_vsync
-                  0x0137a6                  _e_po6030k_set_wx
-                  0x0137f4                  _e_po6030k_set_wy
-                  0x0135fc                  _e_po6030k_write_register
-                  0x011f0e                  _e_po8030d_config_cam
-                  0x012582                  _e_po8030d_get_bytes_per_pixel
-                  0x01322e                  _e_po8030d_read_register
-                  0x01351e                  _e_po8030d_set_awb_ae
-                  0x0131ec                  _e_po8030d_set_bank
-                  0x0132d6                  _e_po8030d_set_bayer_clkdiv
-                  0x0135ce                  _e_po8030d_set_brightness
-                  0x01358a                  _e_po8030d_set_exposure
-                  0x0134ea                  _e_po8030d_set_mirror
-                  0x0133c2                  _e_po8030d_set_mode
-                  0x0132e6                  _e_po8030d_set_pclkdiv
-                  0x013566                  _e_po8030d_set_rgb_gain
-                  0x0134c8                  _e_po8030d_set_sketch_mode
-                  0x013470                  _e_po8030d_set_vsync
-                  0x013406                  _e_po8030d_set_wx
-                  0x013464                  _e_po8030d_set_wy
-                  0x013208                  _e_po8030d_write_register
-                  0x0162a4                  _e_poxxxx_apply_timer_config
-                  0x01531a                  _e_poxxxx_config_cam
-                  0x01549e                  _e_poxxxx_get_orientation
-                  0x0153e2                  _e_poxxxx_init_cam
-                  0x016348                  _e_poxxxx_is_img_ready
-                  0x01628e                  _e_poxxxx_launch_capture
-                  0x0154e2                  _e_poxxxx_set_awb_ae
-                  0x015566                  _e_poxxxx_set_exposure
-                  0x015380                  _e_poxxxx_set_mirror
-                  0x01551e                  _e_poxxxx_set_rgb_gain
-                  0x0153bc                  _e_poxxxx_write_cam_registers
-                  0x011c4c                  _e_read_acc
-                  0x011bf2                  _e_read_acc_spheric
-                  0x011c7c                  _e_read_acc_x
-                  0x011c58                  _e_read_acc_xyz
-                  0x011c86                  _e_read_acc_y
-                  0x011c90                  _e_read_acc_z
-                  0x011c34                  _e_read_inclination
-                  0x011c40                  _e_read_orientation
-                  0x015e04                  _e_read_remote_control
-                  0x015902                  _e_reset_agenda
-                  0x015962                  _e_restart_agenda
-                  0x01681a                  _e_send_uart1_char
-                  0x01687a                  _e_send_uart2_char
-                  0x0158d0                  _e_set_agenda_cycle
-                  0x0115d6                  _e_set_blinking_cycle
-                  0x011368                  _e_set_body_led
-                  0x0113a8                  _e_set_front_led
-                  0x0110a8                  _e_set_led
-                  0x014744                  _e_set_speed
-                  0x01461c                  _e_set_speed_left
-                  0x0146b0                  _e_set_speed_right
-                  0x01477c                  _e_set_steps_left
-                  0x014790                  _e_set_steps_right
-                  0x0157fc                  _e_start_agendas_processing
-                  0x0115ba                  _e_start_led_blinking
-                  0x0115ca                  _e_stop_led_blinking
-                  0x0166ea                  _e_sub_dci_kickoff
-                  0x016832                  _e_uart1_sending
-                  0x016892                  _e_uart2_sending
-                  0x013272                  _enablePO8030
-                  0x012a2c                  _execDemoX
-                  0x0128b0                  _execDemoY
-                  0x0125a6                  _execDemoZ
+                  0x011c06                  _e_acc_calibr
+                  0x015876                  _e_activate_agenda
+                  0x01619e                  _e_ad_is_acquisition_completed
+                  0x0161a8                  _e_ad_is_array_filled
+                  0x0161ba                  _e_ad_scan_off
+                  0x0161b2                  _e_ad_scan_on
+                  0x01143e                  _e_blink_led
+                  0x011512                  _e_blink_led0
+                  0x011532                  _e_blink_led1
+                  0x011552                  _e_blink_led2
+                  0x011572                  _e_blink_led3
+                  0x011592                  _e_blink_led4
+                  0x0115b2                  _e_blink_led5
+                  0x0115d2                  _e_blink_led6
+                  0x0115f2                  _e_blink_led7
+                  0x00f604                  _e_bt_connect_epuck
+                  0x00fbfe                  _e_bt_etablish_SPP_link
+                  0x00f792                  _e_bt_exit_tranparent_mode
+                  0x00f6c6                  _e_bt_factory_reset
+                  0x00f490                  _e_bt_find_epuck
+                  0x00fffa                  _e_bt_get_event_filter
+                  0x00fb4e                  _e_bt_get_friendly_name
+                  0x00fa4e                  _e_bt_inquiry
+                  0x00fe3e                  _e_bt_list_local_paired_device
+                  0x00f862                  _e_bt_read_local_name
+                  0x00f7d2                  _e_bt_read_local_pin_number
+                  0x00fcb6                  _e_bt_release_SPP_link
+                  0x00fece                  _e_bt_remove_local_paired_device
+                  0x00f62c                  _e_bt_reset
+                  0x00fd8c                  _e_bt_send_SPP_data
+                  0x00ff86                  _e_bt_set_event_filter
+                  0x00f72a                  _e_bt_tranparent_mode
+                  0x00f998                  _e_bt_write_local_name
+                  0x00f8e8                  _e_bt_write_local_pin_number
+                  0x015cf8                  _e_calibrate_ir
+                  0x0169a6                  _e_close_sound
+                  0x0158d8                  _e_destroy_agenda
+                  0x011cf0                  _e_display_angle
+                  0x01586e                  _e_end_agendas_processing
+                  0x011896                  _e_get_acc
+                  0x01196e                  _e_get_acc_filtered
+                  0x015f6a                  _e_get_address
+                  0x015e30                  _e_get_ambient_light
+                  0x015df0                  _e_get_calibrated_prox
+                  0x015f60                  _e_get_check
+                  0x015f74                  _e_get_data
+                  0x015b78                  _e_get_micro
+                  0x015b94                  _e_get_micro_average
+                  0x015c98                  _e_get_micro_last_values
+                  0x015c18                  _e_get_micro_volume
+                  0x015dc8                  _e_get_prox
+                  0x0147ca                  _e_get_steps_left
+                  0x0147de                  _e_get_steps_right
+                  0x016954                  _e_getchar_uart1
+                  0x016912                  _e_getchar_uart2
+                  0x014986                  _e_i2c_ack
+                  0x01485e                  _e_i2c_deinit
+                  0x0148c6                  _e_i2c_disable
+                  0x0148ba                  _e_i2c_enable
+                  0x014824                  _e_i2c_init
+                  0x0149e8                  _e_i2c_nack
+                  0x014a4a                  _e_i2c_read
+                  0x014870                  _e_i2c_reset
+                  0x014912                  _e_i2c_restart
+                  0x0148d2                  _e_i2c_start
+                  0x014952                  _e_i2c_stop
+                  0x014ae4                  _e_i2c_write
+                  0x016488                  _e_i2cp_deinit
+                  0x01649c                  _e_i2cp_disable
+                  0x016492                  _e_i2cp_enable
+                  0x01647e                  _e_i2cp_init
+                  0x0164a6                  _e_i2cp_read
+                  0x016506                  _e_i2cp_write
+                  0x0160b0                  _e_init_ad_scan
+                  0x016604                  _e_init_codec_slave
+                  0x0169ae                  _e_init_dci_master
+                  0x01465c                  _e_init_motors
+                  0x0163dc                  _e_init_port
+                  0x015e4c                  _e_init_remote_control
+                  0x016970                  _e_init_sound
+                  0x016a24                  _e_init_uart1
+                  0x016a52                  _e_init_uart2
+                  0x01694c                  _e_ischar_uart1
+                  0x01690a                  _e_ischar_uart2
+                  0x0113a8                  _e_led_clear
+                  0x015988                  _e_pause_agenda
+                  0x016990                  _e_play_sound
+                  0x0104e6                  _e_po3030k_SetColorMatrix
+                  0x0155f8                  _e_po3030k_config_cam
+                  0x01582e                  _e_po3030k_get_bytes_per_pixel
+                  0x010304                  _e_po3030k_get_register
+                  0x010094                  _e_po3030k_read_cam_registers
+                  0x0103b6                  _e_po3030k_set_adc_offset
+                  0x010578                  _e_po3030k_set_ae_speed
+                  0x0106ea                  _e_po3030k_set_awb_ae
+                  0x01055e                  _e_po3030k_set_awb_ae_tol
+                  0x01033a                  _e_po3030k_set_bias
+                  0x010522                  _e_po3030k_set_brigh_contr
+                  0x01050e                  _e_po3030k_set_cb_cr_gain
+                  0x01034e                  _e_po3030k_set_color_gain
+                  0x0100cc                  _e_po3030k_set_color_mode
+                  0x010406                  _e_po3030k_set_edge_prop
+                  0x010592                  _e_po3030k_set_exposure
+                  0x010750                  _e_po3030k_set_flicker_detection
+                  0x01083a                  _e_po3030k_set_flicker_man_set
+                  0x010728                  _e_po3030k_set_flicker_mode
+                  0x010422                  _e_po3030k_set_gamma_coef
+                  0x010388                  _e_po3030k_set_integr_time
+                  0x0103ea                  _e_po3030k_set_lens_gain
+                  0x0105f8                  _e_po3030k_set_max_min_awb
+                  0x0105ca                  _e_po3030k_set_max_min_exp
+                  0x010292                  _e_po3030k_set_mirror
+                  0x0105be                  _e_po3030k_set_ref_exposure
+                  0x0102d0                  _e_po3030k_set_register
+                  0x010100                  _e_po3030k_set_sampling_mode
+                  0x0103c2                  _e_po3030k_set_sepia
+                  0x010536                  _e_po3030k_set_sepia_tone
+                  0x01012c                  _e_po3030k_set_speed
+                  0x010220                  _e_po3030k_set_vsync
+                  0x01062c                  _e_po3030k_set_weight_win
+                  0x01054a                  _e_po3030k_set_ww
+                  0x01017e                  _e_po3030k_set_wx
+                  0x0101d2                  _e_po3030k_set_wy
+                  0x010488                  _e_po3030k_sync_register_array
+                  0x01005e                  _e_po3030k_write_cam_registers
+                  0x01045c                  _e_po3030k_write_gamma_coef
+                  0x0150e2                  _e_po6030k_config_cam
+                  0x01534c                  _e_po6030k_get_bytes_per_pixel
+                  0x013678                  _e_po6030k_read_register
+                  0x013942                  _e_po6030k_set_awb_ae
+                  0x013636                  _e_po6030k_set_bank
+                  0x01369c                  _e_po6030k_set_bayer_clkdiv
+                  0x0139ae                  _e_po6030k_set_exposure
+                  0x01390e                  _e_po6030k_set_mirror
+                  0x0137b8                  _e_po6030k_set_mode
+                  0x0136ac                  _e_po6030k_set_pclkdiv
+                  0x01398a                  _e_po6030k_set_rgb_gain
+                  0x0138ae                  _e_po6030k_set_sketch_mode
+                  0x013856                  _e_po6030k_set_vsync
+                  0x0137fc                  _e_po6030k_set_wx
+                  0x01384a                  _e_po6030k_set_wy
+                  0x013652                  _e_po6030k_write_register
+                  0x011f64                  _e_po8030d_config_cam
+                  0x0125d8                  _e_po8030d_get_bytes_per_pixel
+                  0x013284                  _e_po8030d_read_register
+                  0x013574                  _e_po8030d_set_awb_ae
+                  0x013242                  _e_po8030d_set_bank
+                  0x01332c                  _e_po8030d_set_bayer_clkdiv
+                  0x013624                  _e_po8030d_set_brightness
+                  0x0135e0                  _e_po8030d_set_exposure
+                  0x013540                  _e_po8030d_set_mirror
+                  0x013418                  _e_po8030d_set_mode
+                  0x01333c                  _e_po8030d_set_pclkdiv
+                  0x0135bc                  _e_po8030d_set_rgb_gain
+                  0x01351e                  _e_po8030d_set_sketch_mode
+                  0x0134c6                  _e_po8030d_set_vsync
+                  0x01345c                  _e_po8030d_set_wx
+                  0x0134ba                  _e_po8030d_set_wy
+                  0x01325e                  _e_po8030d_write_register
+                  0x0162fa                  _e_poxxxx_apply_timer_config
+                  0x015370                  _e_poxxxx_config_cam
+                  0x0154f4                  _e_poxxxx_get_orientation
+                  0x015438                  _e_poxxxx_init_cam
+                  0x01639e                  _e_poxxxx_is_img_ready
+                  0x0162e4                  _e_poxxxx_launch_capture
+                  0x015538                  _e_poxxxx_set_awb_ae
+                  0x0155bc                  _e_poxxxx_set_exposure
+                  0x0153d6                  _e_poxxxx_set_mirror
+                  0x015574                  _e_poxxxx_set_rgb_gain
+                  0x015412                  _e_poxxxx_write_cam_registers
+                  0x011ca2                  _e_read_acc
+                  0x011c48                  _e_read_acc_spheric
+                  0x011cd2                  _e_read_acc_x
+                  0x011cae                  _e_read_acc_xyz
+                  0x011cdc                  _e_read_acc_y
+                  0x011ce6                  _e_read_acc_z
+                  0x011c8a                  _e_read_inclination
+                  0x011c96                  _e_read_orientation
+                  0x015e5a                  _e_read_remote_control
+                  0x015958                  _e_reset_agenda
+                  0x0159b8                  _e_restart_agenda
+                  0x016870                  _e_send_uart1_char
+                  0x0168d0                  _e_send_uart2_char
+                  0x015926                  _e_set_agenda_cycle
+                  0x01162c                  _e_set_blinking_cycle
+                  0x0113be                  _e_set_body_led
+                  0x0113fe                  _e_set_front_led
+                  0x0110fe                  _e_set_led
+                  0x01479a                  _e_set_speed
+                  0x014672                  _e_set_speed_left
+                  0x014706                  _e_set_speed_right
+                  0x0147d2                  _e_set_steps_left
+                  0x0147e6                  _e_set_steps_right
+                  0x015852                  _e_start_agendas_processing
+                  0x011610                  _e_start_led_blinking
+                  0x011620                  _e_stop_led_blinking
+                  0x016740                  _e_sub_dci_kickoff
+                  0x016888                  _e_uart1_sending
+                  0x0168e8                  _e_uart2_sending
+                  0x0132c8                  _enablePO8030
+                  0x012a82                  _execDemoX
+                  0x012906                  _execDemoY
+                  0x0125fc                  _execDemoZ
                   0x000d2a                  _exit
                   0x000a6e                  _floorf
-                  0x01165c                  _flow_led
-                  0x014bde                  _followGetSensorValues
-                  0x014fda                  _follow_neuron
-                  0x014ac8                  _follow_sensor_calibrate
-                  0x014baa                  _followgetSelectorValue
-                  0x014c16                  _followsetSpeed
+                  0x0116b2                  _flow_led
+                  0x014c34                  _followGetSensorValues
+                  0x015030                  _follow_neuron
+                  0x014b1e                  _follow_sensor_calibrate
+                  0x014c00                  _followgetSelectorValue
+                  0x014c6c                  _followsetSpeed
                   0x000d4e                  _free
-                  0x013ace                  _getAllAxesAcc
-                  0x013ab4                  _getAllAxesAccRaw
-                  0x013ba8                  _getAllAxesGyro
-                  0x013b8e                  _getAllAxesGyroRaw
-                  0x0161e2                  _getBatteryValuePercentage
-                  0x0161c4                  _getBatteryValueRaw
-                  0x01559a                  _getCameraVersion
-                  0x01622a                  _getDiffTimeMs
-                  0x016240                  _getDiffTimeMsAndReset
-                  0x013c80                  _getTemperature
-                  0x013b1c                  _getXAxisAcc
-                  0x013c02                  _getXAxisGyro
-                  0x013b42                  _getYAxisAcc
-                  0x013c2c                  _getYAxisGyro
-                  0x013b68                  _getZAxisAcc
-                  0x013c56                  _getZAxisGyro
-                  0x016190                  _getselector
-                  0x01479c                  _idle_i2c
-                  0x013a74                  _initAccAndGyro
-                  0x0132be                  _init_po8030
-                  0x01641e                  _isEpuckVersion1_3
+                  0x013b24                  _getAllAxesAcc
+                  0x013b0a                  _getAllAxesAccRaw
+                  0x013bfe                  _getAllAxesGyro
+                  0x013be4                  _getAllAxesGyroRaw
+                  0x016238                  _getBatteryValuePercentage
+                  0x01621a                  _getBatteryValueRaw
+                  0x0155f0                  _getCameraVersion
+                  0x016280                  _getDiffTimeMs
+                  0x016296                  _getDiffTimeMsAndReset
+                  0x013cd6                  _getTemperature
+                  0x013b72                  _getXAxisAcc
+                  0x013c58                  _getXAxisGyro
+                  0x013b98                  _getYAxisAcc
+                  0x013c82                  _getYAxisGyro
+                  0x013bbe                  _getZAxisAcc
+                  0x013cac                  _getZAxisGyro
+                  0x0161e6                  _getselector
+                  0x0147f2                  _idle_i2c
+                  0x013aca                  _initAccAndGyro
+                  0x013314                  _init_po8030
+                  0x016474                  _isEpuckVersion1_3
                   0x000fdc                  _isspace
-                  0x0116d8                  _k2000_led
+                  0x01172e                  _k2000_led
                   0x001dac                  _ldiv
-                  0x0117dc                  _left_led
-                  0x014ed0                  _lin_speed_calc
-                  0x0108e4                  _main
+                  0x011832                  _left_led
+                  0x014f26                  _lin_speed_calc
+                  0x010910                  _main
                   0x000e18                  _malloc
                   0x001dd6                  _memchr
                   0x000e6c                  _memcpy
                   0x000e7a                  _memset
-                  0x013d2a                  _rawToDpms
-                  0x013d12                  _rawToDps
-                  0x0139ba                  _readReg
-                  0x0139d8                  _readRegMulti
-                  0x016220                  _resetTime
-                  0x011778                  _right_led
-                  0x012c12                  _run_CameraTurn
-                  0x012fca                  _run_DustCleaner
-                  0x012dfc                  _run_SensDispl
-                  0x013e1c                  _run_accelerometer
-                  0x00d910                  _run_asercom
-                  0x015038                  _run_breitenberg_follower
-                  0x015062                  _run_breitenberg_shocker
-                  0x015f28                  _run_detectsound
-                  0x016a28                  _run_grounddirection
-                  0x012ba8                  _run_gyroscope
-                  0x01445e                  _run_left_motor
-                  0x014532                  _run_right_motor
-                  0x015992                  _run_square
-                  0x01665a                  _run_translatorI2C
-                  0x0166c6                  _run_translatorI2C_b
-                  0x014c5c                  _run_wallfollow
-                  0x014dbc                  _shock_neuron
-                  0x0115ec                  _snake_led
+                  0x013d80                  _rawToDpms
+                  0x013d68                  _rawToDps
+                  0x013a10                  _readReg
+                  0x013a2e                  _readRegMulti
+                  0x016276                  _resetTime
+                  0x0117ce                  _right_led
+                  0x012c68                  _run_CameraTurn
+                  0x013020                  _run_DustCleaner
+                  0x012e52                  _run_SensDispl
+                  0x013e72                  _run_accelerometer
+                  0x00d918                  _run_asercom
+                  0x01508e                  _run_breitenberg_follower
+                  0x0150b8                  _run_breitenberg_shocker
+                  0x015f7e                  _run_detectsound
+                  0x016a7e                  _run_grounddirection
+                  0x012bfe                  _run_gyroscope
+                  0x0144b4                  _run_left_motor
+                  0x014588                  _run_right_motor
+                  0x0159e8                  _run_square
+                  0x0166b0                  _run_translatorI2C
+                  0x01671c                  _run_translatorI2C_b
+                  0x014cb2                  _run_wallfollow
+                  0x014e12                  _shock_neuron
+                  0x011642                  _snake_led
                   0x000b90                  _sqrtf
                   0x001dea                  _strchr
                   0x000e88                  _strlen
-                  0x016350                  _testAccGyroPresence
-                  0x013252                  _testWriteReg
+                  0x0163a6                  _testAccGyroPresence
+                  0x0132a8                  _testWriteReg
                   0x000fec                  _tolower
                   0x000d1c                  _toupper
-                  0x01616c                  _wait
-                  0x01399c                  _writeReg
-                  0x004448                  e_sound_sample
+                  0x0161c2                  _wait
+                  0x0139f2                  _writeReg
+                  0x004450                  e_sound_sample
                   0x00118a                  sprintf_cdfFnopsuxX.XXeo:_prout
                   0x001a4c                  sscanf_cdnopsuxX.XXeo:_scin
 
@@ -1785,154 +1787,154 @@ userdata
 .comment
  *(.comment)
 
-.debug_info       0x000000       0xe47e
+.debug_info       0x000000       0xe96b
  *(.debug_info)
- .debug_info      0x000000        0x93e build/default/production/_ext/1472/Asercom.o
- .debug_info      0x00093e         0xb0 build/default/production/_ext/1472/DataEEPROM.o
- .debug_info      0x0009ee        0x5b6 build/default/production/_ext/1472/main_c.o
- .debug_info      0x000fa4        0x38c build/default/production/_ext/1472/runaccelerometer.o
- .debug_info      0x001330        0x3ec build/default/production/_ext/1472/runbreitenberg_adv.o
- .debug_info      0x00171c        0x174 build/default/production/_ext/1472/rungrounddirection.o
- .debug_info      0x001890        0x468 build/default/production/_ext/1472/runshow.o
- .debug_info      0x001cf8        0x4f3 build/default/production/_ext/1472/runwallfollow.o
- .debug_info      0x0021eb        0x1ef build/default/production/_ext/1472/translatorI2C.o
- .debug_info      0x0023da        0x6a5 build/default/production/_ext/1949949662/e_led.o
- .debug_info      0x002a7f        0x5c2 build/default/production/_ext/1949949662/e_motors.o
- .debug_info      0x003041       0x14d6 build/default/production/_ext/1362274096/e_ad_conv.o
- .debug_info      0x004517        0x410 build/default/production/_ext/904308887/utility.o
- .debug_info      0x004927        0xcb6 build/default/production/_ext/417766185/e_I2C_master_module.o
- .debug_info      0x0055dd        0x6bf build/default/production/_ext/930121020/e_common.o
- .debug_info      0x005c9c        0x765 build/default/production/_ext/1362274096/e_acc.o
- .debug_info      0x006401         0xc8 build/default/production/_ext/64492303/e_uart1_tx_char.o
- .debug_info      0x0064c9         0xc8 build/default/production/_ext/64492303/e_uart2_tx_char.o
- .debug_info      0x006591         0xc8 build/default/production/_ext/64492303/e_uart2_rx_char.o
- .debug_info      0x006659         0xc8 build/default/production/_ext/64492303/e_uart1_rx_char.o
- .debug_info      0x006721        0x8ff build/default/production/_ext/1949949662/e_remote_control.o
- .debug_info      0x007020        0xda5 build/default/production/_ext/1259340286/e_init_port.o
- .debug_info      0x007dc5        0x911 build/default/production/_ext/1949949662/e_agenda.o
- .debug_info      0x0086d6        0x28e build/default/production/_ext/417766185/e_I2C_protocol.o
- .debug_info      0x008964        0x2d7 build/default/production/_ext/1362274096/e_prox.o
- .debug_info      0x008c3b        0x2f3 build/default/production/_ext/2015481517/e_sound.o
- .debug_info      0x008f2e        0x695 build/default/production/_ext/930121020/e_po6030k_registers.o
- .debug_info      0x0095c3        0xe7e build/default/production/_ext/930121020/e_po3030k_registers.o
- .debug_info      0x00a441        0x78a build/default/production/_ext/930121020/e_po8030d_registers.o
- .debug_info      0x00abcb         0xcb build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
- .debug_info      0x00ac96         0xcb build/default/production/_ext/2015481517/e_init_dci_master.o
- .debug_info      0x00ad61         0xcc build/default/production/_ext/2015481517/e_init_codec_slave.o
- .debug_info      0x00ae2d        0x32c build/default/production/_ext/1362274096/e_micro.o
- .debug_info      0x00b159        0xf7c build/default/production/_ext/663421589/e_bluetooth.o
- .debug_info      0x00c0d5        0x2f5 build/default/production/_ext/930121020/e_calc_po3030k.o
- .debug_info      0x00c3ca        0x30b build/default/production/_ext/930121020/e_calc_po6030k.o
- .debug_info      0x00c6d5        0x3c6 build/default/production/_ext/930121020/e_calc_po8030d.o
- .debug_info      0x00ca9b        0x996 build/default/production/_ext/930121020/e_timers.o
- .debug_info      0x00d431         0xc5 build/default/production/_ext/64492303/e_init_uart1.o
- .debug_info      0x00d4f6         0xc5 build/default/production/_ext/64492303/e_init_uart2.o
- .debug_info      0x00d5bb         0xc3 build/default/production/_ext/2015481517/e_isr_dci.o
- .debug_info      0x00d67e         0xd3 build/default/production/_ext/930121020/e_interrupt.o
- .debug_info      0x00d751        0x68e build/default/production/_ext/851769008/e_lsm330.o
- .debug_info      0x00dddf        0x2b8 build/default/production/_ext/1472/rungyroscope.o
- .debug_info      0x00e097        0x1f7 build/default/production/_ext/1472/runsquare.o
- .debug_info      0x00e28e        0x1f0 build/default/production/_ext/1472/rundetectsound.o
+ .debug_info      0x000000        0x972 build/default/production/_ext/1472/Asercom.o
+ .debug_info      0x000972         0xca build/default/production/_ext/1472/DataEEPROM.o
+ .debug_info      0x000a3c        0x5f7 build/default/production/_ext/1472/main_c.o
+ .debug_info      0x001033        0x3a6 build/default/production/_ext/1472/runaccelerometer.o
+ .debug_info      0x0013d9        0x406 build/default/production/_ext/1472/runbreitenberg_adv.o
+ .debug_info      0x0017df        0x18e build/default/production/_ext/1472/rungrounddirection.o
+ .debug_info      0x00196d        0x482 build/default/production/_ext/1472/runshow.o
+ .debug_info      0x001def        0x50d build/default/production/_ext/1472/runwallfollow.o
+ .debug_info      0x0022fc        0x209 build/default/production/_ext/1472/translatorI2C.o
+ .debug_info      0x002505        0x6bf build/default/production/_ext/1949949662/e_led.o
+ .debug_info      0x002bc4        0x5dc build/default/production/_ext/1949949662/e_motors.o
+ .debug_info      0x0031a0       0x14f0 build/default/production/_ext/1362274096/e_ad_conv.o
+ .debug_info      0x004690        0x42a build/default/production/_ext/904308887/utility.o
+ .debug_info      0x004aba        0xcd0 build/default/production/_ext/417766185/e_I2C_master_module.o
+ .debug_info      0x00578a        0x6d9 build/default/production/_ext/930121020/e_common.o
+ .debug_info      0x005e63        0x77f build/default/production/_ext/1362274096/e_acc.o
+ .debug_info      0x0065e2         0xe2 build/default/production/_ext/64492303/e_uart1_tx_char.o
+ .debug_info      0x0066c4         0xe2 build/default/production/_ext/64492303/e_uart2_tx_char.o
+ .debug_info      0x0067a6         0xe2 build/default/production/_ext/64492303/e_uart2_rx_char.o
+ .debug_info      0x006888         0xe2 build/default/production/_ext/64492303/e_uart1_rx_char.o
+ .debug_info      0x00696a        0x919 build/default/production/_ext/1949949662/e_remote_control.o
+ .debug_info      0x007283        0xdbf build/default/production/_ext/1259340286/e_init_port.o
+ .debug_info      0x008042        0x92b build/default/production/_ext/1949949662/e_agenda.o
+ .debug_info      0x00896d        0x2a8 build/default/production/_ext/417766185/e_I2C_protocol.o
+ .debug_info      0x008c15        0x2f1 build/default/production/_ext/1362274096/e_prox.o
+ .debug_info      0x008f06        0x30d build/default/production/_ext/2015481517/e_sound.o
+ .debug_info      0x009213        0x6af build/default/production/_ext/930121020/e_po6030k_registers.o
+ .debug_info      0x0098c2        0xe98 build/default/production/_ext/930121020/e_po3030k_registers.o
+ .debug_info      0x00a75a        0x7a4 build/default/production/_ext/930121020/e_po8030d_registers.o
+ .debug_info      0x00aefe         0xe5 build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
+ .debug_info      0x00afe3         0xe5 build/default/production/_ext/2015481517/e_init_dci_master.o
+ .debug_info      0x00b0c8         0xe6 build/default/production/_ext/2015481517/e_init_codec_slave.o
+ .debug_info      0x00b1ae        0x346 build/default/production/_ext/1362274096/e_micro.o
+ .debug_info      0x00b4f4        0xf96 build/default/production/_ext/663421589/e_bluetooth.o
+ .debug_info      0x00c48a        0x30f build/default/production/_ext/930121020/e_calc_po3030k.o
+ .debug_info      0x00c799        0x325 build/default/production/_ext/930121020/e_calc_po6030k.o
+ .debug_info      0x00cabe        0x3e0 build/default/production/_ext/930121020/e_calc_po8030d.o
+ .debug_info      0x00ce9e        0x9b0 build/default/production/_ext/930121020/e_timers.o
+ .debug_info      0x00d84e         0xdf build/default/production/_ext/64492303/e_init_uart1.o
+ .debug_info      0x00d92d         0xdf build/default/production/_ext/64492303/e_init_uart2.o
+ .debug_info      0x00da0c         0xdd build/default/production/_ext/2015481517/e_isr_dci.o
+ .debug_info      0x00dae9         0xed build/default/production/_ext/930121020/e_interrupt.o
+ .debug_info      0x00dbd6        0x6a8 build/default/production/_ext/851769008/e_lsm330.o
+ .debug_info      0x00e27e        0x2d2 build/default/production/_ext/1472/rungyroscope.o
+ .debug_info      0x00e550        0x211 build/default/production/_ext/1472/runsquare.o
+ .debug_info      0x00e761        0x20a build/default/production/_ext/1472/rundetectsound.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x1ffd
+.debug_abbrev     0x000000       0x200e
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x150 build/default/production/_ext/1472/Asercom.o
  .debug_abbrev    0x000150         0x14 build/default/production/_ext/1472/DataEEPROM.o
- .debug_abbrev    0x000164        0x145 build/default/production/_ext/1472/main_c.o
- .debug_abbrev    0x0002a9         0x88 build/default/production/_ext/1472/runaccelerometer.o
- .debug_abbrev    0x000331         0xe7 build/default/production/_ext/1472/runbreitenberg_adv.o
- .debug_abbrev    0x000418         0x34 build/default/production/_ext/1472/rungrounddirection.o
- .debug_abbrev    0x00044c         0xa3 build/default/production/_ext/1472/runshow.o
- .debug_abbrev    0x0004ef        0x122 build/default/production/_ext/1472/runwallfollow.o
- .debug_abbrev    0x000611         0x56 build/default/production/_ext/1472/translatorI2C.o
- .debug_abbrev    0x000667        0x109 build/default/production/_ext/1949949662/e_led.o
- .debug_abbrev    0x000770        0x109 build/default/production/_ext/1949949662/e_motors.o
- .debug_abbrev    0x000879        0x14e build/default/production/_ext/1362274096/e_ad_conv.o
- .debug_abbrev    0x0009c7        0x127 build/default/production/_ext/904308887/utility.o
- .debug_abbrev    0x000aee        0x1ad build/default/production/_ext/417766185/e_I2C_master_module.o
- .debug_abbrev    0x000c9b        0x13d build/default/production/_ext/930121020/e_common.o
- .debug_abbrev    0x000dd8        0x185 build/default/production/_ext/1362274096/e_acc.o
- .debug_abbrev    0x000f5d         0x14 build/default/production/_ext/64492303/e_uart1_tx_char.o
- .debug_abbrev    0x000f71         0x14 build/default/production/_ext/64492303/e_uart2_tx_char.o
- .debug_abbrev    0x000f85         0x14 build/default/production/_ext/64492303/e_uart2_rx_char.o
- .debug_abbrev    0x000f99         0x14 build/default/production/_ext/64492303/e_uart1_rx_char.o
- .debug_abbrev    0x000fad         0xdb build/default/production/_ext/1949949662/e_remote_control.o
- .debug_abbrev    0x001088         0xf8 build/default/production/_ext/1259340286/e_init_port.o
- .debug_abbrev    0x001180        0x16e build/default/production/_ext/1949949662/e_agenda.o
- .debug_abbrev    0x0012ee         0x91 build/default/production/_ext/417766185/e_I2C_protocol.o
- .debug_abbrev    0x00137f         0x8e build/default/production/_ext/1362274096/e_prox.o
- .debug_abbrev    0x00140d         0xbf build/default/production/_ext/2015481517/e_sound.o
- .debug_abbrev    0x0014cc         0xea build/default/production/_ext/930121020/e_po6030k_registers.o
- .debug_abbrev    0x0015b6        0x120 build/default/production/_ext/930121020/e_po3030k_registers.o
- .debug_abbrev    0x0016d6        0x101 build/default/production/_ext/930121020/e_po8030d_registers.o
- .debug_abbrev    0x0017d7         0x14 build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
- .debug_abbrev    0x0017eb         0x14 build/default/production/_ext/2015481517/e_init_dci_master.o
- .debug_abbrev    0x0017ff         0x14 build/default/production/_ext/2015481517/e_init_codec_slave.o
- .debug_abbrev    0x001813         0xa8 build/default/production/_ext/1362274096/e_micro.o
- .debug_abbrev    0x0018bb        0x1bb build/default/production/_ext/663421589/e_bluetooth.o
- .debug_abbrev    0x001a76         0x7c build/default/production/_ext/930121020/e_calc_po3030k.o
- .debug_abbrev    0x001af2         0x7c build/default/production/_ext/930121020/e_calc_po6030k.o
- .debug_abbrev    0x001b6e         0x8b build/default/production/_ext/930121020/e_calc_po8030d.o
- .debug_abbrev    0x001bf9        0x183 build/default/production/_ext/930121020/e_timers.o
- .debug_abbrev    0x001d7c         0x14 build/default/production/_ext/64492303/e_init_uart1.o
- .debug_abbrev    0x001d90         0x14 build/default/production/_ext/64492303/e_init_uart2.o
- .debug_abbrev    0x001da4         0x14 build/default/production/_ext/2015481517/e_isr_dci.o
- .debug_abbrev    0x001db8         0x14 build/default/production/_ext/930121020/e_interrupt.o
- .debug_abbrev    0x001dcc        0x115 build/default/production/_ext/851769008/e_lsm330.o
- .debug_abbrev    0x001ee1         0x9a build/default/production/_ext/1472/rungyroscope.o
- .debug_abbrev    0x001f7b         0x41 build/default/production/_ext/1472/runsquare.o
- .debug_abbrev    0x001fbc         0x41 build/default/production/_ext/1472/rundetectsound.o
+ .debug_abbrev    0x000164        0x156 build/default/production/_ext/1472/main_c.o
+ .debug_abbrev    0x0002ba         0x88 build/default/production/_ext/1472/runaccelerometer.o
+ .debug_abbrev    0x000342         0xe7 build/default/production/_ext/1472/runbreitenberg_adv.o
+ .debug_abbrev    0x000429         0x34 build/default/production/_ext/1472/rungrounddirection.o
+ .debug_abbrev    0x00045d         0xa3 build/default/production/_ext/1472/runshow.o
+ .debug_abbrev    0x000500        0x122 build/default/production/_ext/1472/runwallfollow.o
+ .debug_abbrev    0x000622         0x56 build/default/production/_ext/1472/translatorI2C.o
+ .debug_abbrev    0x000678        0x109 build/default/production/_ext/1949949662/e_led.o
+ .debug_abbrev    0x000781        0x109 build/default/production/_ext/1949949662/e_motors.o
+ .debug_abbrev    0x00088a        0x14e build/default/production/_ext/1362274096/e_ad_conv.o
+ .debug_abbrev    0x0009d8        0x127 build/default/production/_ext/904308887/utility.o
+ .debug_abbrev    0x000aff        0x1ad build/default/production/_ext/417766185/e_I2C_master_module.o
+ .debug_abbrev    0x000cac        0x13d build/default/production/_ext/930121020/e_common.o
+ .debug_abbrev    0x000de9        0x185 build/default/production/_ext/1362274096/e_acc.o
+ .debug_abbrev    0x000f6e         0x14 build/default/production/_ext/64492303/e_uart1_tx_char.o
+ .debug_abbrev    0x000f82         0x14 build/default/production/_ext/64492303/e_uart2_tx_char.o
+ .debug_abbrev    0x000f96         0x14 build/default/production/_ext/64492303/e_uart2_rx_char.o
+ .debug_abbrev    0x000faa         0x14 build/default/production/_ext/64492303/e_uart1_rx_char.o
+ .debug_abbrev    0x000fbe         0xdb build/default/production/_ext/1949949662/e_remote_control.o
+ .debug_abbrev    0x001099         0xf8 build/default/production/_ext/1259340286/e_init_port.o
+ .debug_abbrev    0x001191        0x16e build/default/production/_ext/1949949662/e_agenda.o
+ .debug_abbrev    0x0012ff         0x91 build/default/production/_ext/417766185/e_I2C_protocol.o
+ .debug_abbrev    0x001390         0x8e build/default/production/_ext/1362274096/e_prox.o
+ .debug_abbrev    0x00141e         0xbf build/default/production/_ext/2015481517/e_sound.o
+ .debug_abbrev    0x0014dd         0xea build/default/production/_ext/930121020/e_po6030k_registers.o
+ .debug_abbrev    0x0015c7        0x120 build/default/production/_ext/930121020/e_po3030k_registers.o
+ .debug_abbrev    0x0016e7        0x101 build/default/production/_ext/930121020/e_po8030d_registers.o
+ .debug_abbrev    0x0017e8         0x14 build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
+ .debug_abbrev    0x0017fc         0x14 build/default/production/_ext/2015481517/e_init_dci_master.o
+ .debug_abbrev    0x001810         0x14 build/default/production/_ext/2015481517/e_init_codec_slave.o
+ .debug_abbrev    0x001824         0xa8 build/default/production/_ext/1362274096/e_micro.o
+ .debug_abbrev    0x0018cc        0x1bb build/default/production/_ext/663421589/e_bluetooth.o
+ .debug_abbrev    0x001a87         0x7c build/default/production/_ext/930121020/e_calc_po3030k.o
+ .debug_abbrev    0x001b03         0x7c build/default/production/_ext/930121020/e_calc_po6030k.o
+ .debug_abbrev    0x001b7f         0x8b build/default/production/_ext/930121020/e_calc_po8030d.o
+ .debug_abbrev    0x001c0a        0x183 build/default/production/_ext/930121020/e_timers.o
+ .debug_abbrev    0x001d8d         0x14 build/default/production/_ext/64492303/e_init_uart1.o
+ .debug_abbrev    0x001da1         0x14 build/default/production/_ext/64492303/e_init_uart2.o
+ .debug_abbrev    0x001db5         0x14 build/default/production/_ext/2015481517/e_isr_dci.o
+ .debug_abbrev    0x001dc9         0x14 build/default/production/_ext/930121020/e_interrupt.o
+ .debug_abbrev    0x001ddd        0x115 build/default/production/_ext/851769008/e_lsm330.o
+ .debug_abbrev    0x001ef2         0x9a build/default/production/_ext/1472/rungyroscope.o
+ .debug_abbrev    0x001f8c         0x41 build/default/production/_ext/1472/runsquare.o
+ .debug_abbrev    0x001fcd         0x41 build/default/production/_ext/1472/rundetectsound.o
 
-.debug_line       0x000000       0x2df3
+.debug_line       0x000000       0x2dfb
  *(.debug_line)
- .debug_line      0x000000        0x3bc build/default/production/_ext/1472/Asercom.o
- .debug_line      0x0003bc         0x92 build/default/production/_ext/1472/DataEEPROM.o
- .debug_line      0x00044e        0x187 build/default/production/_ext/1472/main_c.o
- .debug_line      0x0005d5         0xa9 build/default/production/_ext/1472/runaccelerometer.o
- .debug_line      0x00067e         0x9e build/default/production/_ext/1472/runbreitenberg_adv.o
- .debug_line      0x00071c         0x49 build/default/production/_ext/1472/rungrounddirection.o
- .debug_line      0x000765         0xf9 build/default/production/_ext/1472/runshow.o
- .debug_line      0x00085e        0x128 build/default/production/_ext/1472/runwallfollow.o
- .debug_line      0x000986         0x57 build/default/production/_ext/1472/translatorI2C.o
- .debug_line      0x0009dd        0x1c8 build/default/production/_ext/1949949662/e_led.o
- .debug_line      0x000ba5        0x196 build/default/production/_ext/1949949662/e_motors.o
- .debug_line      0x000d3b        0x1f9 build/default/production/_ext/1362274096/e_ad_conv.o
- .debug_line      0x000f34         0xfc build/default/production/_ext/904308887/utility.o
- .debug_line      0x001030        0x182 build/default/production/_ext/417766185/e_I2C_master_module.o
- .debug_line      0x0011b2        0x14f build/default/production/_ext/930121020/e_common.o
- .debug_line      0x001301        0x19d build/default/production/_ext/1362274096/e_acc.o
- .debug_line      0x00149e         0x85 build/default/production/_ext/64492303/e_uart1_tx_char.o
- .debug_line      0x001523         0x85 build/default/production/_ext/64492303/e_uart2_tx_char.o
- .debug_line      0x0015a8         0x76 build/default/production/_ext/64492303/e_uart2_rx_char.o
- .debug_line      0x00161e         0x76 build/default/production/_ext/64492303/e_uart1_rx_char.o
- .debug_line      0x001694        0x145 build/default/production/_ext/1949949662/e_remote_control.o
- .debug_line      0x0017d9        0x137 build/default/production/_ext/1259340286/e_init_port.o
- .debug_line      0x001910        0x195 build/default/production/_ext/1949949662/e_agenda.o
- .debug_line      0x001aa5         0x88 build/default/production/_ext/417766185/e_I2C_protocol.o
- .debug_line      0x001b2d         0x8b build/default/production/_ext/1362274096/e_prox.o
- .debug_line      0x001bb8         0xe7 build/default/production/_ext/2015481517/e_sound.o
- .debug_line      0x001c9f        0x101 build/default/production/_ext/930121020/e_po6030k_registers.o
- .debug_line      0x001da0        0x1c7 build/default/production/_ext/930121020/e_po3030k_registers.o
- .debug_line      0x001f67        0x114 build/default/production/_ext/930121020/e_po8030d_registers.o
- .debug_line      0x00207b         0x8d build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
- .debug_line      0x002108         0x75 build/default/production/_ext/2015481517/e_init_dci_master.o
- .debug_line      0x00217d         0xb1 build/default/production/_ext/2015481517/e_init_codec_slave.o
- .debug_line      0x00222e         0x8b build/default/production/_ext/1362274096/e_micro.o
- .debug_line      0x0022b9        0x2ab build/default/production/_ext/663421589/e_bluetooth.o
- .debug_line      0x002564         0xc2 build/default/production/_ext/930121020/e_calc_po3030k.o
- .debug_line      0x002626         0xc7 build/default/production/_ext/930121020/e_calc_po6030k.o
- .debug_line      0x0026ed        0x121 build/default/production/_ext/930121020/e_calc_po8030d.o
- .debug_line      0x00280e        0x12d build/default/production/_ext/930121020/e_timers.o
- .debug_line      0x00293b         0x67 build/default/production/_ext/64492303/e_init_uart1.o
- .debug_line      0x0029a2         0x66 build/default/production/_ext/64492303/e_init_uart2.o
- .debug_line      0x002a08         0x1a build/default/production/_ext/2015481517/e_const_sound.o
- .debug_line      0x002a22         0x85 build/default/production/_ext/2015481517/e_isr_dci.o
- .debug_line      0x002aa7         0x78 build/default/production/_ext/930121020/e_interrupt.o
- .debug_line      0x002b1f         0xdf build/default/production/_ext/851769008/e_lsm330.o
- .debug_line      0x002bfe        0x108 build/default/production/_ext/1472/rungyroscope.o
- .debug_line      0x002d06         0x82 build/default/production/_ext/1472/runsquare.o
- .debug_line      0x002d88         0x6b build/default/production/_ext/1472/rundetectsound.o
+ .debug_line      0x000000        0x3c0 build/default/production/_ext/1472/Asercom.o
+ .debug_line      0x0003c0         0x92 build/default/production/_ext/1472/DataEEPROM.o
+ .debug_line      0x000452        0x18b build/default/production/_ext/1472/main_c.o
+ .debug_line      0x0005dd         0xa9 build/default/production/_ext/1472/runaccelerometer.o
+ .debug_line      0x000686         0x9e build/default/production/_ext/1472/runbreitenberg_adv.o
+ .debug_line      0x000724         0x49 build/default/production/_ext/1472/rungrounddirection.o
+ .debug_line      0x00076d         0xf9 build/default/production/_ext/1472/runshow.o
+ .debug_line      0x000866        0x128 build/default/production/_ext/1472/runwallfollow.o
+ .debug_line      0x00098e         0x57 build/default/production/_ext/1472/translatorI2C.o
+ .debug_line      0x0009e5        0x1c8 build/default/production/_ext/1949949662/e_led.o
+ .debug_line      0x000bad        0x196 build/default/production/_ext/1949949662/e_motors.o
+ .debug_line      0x000d43        0x1f9 build/default/production/_ext/1362274096/e_ad_conv.o
+ .debug_line      0x000f3c         0xfc build/default/production/_ext/904308887/utility.o
+ .debug_line      0x001038        0x182 build/default/production/_ext/417766185/e_I2C_master_module.o
+ .debug_line      0x0011ba        0x14f build/default/production/_ext/930121020/e_common.o
+ .debug_line      0x001309        0x19d build/default/production/_ext/1362274096/e_acc.o
+ .debug_line      0x0014a6         0x85 build/default/production/_ext/64492303/e_uart1_tx_char.o
+ .debug_line      0x00152b         0x85 build/default/production/_ext/64492303/e_uart2_tx_char.o
+ .debug_line      0x0015b0         0x76 build/default/production/_ext/64492303/e_uart2_rx_char.o
+ .debug_line      0x001626         0x76 build/default/production/_ext/64492303/e_uart1_rx_char.o
+ .debug_line      0x00169c        0x145 build/default/production/_ext/1949949662/e_remote_control.o
+ .debug_line      0x0017e1        0x137 build/default/production/_ext/1259340286/e_init_port.o
+ .debug_line      0x001918        0x195 build/default/production/_ext/1949949662/e_agenda.o
+ .debug_line      0x001aad         0x88 build/default/production/_ext/417766185/e_I2C_protocol.o
+ .debug_line      0x001b35         0x8b build/default/production/_ext/1362274096/e_prox.o
+ .debug_line      0x001bc0         0xe7 build/default/production/_ext/2015481517/e_sound.o
+ .debug_line      0x001ca7        0x101 build/default/production/_ext/930121020/e_po6030k_registers.o
+ .debug_line      0x001da8        0x1c7 build/default/production/_ext/930121020/e_po3030k_registers.o
+ .debug_line      0x001f6f        0x114 build/default/production/_ext/930121020/e_po8030d_registers.o
+ .debug_line      0x002083         0x8d build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
+ .debug_line      0x002110         0x75 build/default/production/_ext/2015481517/e_init_dci_master.o
+ .debug_line      0x002185         0xb1 build/default/production/_ext/2015481517/e_init_codec_slave.o
+ .debug_line      0x002236         0x8b build/default/production/_ext/1362274096/e_micro.o
+ .debug_line      0x0022c1        0x2ab build/default/production/_ext/663421589/e_bluetooth.o
+ .debug_line      0x00256c         0xc2 build/default/production/_ext/930121020/e_calc_po3030k.o
+ .debug_line      0x00262e         0xc7 build/default/production/_ext/930121020/e_calc_po6030k.o
+ .debug_line      0x0026f5        0x121 build/default/production/_ext/930121020/e_calc_po8030d.o
+ .debug_line      0x002816        0x12d build/default/production/_ext/930121020/e_timers.o
+ .debug_line      0x002943         0x67 build/default/production/_ext/64492303/e_init_uart1.o
+ .debug_line      0x0029aa         0x66 build/default/production/_ext/64492303/e_init_uart2.o
+ .debug_line      0x002a10         0x1a build/default/production/_ext/2015481517/e_const_sound.o
+ .debug_line      0x002a2a         0x85 build/default/production/_ext/2015481517/e_isr_dci.o
+ .debug_line      0x002aaf         0x78 build/default/production/_ext/930121020/e_interrupt.o
+ .debug_line      0x002b27         0xdf build/default/production/_ext/851769008/e_lsm330.o
+ .debug_line      0x002c06        0x108 build/default/production/_ext/1472/rungyroscope.o
+ .debug_line      0x002d0e         0x82 build/default/production/_ext/1472/runsquare.o
+ .debug_line      0x002d90         0x6b build/default/production/_ext/1472/rundetectsound.o
 
 .debug_frame      0x000000       0x23bc
  *(.debug_frame)
@@ -1971,38 +1973,38 @@ userdata
  .debug_frame     0x002350         0x36 build/default/production/_ext/1472/runsquare.o
  .debug_frame     0x002386         0x36 build/default/production/_ext/1472/rundetectsound.o
 
-.debug_str        0x000000        0x6aa
+.debug_str        0x000000        0x6cb
  *(.debug_str)
- .debug_str       0x000000         0x44 build/default/production/_ext/1472/Asercom.o
- .debug_str       0x000044         0x1c build/default/production/_ext/1472/main_c.o
- .debug_str       0x000060         0x25 build/default/production/_ext/1472/runaccelerometer.o
- .debug_str       0x000085         0x35 build/default/production/_ext/1472/runbreitenberg_adv.o
- .debug_str       0x0000ba         0x30 build/default/production/_ext/1472/runshow.o
- .debug_str       0x0000ea         0x41 build/default/production/_ext/1472/runwallfollow.o
- .debug_str       0x00012b         0x19 build/default/production/_ext/1949949662/e_led.o
- .debug_str       0x000144         0x28 build/default/production/_ext/1949949662/e_motors.o
- .debug_str       0x00016c        0x102 build/default/production/_ext/1362274096/e_ad_conv.o
- .debug_str       0x00026e         0x33 build/default/production/_ext/904308887/utility.o
- .debug_str       0x0002a1         0x3d build/default/production/_ext/417766185/e_I2C_master_module.o
- .debug_str       0x0002de         0x15 build/default/production/_ext/930121020/e_common.o
- .debug_str       0x0002f3         0xa0 build/default/production/_ext/1362274096/e_acc.o
- .debug_str       0x000393         0x32 build/default/production/_ext/1949949662/e_remote_control.o
- .debug_str       0x0003c5         0x6d build/default/production/_ext/1259340286/e_init_port.o
- .debug_str       0x000432         0x29 build/default/production/_ext/1949949662/e_agenda.o
- .debug_str       0x00045b          0xb build/default/production/_ext/417766185/e_I2C_protocol.o
- .debug_str       0x000466         0x36 build/default/production/_ext/1362274096/e_prox.o
- .debug_str       0x00049c          0x9 build/default/production/_ext/2015481517/e_sound.o
- .debug_str       0x0004a5         0x1e build/default/production/_ext/930121020/e_po6030k_registers.o
- .debug_str       0x0004c3         0x24 build/default/production/_ext/930121020/e_po3030k_registers.o
- .debug_str       0x0004e7         0x1e build/default/production/_ext/930121020/e_po8030d_registers.o
- .debug_str       0x000505         0x27 build/default/production/_ext/1362274096/e_micro.o
- .debug_str       0x00052c         0x95 build/default/production/_ext/663421589/e_bluetooth.o
- .debug_str       0x0005c1          0xb build/default/production/_ext/930121020/e_calc_po3030k.o
- .debug_str       0x0005cc          0xb build/default/production/_ext/930121020/e_calc_po6030k.o
- .debug_str       0x0005d7          0xb build/default/production/_ext/930121020/e_calc_po8030d.o
- .debug_str       0x0005e2         0x79 build/default/production/_ext/930121020/e_timers.o
- .debug_str       0x00065b         0x24 build/default/production/_ext/851769008/e_lsm330.o
- .debug_str       0x00067f         0x2b build/default/production/_ext/1472/rungyroscope.o
+ .debug_str       0x000000         0x50 build/default/production/_ext/1472/Asercom.o
+ .debug_str       0x000050         0x31 build/default/production/_ext/1472/main_c.o
+ .debug_str       0x000081         0x25 build/default/production/_ext/1472/runaccelerometer.o
+ .debug_str       0x0000a6         0x35 build/default/production/_ext/1472/runbreitenberg_adv.o
+ .debug_str       0x0000db         0x30 build/default/production/_ext/1472/runshow.o
+ .debug_str       0x00010b         0x41 build/default/production/_ext/1472/runwallfollow.o
+ .debug_str       0x00014c         0x19 build/default/production/_ext/1949949662/e_led.o
+ .debug_str       0x000165         0x28 build/default/production/_ext/1949949662/e_motors.o
+ .debug_str       0x00018d        0x102 build/default/production/_ext/1362274096/e_ad_conv.o
+ .debug_str       0x00028f         0x33 build/default/production/_ext/904308887/utility.o
+ .debug_str       0x0002c2         0x3d build/default/production/_ext/417766185/e_I2C_master_module.o
+ .debug_str       0x0002ff         0x15 build/default/production/_ext/930121020/e_common.o
+ .debug_str       0x000314         0xa0 build/default/production/_ext/1362274096/e_acc.o
+ .debug_str       0x0003b4         0x32 build/default/production/_ext/1949949662/e_remote_control.o
+ .debug_str       0x0003e6         0x6d build/default/production/_ext/1259340286/e_init_port.o
+ .debug_str       0x000453         0x29 build/default/production/_ext/1949949662/e_agenda.o
+ .debug_str       0x00047c          0xb build/default/production/_ext/417766185/e_I2C_protocol.o
+ .debug_str       0x000487         0x36 build/default/production/_ext/1362274096/e_prox.o
+ .debug_str       0x0004bd          0x9 build/default/production/_ext/2015481517/e_sound.o
+ .debug_str       0x0004c6         0x1e build/default/production/_ext/930121020/e_po6030k_registers.o
+ .debug_str       0x0004e4         0x24 build/default/production/_ext/930121020/e_po3030k_registers.o
+ .debug_str       0x000508         0x1e build/default/production/_ext/930121020/e_po8030d_registers.o
+ .debug_str       0x000526         0x27 build/default/production/_ext/1362274096/e_micro.o
+ .debug_str       0x00054d         0x95 build/default/production/_ext/663421589/e_bluetooth.o
+ .debug_str       0x0005e2          0xb build/default/production/_ext/930121020/e_calc_po3030k.o
+ .debug_str       0x0005ed          0xb build/default/production/_ext/930121020/e_calc_po6030k.o
+ .debug_str       0x0005f8          0xb build/default/production/_ext/930121020/e_calc_po8030d.o
+ .debug_str       0x000603         0x79 build/default/production/_ext/930121020/e_timers.o
+ .debug_str       0x00067c         0x24 build/default/production/_ext/851769008/e_lsm330.o
+ .debug_str       0x0006a0         0x2b build/default/production/_ext/1472/rungyroscope.o
 
 .debug_loc
  *(.debug_loc)
@@ -2011,76 +2013,76 @@ userdata
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000       0x1c46
+                  0x000000       0x1c56
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x22 build/default/production/_ext/1472/Asercom.o
  .debug_pubnames
-                  0x000022         0x39 build/default/production/_ext/1472/main_c.o
+                  0x000022         0x49 build/default/production/_ext/1472/main_c.o
  .debug_pubnames
-                  0x00005b         0x58 build/default/production/_ext/1472/runaccelerometer.o
+                  0x00006b         0x58 build/default/production/_ext/1472/runaccelerometer.o
  .debug_pubnames
-                  0x0000b3         0xff build/default/production/_ext/1472/runbreitenberg_adv.o
+                  0x0000c3         0xff build/default/production/_ext/1472/runbreitenberg_adv.o
  .debug_pubnames
-                  0x0001b2         0x2a build/default/production/_ext/1472/rungrounddirection.o
+                  0x0001c2         0x2a build/default/production/_ext/1472/rungrounddirection.o
  .debug_pubnames
-                  0x0001dc         0x4b build/default/production/_ext/1472/runshow.o
+                  0x0001ec         0x4b build/default/production/_ext/1472/runshow.o
  .debug_pubnames
-                  0x000227         0xcc build/default/production/_ext/1472/runwallfollow.o
+                  0x000237         0xcc build/default/production/_ext/1472/runwallfollow.o
  .debug_pubnames
-                  0x0002f3         0x40 build/default/production/_ext/1472/translatorI2C.o
+                  0x000303         0x40 build/default/production/_ext/1472/translatorI2C.o
  .debug_pubnames
-                  0x000333        0x17d build/default/production/_ext/1949949662/e_led.o
+                  0x000343        0x17d build/default/production/_ext/1949949662/e_led.o
  .debug_pubnames
-                  0x0004b0         0xdc build/default/production/_ext/1949949662/e_motors.o
+                  0x0004c0         0xdc build/default/production/_ext/1949949662/e_motors.o
  .debug_pubnames
-                  0x00058c        0x145 build/default/production/_ext/1362274096/e_ad_conv.o
+                  0x00059c        0x145 build/default/production/_ext/1362274096/e_ad_conv.o
  .debug_pubnames
-                  0x0006d1         0x9a build/default/production/_ext/904308887/utility.o
+                  0x0006e1         0x9a build/default/production/_ext/904308887/utility.o
  .debug_pubnames
-                  0x00076b        0x112 build/default/production/_ext/417766185/e_I2C_master_module.o
+                  0x00077b        0x112 build/default/production/_ext/417766185/e_I2C_master_module.o
  .debug_pubnames
-                  0x00087d         0xf7 build/default/production/_ext/930121020/e_common.o
+                  0x00088d         0xf7 build/default/production/_ext/930121020/e_common.o
  .debug_pubnames
-                  0x000974        0x172 build/default/production/_ext/1362274096/e_acc.o
+                  0x000984        0x172 build/default/production/_ext/1362274096/e_acc.o
  .debug_pubnames
-                  0x000ae6         0x8a build/default/production/_ext/1949949662/e_remote_control.o
+                  0x000af6         0x8a build/default/production/_ext/1949949662/e_remote_control.o
  .debug_pubnames
-                  0x000b70         0x8c build/default/production/_ext/1259340286/e_init_port.o
+                  0x000b80         0x8c build/default/production/_ext/1259340286/e_init_port.o
  .debug_pubnames
-                  0x000bfc         0xdc build/default/production/_ext/1949949662/e_agenda.o
+                  0x000c0c         0xdc build/default/production/_ext/1949949662/e_agenda.o
  .debug_pubnames
-                  0x000cd8         0x7a build/default/production/_ext/417766185/e_I2C_protocol.o
+                  0x000ce8         0x7a build/default/production/_ext/417766185/e_I2C_protocol.o
  .debug_pubnames
-                  0x000d52         0x66 build/default/production/_ext/1362274096/e_prox.o
+                  0x000d62         0x66 build/default/production/_ext/1362274096/e_prox.o
  .debug_pubnames
-                  0x000db8         0x46 build/default/production/_ext/2015481517/e_sound.o
+                  0x000dc8         0x46 build/default/production/_ext/2015481517/e_sound.o
  .debug_pubnames
-                  0x000dfe        0x17a build/default/production/_ext/930121020/e_po6030k_registers.o
+                  0x000e0e        0x17a build/default/production/_ext/930121020/e_po6030k_registers.o
  .debug_pubnames
-                  0x000f78        0x42b build/default/production/_ext/930121020/e_po3030k_registers.o
+                  0x000f88        0x42b build/default/production/_ext/930121020/e_po3030k_registers.o
  .debug_pubnames
-                  0x0013a3        0x1c9 build/default/production/_ext/930121020/e_po8030d_registers.o
+                  0x0013b3        0x1c9 build/default/production/_ext/930121020/e_po8030d_registers.o
  .debug_pubnames
-                  0x00156c         0x6d build/default/production/_ext/1362274096/e_micro.o
+                  0x00157c         0x6d build/default/production/_ext/1362274096/e_micro.o
  .debug_pubnames
-                  0x0015d9        0x25b build/default/production/_ext/663421589/e_bluetooth.o
+                  0x0015e9        0x25b build/default/production/_ext/663421589/e_bluetooth.o
  .debug_pubnames
-                  0x001834         0x4d build/default/production/_ext/930121020/e_calc_po3030k.o
+                  0x001844         0x4d build/default/production/_ext/930121020/e_calc_po3030k.o
  .debug_pubnames
-                  0x001881         0x4d build/default/production/_ext/930121020/e_calc_po6030k.o
+                  0x001891         0x4d build/default/production/_ext/930121020/e_calc_po6030k.o
  .debug_pubnames
-                  0x0018ce         0x4d build/default/production/_ext/930121020/e_calc_po8030d.o
+                  0x0018de         0x4d build/default/production/_ext/930121020/e_calc_po8030d.o
  .debug_pubnames
-                  0x00191b         0xe0 build/default/production/_ext/930121020/e_timers.o
+                  0x00192b         0xe0 build/default/production/_ext/930121020/e_timers.o
  .debug_pubnames
-                  0x0019fb        0x177 build/default/production/_ext/851769008/e_lsm330.o
+                  0x001a0b        0x177 build/default/production/_ext/851769008/e_lsm330.o
  .debug_pubnames
-                  0x001b72         0x8d build/default/production/_ext/1472/rungyroscope.o
+                  0x001b82         0x8d build/default/production/_ext/1472/rungyroscope.o
  .debug_pubnames
-                  0x001bff         0x21 build/default/production/_ext/1472/runsquare.o
+                  0x001c0f         0x21 build/default/production/_ext/1472/runsquare.o
  .debug_pubnames
-                  0x001c20         0x26 build/default/production/_ext/1472/rundetectsound.o
+                  0x001c30         0x26 build/default/production/_ext/1472/rundetectsound.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -3548,147 +3550,148 @@ __c30_signature
  .nbss              0x08a2          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/libm-elf.a(errno.eo)
                     0x08a2                  _errno
 
-.bss                0x08a4       0x145a
- .bss               0x08a4        0xd8a build/default/production/_ext/1472/main_c.o
+.bss                0x08a4       0x145c
+ .bss               0x08a4        0xd8c build/default/production/_ext/1472/main_c.o
                     0x08a4                  _buffer
                     0x1624                  _c
                     0x1625                  _epuck_id
- .bss               0x162e        0x3bc build/default/production/_ext/1362274096/e_ad_conv.o
-                    0x162e                  _e_mic_scan
-                    0x1886                  _e_acc_scan
-                    0x19b2                  _e_last_mic_scan_id
-                    0x19b4                  _e_last_acc_scan_id
-                    0x19b6                  _e_ambient_ir
-                    0x19ca                  _e_ambient_and_reflected_ir
-                    0x19e2                  _selector
-                    0x19e4                  _updateAccI2CCounter
-                    0x19e6                  _tickAdcIsr
- .bss               0x19ea        0x1c4 build/default/production/_ext/663421589/e_bluetooth.o
-                    0x19ea                  _e_bt_local_paired_device
-                    0x1a1a                  _e_bt_present_device
-                    0x1b3c                  _e_bt_present_epuck
-                    0x1baa                  _local_bt_PIN
- .bss               0x1bae        0x150 build/default/production/_ext/930121020/e_timers.o
-                    0x1bae                  __poxxxx_buffer
-                    0x1bb0                  __poxxxx_img_ready
-                    0x1bb4                  __poxxxx_line_conf
+                    0x162a                  _epuck_index
+ .bss               0x1630        0x3bc build/default/production/_ext/1362274096/e_ad_conv.o
+                    0x1630                  _e_mic_scan
+                    0x1888                  _e_acc_scan
+                    0x19b4                  _e_last_mic_scan_id
+                    0x19b6                  _e_last_acc_scan_id
+                    0x19b8                  _e_ambient_ir
+                    0x19cc                  _e_ambient_and_reflected_ir
+                    0x19e4                  _selector
+                    0x19e6                  _updateAccI2CCounter
+                    0x19e8                  _tickAdcIsr
+ .bss               0x19ec        0x1c4 build/default/production/_ext/663421589/e_bluetooth.o
+                    0x19ec                  _e_bt_local_paired_device
+                    0x1a1c                  _e_bt_present_device
+                    0x1b3e                  _e_bt_present_epuck
+                    0x1bac                  _local_bt_PIN
+ .bss               0x1bb0        0x150 build/default/production/_ext/930121020/e_timers.o
+                    0x1bb0                  __poxxxx_buffer
+                    0x1bb2                  __poxxxx_img_ready
+                    0x1bb6                  __poxxxx_line_conf
 
-.data               0x1cfe        0x1c4
- .data              0x1cfe         0xd8 build/default/production/_ext/930121020/e_po3030k_registers.o
- .data              0x1dd6         0x58 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xldtob_cdfFnopsuxX.XXeo)
- .data              0x1e2e         0x4a /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xstoul.XX_eo)
- .data              0x1e78         0x4a /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xstoull.XX_eo)
+.data               0x1d00        0x1c4
+ .data              0x1d00         0xd8 build/default/production/_ext/930121020/e_po3030k_registers.o
+ .data              0x1dd8         0x58 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xldtob_cdfFnopsuxX.XXeo)
+ .data              0x1e30         0x4a /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xstoul.XX_eo)
+ .data              0x1e7a         0x4a /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xstoull.XX_eo)
 
-.bss                0x1ec2         0x8a
- .bss               0x1ec2         0x46 build/default/production/_ext/1472/Asercom.o
- .bss               0x1f08         0x44 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(exit.XX_eo)
+.bss                0x1ec4         0x8a
+ .bss               0x1ec4         0x46 build/default/production/_ext/1472/Asercom.o
+ .bss               0x1f0a         0x44 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(exit.XX_eo)
 
-.data               0x1f4c         0x40
- .data              0x1f4c         0x40 build/default/production/_ext/1472/runbreitenberg_adv.o
-                    0x1f4c                  _factor_array
-                    0x1f6c                  _matrix_prox
+.data               0x1f4e         0x40
+ .data              0x1f4e         0x40 build/default/production/_ext/1472/runbreitenberg_adv.o
+                    0x1f4e                  _factor_array
+                    0x1f6e                  _matrix_prox
 
-.bss                0x1f8c         0x34
- .bss               0x1f8c         0x34 build/default/production/_ext/1472/runbreitenberg_adv.o
-                    0x1f8c                  _i
-                    0x1f8e                  _s
-                    0x1f90                  _m
-                    0x1f92                  _potential
-                    0x1f9a                  _speed
-                    0x1f9e                  _ProxSensOffBuf
-                    0x1fbe                  _ui_lin
+.bss                0x1f8e         0x34
+ .bss               0x1f8e         0x34 build/default/production/_ext/1472/runbreitenberg_adv.o
+                    0x1f8e                  _i
+                    0x1f90                  _s
+                    0x1f92                  _m
+                    0x1f94                  _potential
+                    0x1f9c                  _speed
+                    0x1fa0                  _ProxSensOffBuf
+                    0x1fc0                  _ui_lin
 
-.data               0x1fc0         0x68
- .data              0x1fc0         0x26 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xgetint.XX_eo)
- .data              0x1fe6         0x22 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xlitob.XX_eo)
- .data              0x2008         0x20 build/default/production/_ext/1472/runwallfollow.o
-                    0x2008                  _follow_weightleft
-                    0x2018                  _follow_weightright
+.data               0x1fc2         0x68
+ .data              0x1fc2         0x26 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xgetint.XX_eo)
+ .data              0x1fe8         0x22 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xlitob.XX_eo)
+ .data              0x200a         0x20 build/default/production/_ext/1472/runwallfollow.o
+                    0x200a                  _follow_weightleft
+                    0x201a                  _follow_weightright
 
-.bss                0x2028         0x20
- .bss               0x2028         0x20 build/default/production/_ext/1362274096/e_acc.o
-                    0x2028                  _isCalibratingFlag
-                    0x2042                  _lastAccX
-                    0x2044                  _lastAccY
-                    0x2046                  _lastAccZ
+.bss                0x202a         0x20
+ .bss               0x202a         0x20 build/default/production/_ext/1362274096/e_acc.o
+                    0x202a                  _isCalibratingFlag
+                    0x2044                  _lastAccX
+                    0x2046                  _lastAccY
+                    0x2048                  _lastAccZ
 
-.data               0x2048         0x1a
- .data              0x2048         0x1a /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xprintf_cdfFnopsuxX.XXeo)
+.data               0x204a         0x1a
+ .data              0x204a         0x1a /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xprintf_cdfFnopsuxX.XXeo)
 
-.bss                0x2062         0x40
- .bss               0x2062         0x14 build/default/production/_ext/1362274096/e_prox.o
- .bss               0x2076         0x10 build/default/production/_ext/1472/runwallfollow.o
-                    0x2076                  _follow_sensorzero
- .bss               0x2086         0x10 build/default/production/_ext/1949949662/e_motors.o
- .bss               0x2096          0xc build/default/production/_ext/1472/rungyroscope.o
-                    0x2096                  _dpsValue
-                    0x209a                  _soundPlayedFlag
-                    0x209c                  _tempX
-                    0x209e                  _tempY
-                    0x20a0                  _tempZ
+.bss                0x2064         0x40
+ .bss               0x2064         0x14 build/default/production/_ext/1362274096/e_prox.o
+ .bss               0x2078         0x10 build/default/production/_ext/1472/runwallfollow.o
+                    0x2078                  _follow_sensorzero
+ .bss               0x2088         0x10 build/default/production/_ext/1949949662/e_motors.o
+ .bss               0x2098          0xc build/default/production/_ext/1472/rungyroscope.o
+                    0x2098                  _dpsValue
+                    0x209c                  _soundPlayedFlag
+                    0x209e                  _tempX
+                    0x20a0                  _tempY
+                    0x20a2                  _tempZ
 
-.data               0x20a2         0x24
- .data              0x20a2          0xc /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xscanf_cdnopuxX.XXeo)
- .data              0x20ae          0xc /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xscanf_cdnopsuxX.XXeo)
- .data              0x20ba          0xc /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xscanf_s.XXeo)
+.data               0x20a4         0x24
+ .data              0x20a4          0xc /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xscanf_cdnopuxX.XXeo)
+ .data              0x20b0          0xc /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xscanf_cdnopsuxX.XXeo)
+ .data              0x20bc          0xc /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xscanf_s.XXeo)
 
-.bss                0x20c6          0x8
- .bss               0x20c6          0x8 build/default/production/_ext/417766185/e_I2C_master_module.o
-                    0x20c6                  _e_i2c_mode
-                    0x20c8                  _e_interrupts
+.bss                0x20c8          0x8
+ .bss               0x20c8          0x8 build/default/production/_ext/417766185/e_I2C_master_module.o
+                    0x20c8                  _e_i2c_mode
+                    0x20ca                  _e_interrupts
 
-.data               0x20ce          0x6
- .data              0x20ce          0x6 build/default/production/_ext/1472/main_c.o
+.data               0x20d0          0x6
+ .data              0x20d0          0x6 build/default/production/_ext/1472/main_c.o
 
-.bss                0x20d4         0x18
- .bss               0x20d4          0x6 build/default/production/_ext/1472/runaccelerometer.o
-                    0x20d4                  _accx0
-                    0x20d6                  _accy0
-                    0x20d8                  _accz0
- .bss               0x20da          0x6 build/default/production/_ext/1949949662/e_led.o
- .bss               0x20e0          0x6 build/default/production/_ext/1949949662/e_remote_control.o
- .bss               0x20e6          0x6 build/default/production/_ext/851769008/e_lsm330.o
-                    0x20e6                  _gyroOffsetX
-                    0x20e8                  _gyroOffsetY
-                    0x20ea                  _gyroOffsetZ
+.bss                0x20d6         0x18
+ .bss               0x20d6          0x6 build/default/production/_ext/1472/runaccelerometer.o
+                    0x20d6                  _accx0
+                    0x20d8                  _accy0
+                    0x20da                  _accz0
+ .bss               0x20dc          0x6 build/default/production/_ext/1949949662/e_led.o
+ .bss               0x20e2          0x6 build/default/production/_ext/1949949662/e_remote_control.o
+ .bss               0x20e8          0x6 build/default/production/_ext/851769008/e_lsm330.o
+                    0x20e8                  _gyroOffsetX
+                    0x20ea                  _gyroOffsetY
+                    0x20ec                  _gyroOffsetZ
 
-.data               0x20ec          0xa
- .data              0x20ec          0x6 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(exit.XX_eo)
-                    0x20ec                  __Atfuns
-                    0x20ee                  __Atcount
- .data              0x20f2          0x4 build/default/production/_ext/1949949662/e_remote_control.o
+.data               0x20ee          0xa
+ .data              0x20ee          0x6 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(exit.XX_eo)
+                    0x20ee                  __Atfuns
+                    0x20f0                  __Atcount
+ .data              0x20f4          0x4 build/default/production/_ext/1949949662/e_remote_control.o
 
-.bss                0x20f6          0x4
- .bss               0x20f6          0x4 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_eo)
-                    0x20f6                  __Aldata
+.bss                0x20f8          0x4
+ .bss               0x20f8          0x4 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_eo)
+                    0x20f8                  __Aldata
 
-.data               0x20fa          0x4
- .data              0x20fa          0x2 build/default/production/_ext/1472/Asercom.o
- .data              0x20fc          0x2 build/default/production/_ext/1949949662/e_led.o
+.data               0x20fc          0x4
+ .data              0x20fc          0x2 build/default/production/_ext/1472/Asercom.o
+ .data              0x20fe          0x2 build/default/production/_ext/1949949662/e_led.o
 
-.bss                0x20fe          0x2
- .bss               0x20fe          0x2 build/default/production/_ext/930121020/e_common.o
+.bss                0x2100          0x2
+ .bss               0x2100          0x2 build/default/production/_ext/930121020/e_common.o
 
-.data               0x2100          0x2
- .data              0x2100          0x2 build/default/production/_ext/1362274096/e_acc.o
-                    0x2100                  _centre_z
+.data               0x2102          0x2
+ .data              0x2102          0x2 build/default/production/_ext/1362274096/e_acc.o
+                    0x2102                  _centre_z
 
-.bss                0x2102          0x4
- .bss               0x2102          0x2 build/default/production/_ext/1259340286/e_init_port.o
-                    0x2102                  _isPresentFlag
- .bss               0x2104          0x2 build/default/production/_ext/1949949662/e_agenda.o
+.bss                0x2104          0x4
+ .bss               0x2104          0x2 build/default/production/_ext/1259340286/e_init_port.o
+                    0x2104                  _isPresentFlag
+ .bss               0x2106          0x2 build/default/production/_ext/1949949662/e_agenda.o
 
-.data               0x2106          0x4
- .data              0x2106          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_eo)
-                    0x2106                  __Size_block
- .data              0x2108          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xgenld_cdfFnopsuxX.XXeo)
+.data               0x2108          0x4
+ .data              0x2108          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(malloc.XX_eo)
+                    0x2108                  __Size_block
+ .data              0x210a          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-c-elf.a(xgenld_cdfFnopsuxX.XXeo)
 
-.bss                0x210a          0x2
- .bss               0x210a          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-pic30-elf.a(brk.Lelo)
-                    0x210a                  ___curbrk
+.bss                0x210c          0x2
+ .bss               0x210c          0x2 /opt/microchip/xc16/v1.33/bin/bin/../../lib/liblega-pic30-elf.a(brk.Lelo)
+                    0x210c                  ___curbrk
 
-.heap               0x210c         0x80
- .heap              0x210c         0x80 heap
+.heap               0x210e         0x80
+ .heap              0x210e         0x80 heap
 
 .ivt._ADCInterrupt
                   0x00002a          0x2
@@ -3745,344 +3748,344 @@ __c30_signature
  .ivt._T4Interrupt
                   0x00003e          0x2 build/default/production/_ext/930121020/e_interrupt.o
 
-.const              0xb312       0x1136 load address 0x003312  
- .const             0xb312        0xba4 build/default/production/_ext/1472/Asercom.o
- .const             0xbeb6        0x3ae build/default/production/_ext/1472/main_c.o
- .const             0xc264         0xac build/default/production/_ext/1472/translatorI2C.o
- .const             0xc310         0x9e build/default/production/_ext/1472/runaccelerometer.o
- .const             0xc3ae         0x80 build/default/production/_ext/1472/runshow.o
- .const             0xc42e         0x1a build/default/production/_ext/1472/runwallfollow.o
+.const              0xb312       0x113e load address 0x003312  
+ .const             0xb312        0xbac build/default/production/_ext/1472/Asercom.o
+ .const             0xbebe        0x3ae build/default/production/_ext/1472/main_c.o
+ .const             0xc26c         0xac build/default/production/_ext/1472/translatorI2C.o
+ .const             0xc318         0x9e build/default/production/_ext/1472/runaccelerometer.o
+ .const             0xc3b6         0x80 build/default/production/_ext/1472/runshow.o
+ .const             0xc436         0x1a build/default/production/_ext/1472/runwallfollow.o
 
-.sound_samples    0x004448       0x94c8
+.sound_samples    0x004450       0x94c8
  .sound_samples
-                  0x004448       0x94c8 build/default/production/_ext/2015481517/e_const_sound.o
-                  0x004448                  e_sound_sample
+                  0x004450       0x94c8 build/default/production/_ext/2015481517/e_const_sound.o
+                  0x004450                  e_sound_sample
 
-.text             0x00d910       0x67d2
- .text            0x00d910       0x1b54 build/default/production/_ext/1472/Asercom.o
-                  0x00d910                  _run_asercom
- .text            0x00f464        0xbce build/default/production/_ext/663421589/e_bluetooth.o
-                  0x00f464                  _e_bt_find_epuck
-                  0x00f5d8                  _e_bt_connect_epuck
-                  0x00f600                  _e_bt_reset
-                  0x00f69a                  _e_bt_factory_reset
-                  0x00f6fe                  _e_bt_tranparent_mode
-                  0x00f766                  _e_bt_exit_tranparent_mode
-                  0x00f7a6                  _e_bt_read_local_pin_number
-                  0x00f836                  _e_bt_read_local_name
-                  0x00f8bc                  _e_bt_write_local_pin_number
-                  0x00f96c                  _e_bt_write_local_name
-                  0x00fa22                  _e_bt_inquiry
-                  0x00fb22                  _e_bt_get_friendly_name
-                  0x00fbd2                  _e_bt_etablish_SPP_link
-                  0x00fc8a                  _e_bt_release_SPP_link
-                  0x00fd60                  _e_bt_send_SPP_data
-                  0x00fe12                  _e_bt_list_local_paired_device
-                  0x00fea2                  _e_bt_remove_local_paired_device
-                  0x00ff5a                  _e_bt_set_event_filter
-                  0x00ffce                  _e_bt_get_event_filter
- .text            0x010032        0x8b2 build/default/production/_ext/930121020/e_po3030k_registers.o
-                  0x010032                  _e_po3030k_write_cam_registers
-                  0x010068                  _e_po3030k_read_cam_registers
-                  0x0100a0                  _e_po3030k_set_color_mode
-                  0x0100d4                  _e_po3030k_set_sampling_mode
-                  0x010100                  _e_po3030k_set_speed
-                  0x010152                  _e_po3030k_set_wx
-                  0x0101a6                  _e_po3030k_set_wy
-                  0x0101f4                  _e_po3030k_set_vsync
-                  0x010266                  _e_po3030k_set_mirror
-                  0x0102a4                  _e_po3030k_set_register
-                  0x0102d8                  _e_po3030k_get_register
-                  0x01030e                  _e_po3030k_set_bias
-                  0x010322                  _e_po3030k_set_color_gain
-                  0x01035c                  _e_po3030k_set_integr_time
-                  0x01038a                  _e_po3030k_set_adc_offset
-                  0x010396                  _e_po3030k_set_sepia
-                  0x0103be                  _e_po3030k_set_lens_gain
-                  0x0103da                  _e_po3030k_set_edge_prop
-                  0x0103f6                  _e_po3030k_set_gamma_coef
-                  0x010430                  _e_po3030k_write_gamma_coef
-                  0x01045c                  _e_po3030k_sync_register_array
-                  0x0104ba                  _e_po3030k_SetColorMatrix
-                  0x0104e2                  _e_po3030k_set_cb_cr_gain
-                  0x0104f6                  _e_po3030k_set_brigh_contr
-                  0x01050a                  _e_po3030k_set_sepia_tone
-                  0x01051e                  _e_po3030k_set_ww
-                  0x010532                  _e_po3030k_set_awb_ae_tol
-                  0x01054c                  _e_po3030k_set_ae_speed
-                  0x010566                  _e_po3030k_set_exposure
-                  0x010592                  _e_po3030k_set_ref_exposure
-                  0x01059e                  _e_po3030k_set_max_min_exp
-                  0x0105cc                  _e_po3030k_set_max_min_awb
-                  0x010600                  _e_po3030k_set_weight_win
-                  0x0106be                  _e_po3030k_set_awb_ae
-                  0x0106fc                  _e_po3030k_set_flicker_mode
-                  0x010724                  _e_po3030k_set_flicker_detection
-                  0x01080e                  _e_po3030k_set_flicker_man_set
- .text            0x0108e4        0x7c4 build/default/production/_ext/1472/main_c.o
-                  0x0108e4                  _main
- .text            0x0110a8        0x798 build/default/production/_ext/1949949662/e_led.o
-                  0x0110a8                  _e_set_led
-                  0x011352                  _e_led_clear
-                  0x011368                  _e_set_body_led
-                  0x0113a8                  _e_set_front_led
-                  0x0113e8                  _e_blink_led
-                  0x0114bc                  _e_blink_led0
-                  0x0114dc                  _e_blink_led1
-                  0x0114fc                  _e_blink_led2
-                  0x01151c                  _e_blink_led3
-                  0x01153c                  _e_blink_led4
-                  0x01155c                  _e_blink_led5
-                  0x01157c                  _e_blink_led6
-                  0x01159c                  _e_blink_led7
-                  0x0115ba                  _e_start_led_blinking
-                  0x0115ca                  _e_stop_led_blinking
-                  0x0115d6                  _e_set_blinking_cycle
-                  0x0115ec                  _snake_led
-                  0x01165c                  _flow_led
-                  0x0116d8                  _k2000_led
-                  0x011778                  _right_led
-                  0x0117dc                  _left_led
- .text            0x011840        0x6ce build/default/production/_ext/1362274096/e_acc.o
-                  0x011840                  _e_get_acc
-                  0x011918                  _e_get_acc_filtered
-                  0x011a3c                  _calculate_acc_raw
-                  0x011a82                  _calculate_acc_spherical
-                  0x011bb0                  _e_acc_calibr
-                  0x011bf2                  _e_read_acc_spheric
-                  0x011c34                  _e_read_inclination
-                  0x011c40                  _e_read_orientation
-                  0x011c4c                  _e_read_acc
-                  0x011c58                  _e_read_acc_xyz
-                  0x011c7c                  _e_read_acc_x
-                  0x011c86                  _e_read_acc_y
-                  0x011c90                  _e_read_acc_z
-                  0x011c9a                  _e_display_angle
- .text            0x011f0e        0x698 build/default/production/_ext/930121020/e_calc_po8030d.o
-                  0x011f0e                  _e_po8030d_config_cam
-                  0x012582                  _e_po8030d_get_bytes_per_pixel
- .text            0x0125a6        0x66c build/default/production/_ext/1472/rungyroscope.o
-                  0x0125a6                  _execDemoZ
-                  0x0128b0                  _execDemoY
-                  0x012a2c                  _execDemoX
-                  0x012ba8                  _run_gyroscope
- .text            0x012c12        0x5da build/default/production/_ext/1472/runshow.o
-                  0x012c12                  _run_CameraTurn
-                  0x012dfc                  _run_SensDispl
-                  0x012fca                  _run_DustCleaner
- .text            0x0131ec        0x3f4 build/default/production/_ext/930121020/e_po8030d_registers.o
-                  0x0131ec                  _e_po8030d_set_bank
-                  0x013208                  _e_po8030d_write_register
-                  0x01322e                  _e_po8030d_read_register
-                  0x013252                  _testWriteReg
-                  0x013272                  _enablePO8030
-                  0x0132be                  _init_po8030
-                  0x0132d6                  _e_po8030d_set_bayer_clkdiv
-                  0x0132e6                  _e_po8030d_set_pclkdiv
-                  0x0133c2                  _e_po8030d_set_mode
-                  0x013406                  _e_po8030d_set_wx
-                  0x013464                  _e_po8030d_set_wy
-                  0x013470                  _e_po8030d_set_vsync
-                  0x0134c8                  _e_po8030d_set_sketch_mode
-                  0x0134ea                  _e_po8030d_set_mirror
-                  0x01351e                  _e_po8030d_set_awb_ae
-                  0x013566                  _e_po8030d_set_rgb_gain
-                  0x01358a                  _e_po8030d_set_exposure
-                  0x0135ce                  _e_po8030d_set_brightness
- .text            0x0135e0        0x3bc build/default/production/_ext/930121020/e_po6030k_registers.o
-                  0x0135e0                  _e_po6030k_set_bank
-                  0x0135fc                  _e_po6030k_write_register
-                  0x013622                  _e_po6030k_read_register
-                  0x013646                  _e_po6030k_set_bayer_clkdiv
-                  0x013656                  _e_po6030k_set_pclkdiv
-                  0x013762                  _e_po6030k_set_mode
-                  0x0137a6                  _e_po6030k_set_wx
-                  0x0137f4                  _e_po6030k_set_wy
-                  0x013800                  _e_po6030k_set_vsync
-                  0x013858                  _e_po6030k_set_sketch_mode
-                  0x0138b8                  _e_po6030k_set_mirror
-                  0x0138ec                  _e_po6030k_set_awb_ae
-                  0x013934                  _e_po6030k_set_rgb_gain
-                  0x013958                  _e_po6030k_set_exposure
- .text            0x01399c        0x3a6 build/default/production/_ext/851769008/e_lsm330.o
-                  0x01399c                  _writeReg
-                  0x0139ba                  _readReg
-                  0x0139d8                  _readRegMulti
-                  0x013a74                  _initAccAndGyro
-                  0x013ab4                  _getAllAxesAccRaw
-                  0x013ace                  _getAllAxesAcc
-                  0x013b1c                  _getXAxisAcc
-                  0x013b42                  _getYAxisAcc
-                  0x013b68                  _getZAxisAcc
-                  0x013b8e                  _getAllAxesGyroRaw
-                  0x013ba8                  _getAllAxesGyro
-                  0x013c02                  _getXAxisGyro
-                  0x013c2c                  _getYAxisGyro
-                  0x013c56                  _getZAxisGyro
-                  0x013c80                  _getTemperature
-                  0x013c8c                  _calibrateGyroscope
-                  0x013d12                  _rawToDps
-                  0x013d2a                  _rawToDpms
- .text            0x013d42        0x3a0 build/default/production/_ext/1472/runaccelerometer.o
-                  0x013d42                  _acc_calibrate
-                  0x013e1c                  _run_accelerometer
+.text             0x00d918       0x6820
+ .text            0x00d918       0x1b78 build/default/production/_ext/1472/Asercom.o
+                  0x00d918                  _run_asercom
+ .text            0x00f490        0xbce build/default/production/_ext/663421589/e_bluetooth.o
+                  0x00f490                  _e_bt_find_epuck
+                  0x00f604                  _e_bt_connect_epuck
+                  0x00f62c                  _e_bt_reset
+                  0x00f6c6                  _e_bt_factory_reset
+                  0x00f72a                  _e_bt_tranparent_mode
+                  0x00f792                  _e_bt_exit_tranparent_mode
+                  0x00f7d2                  _e_bt_read_local_pin_number
+                  0x00f862                  _e_bt_read_local_name
+                  0x00f8e8                  _e_bt_write_local_pin_number
+                  0x00f998                  _e_bt_write_local_name
+                  0x00fa4e                  _e_bt_inquiry
+                  0x00fb4e                  _e_bt_get_friendly_name
+                  0x00fbfe                  _e_bt_etablish_SPP_link
+                  0x00fcb6                  _e_bt_release_SPP_link
+                  0x00fd8c                  _e_bt_send_SPP_data
+                  0x00fe3e                  _e_bt_list_local_paired_device
+                  0x00fece                  _e_bt_remove_local_paired_device
+                  0x00ff86                  _e_bt_set_event_filter
+                  0x00fffa                  _e_bt_get_event_filter
+ .text            0x01005e        0x8b2 build/default/production/_ext/930121020/e_po3030k_registers.o
+                  0x01005e                  _e_po3030k_write_cam_registers
+                  0x010094                  _e_po3030k_read_cam_registers
+                  0x0100cc                  _e_po3030k_set_color_mode
+                  0x010100                  _e_po3030k_set_sampling_mode
+                  0x01012c                  _e_po3030k_set_speed
+                  0x01017e                  _e_po3030k_set_wx
+                  0x0101d2                  _e_po3030k_set_wy
+                  0x010220                  _e_po3030k_set_vsync
+                  0x010292                  _e_po3030k_set_mirror
+                  0x0102d0                  _e_po3030k_set_register
+                  0x010304                  _e_po3030k_get_register
+                  0x01033a                  _e_po3030k_set_bias
+                  0x01034e                  _e_po3030k_set_color_gain
+                  0x010388                  _e_po3030k_set_integr_time
+                  0x0103b6                  _e_po3030k_set_adc_offset
+                  0x0103c2                  _e_po3030k_set_sepia
+                  0x0103ea                  _e_po3030k_set_lens_gain
+                  0x010406                  _e_po3030k_set_edge_prop
+                  0x010422                  _e_po3030k_set_gamma_coef
+                  0x01045c                  _e_po3030k_write_gamma_coef
+                  0x010488                  _e_po3030k_sync_register_array
+                  0x0104e6                  _e_po3030k_SetColorMatrix
+                  0x01050e                  _e_po3030k_set_cb_cr_gain
+                  0x010522                  _e_po3030k_set_brigh_contr
+                  0x010536                  _e_po3030k_set_sepia_tone
+                  0x01054a                  _e_po3030k_set_ww
+                  0x01055e                  _e_po3030k_set_awb_ae_tol
+                  0x010578                  _e_po3030k_set_ae_speed
+                  0x010592                  _e_po3030k_set_exposure
+                  0x0105be                  _e_po3030k_set_ref_exposure
+                  0x0105ca                  _e_po3030k_set_max_min_exp
+                  0x0105f8                  _e_po3030k_set_max_min_awb
+                  0x01062c                  _e_po3030k_set_weight_win
+                  0x0106ea                  _e_po3030k_set_awb_ae
+                  0x010728                  _e_po3030k_set_flicker_mode
+                  0x010750                  _e_po3030k_set_flicker_detection
+                  0x01083a                  _e_po3030k_set_flicker_man_set
+ .text            0x010910        0x7ee build/default/production/_ext/1472/main_c.o
+                  0x010910                  _main
+ .text            0x0110fe        0x798 build/default/production/_ext/1949949662/e_led.o
+                  0x0110fe                  _e_set_led
+                  0x0113a8                  _e_led_clear
+                  0x0113be                  _e_set_body_led
+                  0x0113fe                  _e_set_front_led
+                  0x01143e                  _e_blink_led
+                  0x011512                  _e_blink_led0
+                  0x011532                  _e_blink_led1
+                  0x011552                  _e_blink_led2
+                  0x011572                  _e_blink_led3
+                  0x011592                  _e_blink_led4
+                  0x0115b2                  _e_blink_led5
+                  0x0115d2                  _e_blink_led6
+                  0x0115f2                  _e_blink_led7
+                  0x011610                  _e_start_led_blinking
+                  0x011620                  _e_stop_led_blinking
+                  0x01162c                  _e_set_blinking_cycle
+                  0x011642                  _snake_led
+                  0x0116b2                  _flow_led
+                  0x01172e                  _k2000_led
+                  0x0117ce                  _right_led
+                  0x011832                  _left_led
+ .text            0x011896        0x6ce build/default/production/_ext/1362274096/e_acc.o
+                  0x011896                  _e_get_acc
+                  0x01196e                  _e_get_acc_filtered
+                  0x011a92                  _calculate_acc_raw
+                  0x011ad8                  _calculate_acc_spherical
+                  0x011c06                  _e_acc_calibr
+                  0x011c48                  _e_read_acc_spheric
+                  0x011c8a                  _e_read_inclination
+                  0x011c96                  _e_read_orientation
+                  0x011ca2                  _e_read_acc
+                  0x011cae                  _e_read_acc_xyz
+                  0x011cd2                  _e_read_acc_x
+                  0x011cdc                  _e_read_acc_y
+                  0x011ce6                  _e_read_acc_z
+                  0x011cf0                  _e_display_angle
+ .text            0x011f64        0x698 build/default/production/_ext/930121020/e_calc_po8030d.o
+                  0x011f64                  _e_po8030d_config_cam
+                  0x0125d8                  _e_po8030d_get_bytes_per_pixel
+ .text            0x0125fc        0x66c build/default/production/_ext/1472/rungyroscope.o
+                  0x0125fc                  _execDemoZ
+                  0x012906                  _execDemoY
+                  0x012a82                  _execDemoX
+                  0x012bfe                  _run_gyroscope
+ .text            0x012c68        0x5da build/default/production/_ext/1472/runshow.o
+                  0x012c68                  _run_CameraTurn
+                  0x012e52                  _run_SensDispl
+                  0x013020                  _run_DustCleaner
+ .text            0x013242        0x3f4 build/default/production/_ext/930121020/e_po8030d_registers.o
+                  0x013242                  _e_po8030d_set_bank
+                  0x01325e                  _e_po8030d_write_register
+                  0x013284                  _e_po8030d_read_register
+                  0x0132a8                  _testWriteReg
+                  0x0132c8                  _enablePO8030
+                  0x013314                  _init_po8030
+                  0x01332c                  _e_po8030d_set_bayer_clkdiv
+                  0x01333c                  _e_po8030d_set_pclkdiv
+                  0x013418                  _e_po8030d_set_mode
+                  0x01345c                  _e_po8030d_set_wx
+                  0x0134ba                  _e_po8030d_set_wy
+                  0x0134c6                  _e_po8030d_set_vsync
+                  0x01351e                  _e_po8030d_set_sketch_mode
+                  0x013540                  _e_po8030d_set_mirror
+                  0x013574                  _e_po8030d_set_awb_ae
+                  0x0135bc                  _e_po8030d_set_rgb_gain
+                  0x0135e0                  _e_po8030d_set_exposure
+                  0x013624                  _e_po8030d_set_brightness
+ .text            0x013636        0x3bc build/default/production/_ext/930121020/e_po6030k_registers.o
+                  0x013636                  _e_po6030k_set_bank
+                  0x013652                  _e_po6030k_write_register
+                  0x013678                  _e_po6030k_read_register
+                  0x01369c                  _e_po6030k_set_bayer_clkdiv
+                  0x0136ac                  _e_po6030k_set_pclkdiv
+                  0x0137b8                  _e_po6030k_set_mode
+                  0x0137fc                  _e_po6030k_set_wx
+                  0x01384a                  _e_po6030k_set_wy
+                  0x013856                  _e_po6030k_set_vsync
+                  0x0138ae                  _e_po6030k_set_sketch_mode
+                  0x01390e                  _e_po6030k_set_mirror
+                  0x013942                  _e_po6030k_set_awb_ae
+                  0x01398a                  _e_po6030k_set_rgb_gain
+                  0x0139ae                  _e_po6030k_set_exposure
+ .text            0x0139f2        0x3a6 build/default/production/_ext/851769008/e_lsm330.o
+                  0x0139f2                  _writeReg
+                  0x013a10                  _readReg
+                  0x013a2e                  _readRegMulti
+                  0x013aca                  _initAccAndGyro
+                  0x013b0a                  _getAllAxesAccRaw
+                  0x013b24                  _getAllAxesAcc
+                  0x013b72                  _getXAxisAcc
+                  0x013b98                  _getYAxisAcc
+                  0x013bbe                  _getZAxisAcc
+                  0x013be4                  _getAllAxesGyroRaw
+                  0x013bfe                  _getAllAxesGyro
+                  0x013c58                  _getXAxisGyro
+                  0x013c82                  _getYAxisGyro
+                  0x013cac                  _getZAxisGyro
+                  0x013cd6                  _getTemperature
+                  0x013ce2                  _calibrateGyroscope
+                  0x013d68                  _rawToDps
+                  0x013d80                  _rawToDpms
+ .text            0x013d98        0x3a0 build/default/production/_ext/1472/runaccelerometer.o
+                  0x013d98                  _acc_calibrate
+                  0x013e72                  _run_accelerometer
 
-.dinit            0x0140e2        0x37c
- .dinit           0x0140e2        0x37c data_init
+.dinit            0x014138        0x37c
+ .dinit           0x014138        0x37c data_init
 
-.text             0x01445e       0x25e0
- .text            0x01445e        0x33e build/default/production/_ext/1949949662/e_motors.o
-                  0x01445e                  _run_left_motor
-                  0x014532                  _run_right_motor
-                  0x014606                  _e_init_motors
-                  0x01461c                  _e_set_speed_left
-                  0x0146b0                  _e_set_speed_right
-                  0x014744                  _e_set_speed
-                  0x014774                  _e_get_steps_left
-                  0x01477c                  _e_set_steps_left
-                  0x014788                  _e_get_steps_right
-                  0x014790                  _e_set_steps_right
- .text            0x01479c        0x32c build/default/production/_ext/417766185/e_I2C_master_module.o
-                  0x01479c                  _idle_i2c
-                  0x0147ce                  _e_i2c_init
-                  0x014808                  _e_i2c_deinit
-                  0x01481a                  _e_i2c_reset
-                  0x014864                  _e_i2c_enable
-                  0x014870                  _e_i2c_disable
-                  0x01487c                  _e_i2c_start
-                  0x0148bc                  _e_i2c_restart
-                  0x0148fc                  _e_i2c_stop
-                  0x014930                  _e_i2c_ack
-                  0x014992                  _e_i2c_nack
-                  0x0149f4                  _e_i2c_read
-                  0x014a8e                  _e_i2c_write
- .text            0x014ac8        0x2f4 build/default/production/_ext/1472/runwallfollow.o
-                  0x014ac8                  _follow_sensor_calibrate
-                  0x014baa                  _followgetSelectorValue
-                  0x014bde                  _followGetSensorValues
-                  0x014c16                  _followsetSpeed
-                  0x014c5c                  _run_wallfollow
- .text            0x014dbc        0x2d0 build/default/production/_ext/1472/runbreitenberg_adv.o
-                  0x014dbc                  _shock_neuron
-                  0x014ed0                  _lin_speed_calc
-                  0x014f9a                  _angle_speed_calc
-                  0x014fda                  _follow_neuron
-                  0x015038                  _run_breitenberg_follower
-                  0x015062                  _run_breitenberg_shocker
- .text            0x01508c        0x28e build/default/production/_ext/930121020/e_calc_po6030k.o
-                  0x01508c                  _e_po6030k_config_cam
-                  0x0152f6                  _e_po6030k_get_bytes_per_pixel
- .text            0x01531a        0x288 build/default/production/_ext/930121020/e_common.o
-                  0x01531a                  _e_poxxxx_config_cam
-                  0x015380                  _e_poxxxx_set_mirror
-                  0x0153bc                  _e_poxxxx_write_cam_registers
-                  0x0153e2                  _e_poxxxx_init_cam
-                  0x01549e                  _e_poxxxx_get_orientation
-                  0x0154e2                  _e_poxxxx_set_awb_ae
-                  0x01551e                  _e_poxxxx_set_rgb_gain
-                  0x015566                  _e_poxxxx_set_exposure
-                  0x01559a                  _getCameraVersion
- .text            0x0155a2        0x25a build/default/production/_ext/930121020/e_calc_po3030k.o
-                  0x0155a2                  _e_po3030k_config_cam
-                  0x0157d8                  _e_po3030k_get_bytes_per_pixel
- .text            0x0157fc        0x196 build/default/production/_ext/1949949662/e_agenda.o
-                  0x0157fc                  _e_start_agendas_processing
-                  0x015818                  _e_end_agendas_processing
-                  0x015820                  _e_activate_agenda
-                  0x015882                  _e_destroy_agenda
-                  0x0158d0                  _e_set_agenda_cycle
-                  0x015902                  _e_reset_agenda
-                  0x015932                  _e_pause_agenda
-                  0x015962                  _e_restart_agenda
- .text            0x015992        0x190 build/default/production/_ext/1472/runsquare.o
-                  0x015992                  _run_square
- .text            0x015b22        0x180 build/default/production/_ext/1362274096/e_micro.o
-                  0x015b22                  _e_get_micro
-                  0x015b3e                  _e_get_micro_average
-                  0x015bc2                  _e_get_micro_volume
-                  0x015c42                  _e_get_micro_last_values
- .text            0x015ca2        0x154 build/default/production/_ext/1362274096/e_prox.o
-                  0x015ca2                  _e_calibrate_ir
-                  0x015d72                  _e_get_prox
-                  0x015d9a                  _e_get_calibrated_prox
-                  0x015dda                  _e_get_ambient_light
- .text            0x015df6        0x132 build/default/production/_ext/1949949662/e_remote_control.o
-                  0x015df6                  _e_init_remote_control
-                  0x015e04                  _e_read_remote_control
-                  0x015f0a                  _e_get_check
-                  0x015f14                  _e_get_address
-                  0x015f1e                  _e_get_data
- .text            0x015f28        0x132 build/default/production/_ext/1472/rundetectsound.o
-                  0x015f28                  _run_detectsound
- .text            0x01605a        0x112 build/default/production/_ext/1362274096/e_ad_conv.o
-                  0x01605a                  _e_init_ad_scan
-                  0x016148                  _e_ad_is_acquisition_completed
-                  0x016152                  _e_ad_is_array_filled
-                  0x01615c                  _e_ad_scan_on
-                  0x016164                  _e_ad_scan_off
- .text            0x01616c         0xf2 build/default/production/_ext/904308887/utility.o
-                  0x01616c                  _wait
-                  0x016190                  _getselector
-                  0x0161c4                  _getBatteryValueRaw
-                  0x0161e2                  _getBatteryValuePercentage
-                  0x016220                  _resetTime
-                  0x01622a                  _getDiffTimeMs
-                  0x016240                  _getDiffTimeMsAndReset
- .text            0x01625e         0xf2 build/default/production/_ext/930121020/e_timers.o
-                  0x01628e                  _e_poxxxx_launch_capture
-                  0x0162a4                  _e_poxxxx_apply_timer_config
-                  0x016348                  _e_poxxxx_is_img_ready
- .text            0x016350         0xd8 build/default/production/_ext/1259340286/e_init_port.o
-                  0x016350                  _testAccGyroPresence
-                  0x016386                  _e_init_port
-                  0x01641e                  _isEpuckVersion1_3
- .text            0x016428         0xd8 build/default/production/_ext/417766185/e_I2C_protocol.o
-                  0x016428                  _e_i2cp_init
-                  0x016432                  _e_i2cp_deinit
-                  0x01643c                  _e_i2cp_enable
-                  0x016446                  _e_i2cp_disable
-                  0x016450                  _e_i2cp_read
-                  0x0164b0                  _e_i2cp_write
- .text            0x016500         0xae build/default/production/_ext/1472/DataEEPROM.o
-                  0x016500                  _ReadEE
-                  0x01651a                  _EraseEE
-                  0x016562                  _WriteEE
- .text            0x0165ae         0xac build/default/production/_ext/2015481517/e_init_codec_slave.o
-                  0x0165ae                  _e_init_codec_slave
- .text            0x01665a         0x90 build/default/production/_ext/1472/translatorI2C.o
-                  0x01665a                  _run_translatorI2C
-                  0x0166c6                  _run_translatorI2C_b
- .text            0x0166ea         0x76 build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
-                  0x0166ea                  _e_sub_dci_kickoff
- .text            0x016760         0x76 build/default/production/_ext/2015481517/e_isr_dci.o
-                  0x016760                  __DCIInterrupt
- .text            0x0167d6         0x60 build/default/production/_ext/64492303/e_uart1_tx_char.o
-                  0x0167d6                  __U1TXInterrupt
-                  0x01681a                  _e_send_uart1_char
-                  0x016832                  _e_uart1_sending
- .text            0x016836         0x60 build/default/production/_ext/64492303/e_uart2_tx_char.o
-                  0x016836                  __U2TXInterrupt
-                  0x01687a                  _e_send_uart2_char
-                  0x016892                  _e_uart2_sending
- .text            0x016896         0x42 build/default/production/_ext/64492303/e_uart2_rx_char.o
-                  0x016896                  __U2RXInterrupt
-                  0x0168b4                  _e_ischar_uart2
-                  0x0168bc                  _e_getchar_uart2
- .text            0x0168d8         0x42 build/default/production/_ext/64492303/e_uart1_rx_char.o
-                  0x0168d8                  __U1RXInterrupt
-                  0x0168f6                  _e_ischar_uart1
-                  0x0168fe                  _e_getchar_uart1
- .text            0x01691a         0x3e build/default/production/_ext/2015481517/e_sound.o
-                  0x01691a                  _e_init_sound
-                  0x01693a                  _e_play_sound
-                  0x016950                  _e_close_sound
- .text            0x016958         0x3e build/default/production/_ext/2015481517/e_init_dci_master.o
-                  0x016958                  _e_init_dci_master
- .text            0x016996         0x38 build/default/production/_ext/930121020/e_interrupt.o
-                  0x016996                  __T4Interrupt
- .text            0x0169ce         0x2e build/default/production/_ext/64492303/e_init_uart1.o
-                  0x0169ce                  _e_init_uart1
- .text            0x0169fc         0x2c build/default/production/_ext/64492303/e_init_uart2.o
-                  0x0169fc                  _e_init_uart2
- .text            0x016a28         0x16 build/default/production/_ext/1472/rungrounddirection.o
-                  0x016a28                  _run_grounddirection
+.text             0x0144b4       0x25e0
+ .text            0x0144b4        0x33e build/default/production/_ext/1949949662/e_motors.o
+                  0x0144b4                  _run_left_motor
+                  0x014588                  _run_right_motor
+                  0x01465c                  _e_init_motors
+                  0x014672                  _e_set_speed_left
+                  0x014706                  _e_set_speed_right
+                  0x01479a                  _e_set_speed
+                  0x0147ca                  _e_get_steps_left
+                  0x0147d2                  _e_set_steps_left
+                  0x0147de                  _e_get_steps_right
+                  0x0147e6                  _e_set_steps_right
+ .text            0x0147f2        0x32c build/default/production/_ext/417766185/e_I2C_master_module.o
+                  0x0147f2                  _idle_i2c
+                  0x014824                  _e_i2c_init
+                  0x01485e                  _e_i2c_deinit
+                  0x014870                  _e_i2c_reset
+                  0x0148ba                  _e_i2c_enable
+                  0x0148c6                  _e_i2c_disable
+                  0x0148d2                  _e_i2c_start
+                  0x014912                  _e_i2c_restart
+                  0x014952                  _e_i2c_stop
+                  0x014986                  _e_i2c_ack
+                  0x0149e8                  _e_i2c_nack
+                  0x014a4a                  _e_i2c_read
+                  0x014ae4                  _e_i2c_write
+ .text            0x014b1e        0x2f4 build/default/production/_ext/1472/runwallfollow.o
+                  0x014b1e                  _follow_sensor_calibrate
+                  0x014c00                  _followgetSelectorValue
+                  0x014c34                  _followGetSensorValues
+                  0x014c6c                  _followsetSpeed
+                  0x014cb2                  _run_wallfollow
+ .text            0x014e12        0x2d0 build/default/production/_ext/1472/runbreitenberg_adv.o
+                  0x014e12                  _shock_neuron
+                  0x014f26                  _lin_speed_calc
+                  0x014ff0                  _angle_speed_calc
+                  0x015030                  _follow_neuron
+                  0x01508e                  _run_breitenberg_follower
+                  0x0150b8                  _run_breitenberg_shocker
+ .text            0x0150e2        0x28e build/default/production/_ext/930121020/e_calc_po6030k.o
+                  0x0150e2                  _e_po6030k_config_cam
+                  0x01534c                  _e_po6030k_get_bytes_per_pixel
+ .text            0x015370        0x288 build/default/production/_ext/930121020/e_common.o
+                  0x015370                  _e_poxxxx_config_cam
+                  0x0153d6                  _e_poxxxx_set_mirror
+                  0x015412                  _e_poxxxx_write_cam_registers
+                  0x015438                  _e_poxxxx_init_cam
+                  0x0154f4                  _e_poxxxx_get_orientation
+                  0x015538                  _e_poxxxx_set_awb_ae
+                  0x015574                  _e_poxxxx_set_rgb_gain
+                  0x0155bc                  _e_poxxxx_set_exposure
+                  0x0155f0                  _getCameraVersion
+ .text            0x0155f8        0x25a build/default/production/_ext/930121020/e_calc_po3030k.o
+                  0x0155f8                  _e_po3030k_config_cam
+                  0x01582e                  _e_po3030k_get_bytes_per_pixel
+ .text            0x015852        0x196 build/default/production/_ext/1949949662/e_agenda.o
+                  0x015852                  _e_start_agendas_processing
+                  0x01586e                  _e_end_agendas_processing
+                  0x015876                  _e_activate_agenda
+                  0x0158d8                  _e_destroy_agenda
+                  0x015926                  _e_set_agenda_cycle
+                  0x015958                  _e_reset_agenda
+                  0x015988                  _e_pause_agenda
+                  0x0159b8                  _e_restart_agenda
+ .text            0x0159e8        0x190 build/default/production/_ext/1472/runsquare.o
+                  0x0159e8                  _run_square
+ .text            0x015b78        0x180 build/default/production/_ext/1362274096/e_micro.o
+                  0x015b78                  _e_get_micro
+                  0x015b94                  _e_get_micro_average
+                  0x015c18                  _e_get_micro_volume
+                  0x015c98                  _e_get_micro_last_values
+ .text            0x015cf8        0x154 build/default/production/_ext/1362274096/e_prox.o
+                  0x015cf8                  _e_calibrate_ir
+                  0x015dc8                  _e_get_prox
+                  0x015df0                  _e_get_calibrated_prox
+                  0x015e30                  _e_get_ambient_light
+ .text            0x015e4c        0x132 build/default/production/_ext/1949949662/e_remote_control.o
+                  0x015e4c                  _e_init_remote_control
+                  0x015e5a                  _e_read_remote_control
+                  0x015f60                  _e_get_check
+                  0x015f6a                  _e_get_address
+                  0x015f74                  _e_get_data
+ .text            0x015f7e        0x132 build/default/production/_ext/1472/rundetectsound.o
+                  0x015f7e                  _run_detectsound
+ .text            0x0160b0        0x112 build/default/production/_ext/1362274096/e_ad_conv.o
+                  0x0160b0                  _e_init_ad_scan
+                  0x01619e                  _e_ad_is_acquisition_completed
+                  0x0161a8                  _e_ad_is_array_filled
+                  0x0161b2                  _e_ad_scan_on
+                  0x0161ba                  _e_ad_scan_off
+ .text            0x0161c2         0xf2 build/default/production/_ext/904308887/utility.o
+                  0x0161c2                  _wait
+                  0x0161e6                  _getselector
+                  0x01621a                  _getBatteryValueRaw
+                  0x016238                  _getBatteryValuePercentage
+                  0x016276                  _resetTime
+                  0x016280                  _getDiffTimeMs
+                  0x016296                  _getDiffTimeMsAndReset
+ .text            0x0162b4         0xf2 build/default/production/_ext/930121020/e_timers.o
+                  0x0162e4                  _e_poxxxx_launch_capture
+                  0x0162fa                  _e_poxxxx_apply_timer_config
+                  0x01639e                  _e_poxxxx_is_img_ready
+ .text            0x0163a6         0xd8 build/default/production/_ext/1259340286/e_init_port.o
+                  0x0163a6                  _testAccGyroPresence
+                  0x0163dc                  _e_init_port
+                  0x016474                  _isEpuckVersion1_3
+ .text            0x01647e         0xd8 build/default/production/_ext/417766185/e_I2C_protocol.o
+                  0x01647e                  _e_i2cp_init
+                  0x016488                  _e_i2cp_deinit
+                  0x016492                  _e_i2cp_enable
+                  0x01649c                  _e_i2cp_disable
+                  0x0164a6                  _e_i2cp_read
+                  0x016506                  _e_i2cp_write
+ .text            0x016556         0xae build/default/production/_ext/1472/DataEEPROM.o
+                  0x016556                  _ReadEE
+                  0x016570                  _EraseEE
+                  0x0165b8                  _WriteEE
+ .text            0x016604         0xac build/default/production/_ext/2015481517/e_init_codec_slave.o
+                  0x016604                  _e_init_codec_slave
+ .text            0x0166b0         0x90 build/default/production/_ext/1472/translatorI2C.o
+                  0x0166b0                  _run_translatorI2C
+                  0x01671c                  _run_translatorI2C_b
+ .text            0x016740         0x76 build/default/production/_ext/2015481517/e_sub_dci_kickoff.o
+                  0x016740                  _e_sub_dci_kickoff
+ .text            0x0167b6         0x76 build/default/production/_ext/2015481517/e_isr_dci.o
+                  0x0167b6                  __DCIInterrupt
+ .text            0x01682c         0x60 build/default/production/_ext/64492303/e_uart1_tx_char.o
+                  0x01682c                  __U1TXInterrupt
+                  0x016870                  _e_send_uart1_char
+                  0x016888                  _e_uart1_sending
+ .text            0x01688c         0x60 build/default/production/_ext/64492303/e_uart2_tx_char.o
+                  0x01688c                  __U2TXInterrupt
+                  0x0168d0                  _e_send_uart2_char
+                  0x0168e8                  _e_uart2_sending
+ .text            0x0168ec         0x42 build/default/production/_ext/64492303/e_uart2_rx_char.o
+                  0x0168ec                  __U2RXInterrupt
+                  0x01690a                  _e_ischar_uart2
+                  0x016912                  _e_getchar_uart2
+ .text            0x01692e         0x42 build/default/production/_ext/64492303/e_uart1_rx_char.o
+                  0x01692e                  __U1RXInterrupt
+                  0x01694c                  _e_ischar_uart1
+                  0x016954                  _e_getchar_uart1
+ .text            0x016970         0x3e build/default/production/_ext/2015481517/e_sound.o
+                  0x016970                  _e_init_sound
+                  0x016990                  _e_play_sound
+                  0x0169a6                  _e_close_sound
+ .text            0x0169ae         0x3e build/default/production/_ext/2015481517/e_init_dci_master.o
+                  0x0169ae                  _e_init_dci_master
+ .text            0x0169ec         0x38 build/default/production/_ext/930121020/e_interrupt.o
+                  0x0169ec                  __T4Interrupt
+ .text            0x016a24         0x2e build/default/production/_ext/64492303/e_init_uart1.o
+                  0x016a24                  _e_init_uart1
+ .text            0x016a52         0x2c build/default/production/_ext/64492303/e_init_uart2.o
+                  0x016a52                  _e_init_uart2
+ .text            0x016a7e         0x16 build/default/production/_ext/1472/rungrounddirection.o
+                  0x016a7e                  _run_grounddirection
