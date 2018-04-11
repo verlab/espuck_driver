@@ -56,8 +56,9 @@ EPFL Ecole polytechnique federale de Lausanne http://www.epfl.ch
 
 static int left_speed = 0;
 static int right_speed = 0;
-static int nbr_pas_left = 0;
-static int nbr_pas_right = 0;
+static int32_t nbr_pas_left = 0;
+static int32_t nbr_pas_right = 0;
+
 
 /* internal calls */
  
@@ -71,17 +72,17 @@ void __attribute__((interrupt, auto_psv, shadow))
   // increment or decrement phase depending on direction
 
   if (left_speed > 0) // inverted for the two motors
-    {
+  {
     nbr_pas_left++;
-	motor_phase--;
+	  motor_phase--;
     if (motor_phase < 0) motor_phase = 3;
-    }
+  }
   else 
-    {
+  {
     nbr_pas_left--;
     motor_phase++;
     if (motor_phase > 3) motor_phase = 0;
-    }
+  }
   
   // set the phase on the port pins
 
@@ -269,7 +270,7 @@ void e_set_speed_right(int motor_speed)
  * \return The number of phases steps made since the left motor
  * is running.
  */
-int e_get_steps_left(void)
+int32_t e_get_steps_left(void)
 {
   return nbr_pas_left;
 }
@@ -277,7 +278,7 @@ int e_get_steps_left(void)
 /*! \brief Set the number of left motor steps
  * \param set_steps The number of changed phases that you want set.
  */
-void e_set_steps_left(int set_steps)
+void e_set_steps_left(int32_t set_steps)
 {
   INTERRUPT_OFF();
   nbr_pas_left = set_steps;
@@ -288,7 +289,7 @@ void e_set_steps_left(int set_steps)
  * \return The number of phases steps made since the right motor
  * is running.
  */
-int e_get_steps_right(void)
+int32_t e_get_steps_right(void)
 {
   return nbr_pas_right;
 }
@@ -296,7 +297,7 @@ int e_get_steps_right(void)
 /*! \brief Set the number of right motor steps
  * \param set_steps The number of changed phases that you want set.
  */
-void e_set_steps_right(int set_steps)
+void e_set_steps_right(int32_t set_steps)
 {
   INTERRUPT_OFF();
   nbr_pas_right = set_steps;

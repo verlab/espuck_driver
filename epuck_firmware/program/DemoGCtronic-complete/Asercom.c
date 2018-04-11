@@ -57,6 +57,7 @@ int run_asercom(int use_bt) {
     char *ptr;
     static int mod, reg, val;
     static TypeAccSpheric accelero;
+    static long m_step;
     //static TypeAccRaw accelero_raw;
     unsigned int battValue = 0;
 
@@ -303,17 +304,37 @@ int run_asercom(int use_bt) {
                         break;
 
                     case 'Q': // read encoders
-                        n = e_get_steps_left();
-                        buffer[i++] = n & 0xff;
+                        m_step = e_get_steps_left();
+                        buffer[i++] = m_step & 0xff;
+                        m_step = m_step >> 8;
+                        buffer[i++] = m_step & 0xff;
+                        m_step = m_step >> 8;
+                        buffer[i++] = m_step & 0xff;
+                        buffer[i++] = m_step >> 8;
+                        m_step = e_get_steps_right();
+                        buffer[i++] = m_step & 0xff;
+                        m_step = m_step >> 8;
+                        buffer[i++] = m_step & 0xff;
+                        m_step = m_step >> 8;
+                        buffer[i++] = m_step & 0xff;
+                        buffer[i++] = m_step >> 8;
+                        /*buffer[i++] = n & 0xff;
                         buffer[i++] = n >> 8;
                         n = e_get_steps_right();
                         buffer[i++] = n & 0xff;
-                        buffer[i++] = n >> 8;
+                        buffer[i++] = n >> 8;*/
                         break;
 
-                    case 'v': // read encoders
-                        buffer[i++] = epuck_index & 0xff;
-                        buffer[i++] = epuck_index >> 8;
+                    case 'R': // reset
+                        RESET();
+                        break;
+
+                    case 'S': // stop
+                        e_set_speed_left(0);
+                        e_set_speed_right(0);
+                        e_set_led(8, 0);
+                        e_set_body_led(0);
+                        e_set_front_led(0);
                         break;
 
                     case 't': // temperature
@@ -321,6 +342,34 @@ int run_asercom(int use_bt) {
                             buffer[i++] = getTemperature();
                         } else {
                             buffer[i++] = 0;
+                        }
+                        break;
+
+                    case 'T': // play sound
+                        if (use_bt) {
+                            while (e_getchar_uart1(&c1) == 0);
+                        } else {
+                            while (e_getchar_uart2(&c1) == 0);
+                        }
+                        if (first == 0) {
+                            e_init_sound();
+                            first = 1;
+                        }
+                        switch (c1) {
+                            case 1: e_play_sound(0, 2112);
+                                break;
+                            case 2: e_play_sound(2116, 1760);
+                                break;
+                            case 3: e_play_sound(3878, 3412);
+                                break;
+                            case 4: e_play_sound(7294, 3732);
+                                break;
+                            case 5: e_play_sound(11028, 8016);
+                                break;
+                            default:
+                                e_close_sound();
+                                first = 0;
+                                break;
                         }
                         break;
 
@@ -347,6 +396,11 @@ int run_asercom(int use_bt) {
                         }
                         n = e_last_mic_scan_id; //send last scan
                         buffer[i++] = n & 0xff;
+                        break;
+
+                    case 'v': // read encoders
+                        buffer[i++] = epuck_index & 0xff;
+                        buffer[i++] = epuck_index >> 8;
                         break;
 
                     case 'W': // write I2c message
@@ -807,7 +861,7 @@ int run_asercom(int use_bt) {
                     break;
 
                 case 'Q': // read motor position
-                    sprintf(buffer, "Q,%d,%d\r\n", e_get_steps_left(), e_get_steps_right());
+                    sprintf(buffer, "Q,%ld,%ld\r\n", e_get_steps_left(), e_get_steps_right());
                     if (use_bt) {
                         uart1_send_text(buffer);
                     } else {
@@ -828,6 +882,8 @@ int run_asercom(int use_bt) {
                     e_set_speed_left(0);
                     e_set_speed_right(0);
                     e_set_led(8, 0);
+                    e_set_body_led(0);
+                    e_set_front_led(0);
                     if (use_bt) {
                         uart1_send_text("stop\r\n");
                     } else {
@@ -888,12 +944,7 @@ int run_asercom(int use_bt) {
                     break;
 
                 case 'V': // get version information
-                    if (use_bt) {
-                        uart1_send_static_text("v,Version 1.2.3 April 2018 Verlab\r\n");
-                    } else {
-                        uart2_send_static_text("v,Version 1.2.3 April 2018 Verlab\r\n");
-                    }
-                    sprintf(buffer, "HW version: %X\r\nID: %d\r\n", HWversion, epuck_index);
+                    sprintf(buffer, "Robot: epuck_%d\nSW version: 1.2.4 April 2018 VERLAB\nHW version: %X\r\n", epuck_index, HWversion);
                     if (use_bt) {
                         uart1_send_text(buffer);
                     } else {

@@ -56,8 +56,8 @@ void e_init_motors(void); // init to be done before using the other calls
 
 void e_set_speed_left(int motor_speed); 	// motor speed in steps/s
 void e_set_speed_right(int motor_speed);  	// motor speed in steps/s
-int e_get_steps_left(void);					// motors steps done left
-int e_get_steps_right(void);				// motors steps done right
-void e_set_steps_left(int set_steps);		// set motor steps counter
-void e_set_steps_right(int set_steps);		// set motor steps counter
+int32_t e_get_steps_left(void);					// motors steps done left
+int32_t e_get_steps_right(void);				// motors steps done right
+void e_set_steps_left(int32_t set_steps);		// set motor steps counter
+void e_set_steps_right(int32_t set_steps);		// set motor steps counter
 #endif

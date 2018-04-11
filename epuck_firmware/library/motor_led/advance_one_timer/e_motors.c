@@ -57,7 +57,7 @@ EPFL Ecole polytechnique federale de Lausanne http://www.epfl.ch
  *
  * Powersave will only be enabled for speed < MAXV
  */
-#define POWERSAVE
+//#define POWERSAVE
 #define TRESHV 650
 #define MAXV 601
 // following params are for maximum energy saving (but motors have small torque)
@@ -75,8 +75,8 @@ static int right_speed = 0;
 static int left_motor_phase=0;	    // phase can be 0 to 3
 static int right_motor_phase=0;    // phase can be 0 to 3
 
-static int nbr_steps_left=0;
-static int nbr_steps_right=0;
+static int32_t nbr_steps_left=0;
+static int32_t nbr_steps_right=0;
 
 /*------ internal calls ------*/
 
@@ -363,7 +363,7 @@ void e_set_speed(int linear_speed, int angular_speed)
  * \return The number of phases steps made since the left motor
  * is running.
  */
-int e_get_steps_left()
+long e_get_steps_left()
 {
 	return nbr_steps_left;
 }
@@ -371,7 +371,7 @@ int e_get_steps_left()
 /*! \brief Set the number of left motor steps
  * \param set_steps The number of changed phases that you want set.
  */
-void e_set_steps_left(int set_steps)
+void e_set_steps_left(long set_steps)
 {
 	nbr_steps_left=set_steps;
 }
@@ -380,7 +380,7 @@ void e_set_steps_left(int set_steps)
  * \return The number of phases steps made since the right motor
  * is running.
  */
-int e_get_steps_right()
+long e_get_steps_right()
 {
 	return nbr_steps_right;
 }
@@ -388,7 +388,7 @@ int e_get_steps_right()
 /*! \brief Set the number of right motor steps
  * \param set_steps The number of changed phases that you want set.
  */
-void e_set_steps_right(int set_steps)
+void e_set_steps_right(long set_steps)
 {
 	nbr_steps_right=set_steps;	
 }

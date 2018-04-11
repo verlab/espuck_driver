@@ -100,7 +100,6 @@ int main() {
 		/* Read Epuck ID */
     	e_bt_read_local_pin_number(epuck_id);
 		epuck_index = atoi(epuck_id);
-		uart2_send_text(epuck_id);
 		e_init_uart2(BAUD230400);   // the gumstix communicate with the robot at 230400 bauds
 		run_asercom(USE_UART_2);
 	} else if (selector==1) {
