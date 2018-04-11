@@ -3,6 +3,9 @@
         "typeinfo": "c",
         "string.h": "c",
         "stdio.h": "c",
-        "e_motors.h": "c"
-    }
+        "e_motors.h": "c",
+        "functional": "c",
+        "e_sound.h": "c"
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }

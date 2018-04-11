@@ -19,8 +19,11 @@
 #include <espuck_driver/Light.h>
 #include <espuck_driver/Temperature.h>
 #include <espuck_driver/Microphone.h>
+#include <espuck_driver/Sound.h>
+#include <espuck_driver/Led.h>
 #include <sensor_msgs/Imu.h>
 #include <geometry_msgs/Twist.h>
+#include <std_srvs/Empty.h>
 /************************************************************************/
 
 
@@ -36,6 +39,7 @@ IPAddress ROS_MASTER_ADDRESS(10, 42, 0, 1); // ros master ip
 char* WIFI_SSID = "epuck_net"; // network name
 char* WIFI_PASSWD = "epuck_9895"; // network password
 String epuck_name; // epuck name is get from epuck serial (epuck_####)
+unsigned long timer;
 /************************************************************************/
 
 /************************************************************************
@@ -46,6 +50,14 @@ ros::NodeHandle_<WifiHardware> nh;
 void cmdvel_callback(const geometry_msgs::Twist& msg);
 String cmdvel_topic;
 ros::Subscriber<geometry_msgs::Twist> *cmdvel_sub;
+/* Led callback */
+void led_callback(const espuck_driver::Led& msg);
+String led_topic;
+ros::Subscriber<espuck_driver::Led> *led_sub;
+/* Sound callback */
+void sound_callback(const espuck_driver::Sound& msg);
+String sound_topic;
+ros::Subscriber<espuck_driver::Sound> *sound_sub;
 /* Proximity sensor publisher */
 espuck_driver::Proximity proximity_msg;
 void update_proximity(void);
@@ -76,6 +88,25 @@ sensor_msgs::Imu imu_msg;
 void update_imu(void);
 String imu_topic;
 ros::Publisher *imu_pub;
+
+/* Services */
+/* Proximity sensors calibration */
+void proxcalibration_callback(const std_srvs::Empty::Request& req, std_srvs::Empty::Response& res);
+String prox_calibration_topic;
+ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response> *prox_calibration_srv;
+/* Stop epuck*/
+void stop_callback(const std_srvs::Empty::Request& req, std_srvs::Empty::Response& res);
+String stop_topic;
+ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response> *stop_srv;
+/* Reset epuck*/
+void reset_callback(const std_srvs::Empty::Request& req, std_srvs::Empty::Response& res);
+String reset_topic;
+ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response> *reset_srv;
+/* Reset odometry epuck*/
+void odom_reset_callback(const std_srvs::Empty::Request& req, std_srvs::Empty::Response& res);
+String odom_reset_topic;
+ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response> *odom_reset_srv;
+
 /************************************************************************/
 
 
@@ -126,6 +157,19 @@ void setup() {
   /* Start subscribers */
   cmdvel_topic = epuck_name + String("/cmd_vel");
   cmdvel_sub = new ros::Subscriber<geometry_msgs::Twist>(cmdvel_topic.c_str(), cmdvel_callback);
+  led_topic = epuck_name + String("/led");
+  led_sub = new ros::Subscriber<espuck_driver::Led>(led_topic.c_str(), led_callback);
+  sound_topic = epuck_name + String("/sound");
+  sound_sub = new ros::Subscriber<espuck_driver::Sound>(sound_topic.c_str(), sound_callback);
+  /* Service setup */
+  prox_calibration_topic = epuck_name + String("/proximity_calibration");
+  prox_calibration_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(prox_calibration_topic.c_str(), &proxcalibration_callback);
+  stop_topic = epuck_name + String("/stop");
+  stop_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(stop_topic.c_str(), &stop_callback);
+  reset_topic = epuck_name + String("/reset");
+  reset_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(reset_topic.c_str(), &reset_callback);
+  odom_reset_topic = epuck_name + String("/odom_reset");
+  odom_reset_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(odom_reset_topic.c_str(), &odom_reset_callback);
   /* Starting ros node */
   nh.initNode();
   /* Address Publishers */
@@ -137,11 +181,22 @@ void setup() {
   nh.advertise(*microphone_pub);
   /* Address Subscribers */
   nh.subscribe(*cmdvel_sub);
+  nh.subscribe(*led_sub);
+  nh.subscribe(*sound_sub);
+  /* Address Services */
+  nh.advertiseService(*prox_calibration_srv);
+  nh.advertiseService(*stop_srv);
+  nh.advertiseService(*reset_srv);
+  nh.advertiseService(*odom_reset_srv);
+  
   /* Message Setup */
   proximity_msg.header.frame_id = "proximity";
   proximity_msg.header.seq = -1;
-  proximity_msg.proximity_length = 8;
-  proximity_msg.proximity = (int16_t *)malloc(8*sizeof(int16_t));
+  proximity_msg.data_length = 8;
+  proximity_msg.max_range =  0.05;        // 5 cm.     
+  proximity_msg.min_range =  0.005;       // 0.5 cm.
+  proximity_msg.field_of_view = 0.26;    // About 15 degrees...to be checked!
+  proximity_msg.data = (float *)malloc(8*sizeof(float));
   
   light_msg.header.frame_id = "ambient_light";
   light_msg.header.seq = -1;
@@ -155,29 +210,30 @@ void setup() {
   microphone_msg.header.seq = -1;
   microphone_msg.microphone_length = 3;
   microphone_msg.microphone = (int16_t *)malloc(3*sizeof(int16_t));
-  
+
+  nh.loginfo("[EPUCK] Starting Epuck Communication");
   /* Setup complete esp LED message */
   pinMode(LED_BUILTIN, OUTPUT);
   for(int i = 0; i <= 20; i++){
     digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
     delay(80);                   
   }
+  nh.loginfo("[EPUCK] Calibrating Proximity Sensors (3 seconds)");
   /* Calibrating Proximity Sensors */
   while(Serial.available() > 0) Serial.read(); // clear serial buffer
   Serial.write("K\n");
   delay(3000);
+  nh.loginfo("[EPUCK] Epuck is Ready!");
   /* Setup complete epuck LED message */
   char buf [6];
-  for (int i = 0; i < 8; i++){
-    sprintf (buf, "L,%d,1\n", i);
+  Serial.write("S\n"); // stop epuck
+  Serial.flush();
+  for (int i = 0; i < 32; i++){
+    sprintf (buf, "L,%d,2\n", i % 8); // inverse led state
     Serial.write(buf);
-    delay(150);
+    delay(100);
   }
-  for (int i = 0; i < 8; i++){
-    sprintf (buf, "L,%d,0\n", i);
-    Serial.write(buf);
-    delay(150);
-  }
+  
 }
 /************************************************************************/
 
@@ -204,14 +260,22 @@ void update_proximity(void){
   Serial.write(-'N'); // command to receive proximity sensors
   Serial.write('\0'); // command end
   Serial.flush(); // wait til the command be sent
-  while(Serial.available() != 16) delayMicroseconds(50); // wait til the completed data come
+  timer = micros();
+  while(Serial.available() != 16 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
 
   if (Serial.available() == 16){ // if the data has 16bytes than it's probabily our sensor
     for (int i = 0; i < 8; i++){
       byte0 = Serial.read();
       byte1 = Serial.read();
-      proximity_msg.proximity[i] = byte1 << 8;
-      proximity_msg.proximity[i] += byte0;
+      proximity_msg.data[i] = byte1 << 8;
+      proximity_msg.data[i] += byte0;
+      if (proximity_msg.data[i] > 0){
+        proximity_msg.data[i] = 0.5/sqrt(proximity_msg.data[i]); // Transform the analog value to a distance value in meters (given from field tests).
+      }
+      else{
+        proximity_msg.data[i] = proximity_msg.max_range;
+      }
+      proximity_msg.data[i] = max(min(proximity_msg.data[i], proximity_msg.max_range), proximity_msg.min_range);
     }
     proximity_msg.header.stamp = nh.now(); // update sequency and timestamp
     proximity_msg.header.seq++; 
@@ -226,7 +290,8 @@ void update_battery(void){
   Serial.write(-'b'); // command to receive battery state
   Serial.write('\0'); // command end
   Serial.flush(); // wait til the command be sent
-  while(Serial.available() != 2) delayMicroseconds(50); // wait til the completed data come
+  timer = micros();
+  while(Serial.available() != 2 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
   
   if (Serial.available() == 2){
     byte0 = Serial.read();
@@ -245,23 +310,31 @@ void update_imu(void){
   Serial.write(-'g');
   Serial.write('\0');
   Serial.flush();
-  while(Serial.available() != 12) delayMicroseconds(50); // wait til the completed data come
+  timer = micros();
+  while(Serial.available() != 12 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  
   if (Serial.available() == 12){
     // Get acc X
     byte0 = Serial.read();
     byte1 = Serial.read();
     imu_msg.linear_acceleration.x =  byte1 << 8;
     imu_msg.linear_acceleration.x += byte0;
+    imu_msg.linear_acceleration.x  =  (imu_msg.linear_acceleration.x - 2048.0) / 800.0 * 9.81; // 1 g = about 800, then transforms in m/s^2.
     // Get acc Y
     byte0 = Serial.read();
     byte1 = Serial.read();
     imu_msg.linear_acceleration.y =  byte1 << 8;
     imu_msg.linear_acceleration.y += byte0;
+    imu_msg.linear_acceleration.y  =  (imu_msg.linear_acceleration.y - 2048.0) / 800.0 * 9.81; // 1 g = about 800, then transforms in m/s^2.
     // Get acc Z
     byte0 = Serial.read();
     byte1 = Serial.read();
     imu_msg.linear_acceleration.z =  byte1 << 8;
     imu_msg.linear_acceleration.z += byte0;
+    imu_msg.linear_acceleration.z  =  (imu_msg.linear_acceleration.z - 2048.0) / 800.0 * 9.81; // 1 g = about 800, then transforms in m/s^2.
+    imu_msg.linear_acceleration_covariance[0] = 0.01;
+    imu_msg.linear_acceleration_covariance[4] = 0.01;
+    imu_msg.linear_acceleration_covariance[8] = 0.01;
 
     // Get gy X
     byte0 = Serial.read();
@@ -294,8 +367,8 @@ void update_ambient_light(void){
   Serial.write(-'O');
   Serial.write('\0');
   Serial.flush(); 
-  while(Serial.available() != 16) delayMicroseconds(50); // wait til the completed data come
-  //delayMicroseconds(1000);
+  timer = micros();
+  while(Serial.available() != 16 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
 
   if (Serial.available() == 16){
     for (int i = 0; i < 8; i++){
@@ -317,7 +390,8 @@ void update_temperature(void){
   Serial.write(-'t');
   Serial.write('\0');
   Serial.flush(); 
-  while(Serial.available() != 1) delayMicroseconds(50); // wait til the completed data come
+  timer = micros();
+  while(Serial.available() != 1 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
 
   if (Serial.available() == 1){
     temperature_msg.temp = Serial.read();
@@ -332,7 +406,8 @@ void update_microphone(void){
   Serial.write(-'u');
   Serial.write('\0');
   Serial.flush();
-  while(Serial.available() != 6) delayMicroseconds(50); // wait til the completed data come
+  timer = micros();
+  while(Serial.available() != 6 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
   
   if (Serial.available() == 6){ 
     for (int i = 0; i < 3; i++){
@@ -369,8 +444,54 @@ void cmdvel_callback(const geometry_msgs::Twist& msg){
   Serial.write(speedRight & 0xff);
   Serial.write(speedRight >> 8);
   Serial.write('\0');
+  Serial.flush();
 }
 
+void led_callback(const espuck_driver::Led& msg){
+  /* set led state */
+  Serial.write(-'L');
+  Serial.write(msg.index);
+  Serial.write(msg.state);
+  Serial.write('\0');
+  Serial.flush();
+}
+
+void sound_callback(const espuck_driver::Sound& msg){
+  /* play sound */
+  Serial.write(-'T');
+  Serial.write(msg.index);
+  Serial.write('\0');
+  Serial.flush();
+}
+
+void proxcalibration_callback( const std_srvs::Empty::Request& request, std_srvs::Empty::Response& response){
+  Serial.write("K\n");
+  Serial.flush();
+  nh.loginfo("[EPUCK] Calibrating Proximity Sensors (3 seconds)");
+  nh.loginfo("[EPUCK] Proximity Sensors Calibrated!");
+}
+
+void stop_callback( const std_srvs::Empty::Request& request, std_srvs::Empty::Response& response){
+  Serial.write(-'S');
+  Serial.flush();
+  nh.loginfo("[EPUCK] Stop!");
+}
+
+void reset_callback( const std_srvs::Empty::Request& request, std_srvs::Empty::Response& response){
+  Serial.write(-'S');
+  Serial.flush();
+  nh.loginfo("[EPUCK] Reset!");
+}
+
+void odom_reset_callback( const std_srvs::Empty::Request& request, std_srvs::Empty::Response& response){
+  Serial.write(-'P');
+  Serial.write(0);
+  Serial.write(0);
+  Serial.write(0);
+  Serial.write(0);
+  Serial.flush();
+  nh.loginfo("[EPUCK] Odometry Reset!");
+}
 /************************************************************************/
 /* T H E  E N D */
 /************************************************************************/

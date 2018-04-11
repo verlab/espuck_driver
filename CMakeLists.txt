@@ -57,6 +57,7 @@ add_message_files(
   Microphone.msg
   Proximity.msg
   Temperature.msg
+  Sound.msg
 )
 
 ## Generate services in the 'srv' folder

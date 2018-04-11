@@ -1,5 +1,5 @@
-#ifndef _ROS_espuck_driver_Led_h
-#define _ROS_espuck_driver_Led_h
+#ifndef _ROS_espuck_driver_Sound_h
+#define _ROS_espuck_driver_Sound_h
 
 #include <stdint.h>
 #include <string.h>
@@ -9,17 +9,14 @@
 namespace espuck_driver
 {
 
-  class Led : public ros::Msg
+  class Sound : public ros::Msg
   {
     public:
       typedef int8_t _index_type;
       _index_type index;
-      typedef int8_t _state_type;
-      _state_type state;
 
-    Led():
-      index(0),
-      state(0)
+    Sound():
+      index(0)
     {
     }
 
@@ -33,13 +30,6 @@ namespace espuck_driver
       u_index.real = this->index;
       *(outbuffer + offset + 0) = (u_index.base >> (8 * 0)) & 0xFF;
       offset += sizeof(this->index);
-      union {
-        int8_t real;
-        uint8_t base;
-      } u_state;
-      u_state.real = this->state;
-      *(outbuffer + offset + 0) = (u_state.base >> (8 * 0)) & 0xFF;
-      offset += sizeof(this->state);
       return offset;
     }
 
@@ -54,19 +44,11 @@ namespace espuck_driver
       u_index.base |= ((uint8_t) (*(inbuffer + offset + 0))) << (8 * 0);
       this->index = u_index.real;
       offset += sizeof(this->index);
-      union {
-        int8_t real;
-        uint8_t base;
-      } u_state;
-      u_state.base = 0;
-      u_state.base |= ((uint8_t) (*(inbuffer + offset + 0))) << (8 * 0);
-      this->state = u_state.real;
-      offset += sizeof(this->state);
      return offset;
     }
 
-    const char * getType(){ return "espuck_driver/Led"; };
-    const char * getMD5(){ return "0589841c5fba56387e14d758068fd223"; };
+    const char * getType(){ return "espuck_driver/Sound"; };
+    const char * getMD5(){ return "c4ecff52046eaecf0190e650b1958286"; };
 
   };
 
