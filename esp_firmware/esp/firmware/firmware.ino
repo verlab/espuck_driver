@@ -3,15 +3,15 @@
  ************************************************************************
  *
  * Paulo Rezeck <rezeck@dcc.ufmg.br>
- * Mauricio Ferrari <mauferrari@dcc.ufmg.br>
+ * Mauricio Ferrari <mauricio.ferrari@dcc.ufmg.br>
  * 
  * E-Puck Upgrade
- * Computer Vision and Robotics Lab
- * Federal University of Minas Gerais - Brazil
+ * Computer Vision and Robotics Lab (VERLAB)
+ * Federal University of Minas Gerais (UFMG) - Brazil
  ************************************************************************/
  /* ROS lib */
 #include <ros.h>
-#include "WifiHardware.h"
+#include <ESP8266WiFi.h>
 
 /* Message types */
 #include <espuck_driver/Proximity.h>
@@ -23,29 +23,37 @@
 #include <espuck_driver/Led.h>
 #include <sensor_msgs/Imu.h>
 #include <geometry_msgs/Twist.h>
+#include <nav_msgs/Odometry.h>
+#include <tf/tf.h>
+#include <tf/transform_broadcaster.h>
 #include <std_srvs/Empty.h>
-/************************************************************************/
 
-
-/************************************************************************
- * Defines
- ************************************************************************/
-#define WHEEL_DIAMETER 4        // cm.
+/* Defines */
+#define WHEEL_DIAMETER 4.0        // cm.
 #define WHEEL_SEPARATION 5.3    // Separation between wheels (cm).
-/************************************************************************/
+#define WHEEL_DISTANCE 0.053    // Distance between wheels in meters (axis length); it's the same value as "WHEEL_SEPARATION" but expressed in meters.
+#define WHEEL_CIRCUMFERENCE ((WHEEL_DIAMETER*M_PI)/100.0)    // Wheel circumference (meters).
+#define MOT_STEP_DIST (WHEEL_CIRCUMFERENCE/1000.0)      // Distance for each motor step (meters); a complete turn is 1000 steps (0.000125 meters per step (m/steps)).
+#define ROBOT_RADIUS 0.035 // meters.
 
-/* Basic setup */
+/* Wifi setup */
 IPAddress ROS_MASTER_ADDRESS(10, 42, 0, 1); // ros master ip
 char* WIFI_SSID = "epuck_net"; // network name
 char* WIFI_PASSWD = "epuck_9895"; // network password
-String epuck_name; // epuck name is get from epuck serial (epuck_####)
-unsigned long timer;
-/************************************************************************/
 
-/************************************************************************
- * ROS Setup
- ************************************************************************/
-ros::NodeHandle_<WifiHardware> nh;
+/* Commons Variables */
+String epuck_name; // epuck name is get from epuck serial (epuck_####)
+unsigned long timer, currentTime, lastTime;
+
+/* Used to compute Odometry */
+double xPos, yPos, theta;
+double deltaSteps, deltaTheta;
+double leftStepsDiff = 0, rightStepsDiff = 0;
+double leftStepsPrev = 0, rightStepsPrev = 0;
+
+/* ROS Setup */
+/* ROS Node Instaciatation */
+ros::NodeHandle nh;
 /* Command velocity callback */
 void cmdvel_callback(const geometry_msgs::Twist& msg);
 String cmdvel_topic;
@@ -88,6 +96,16 @@ sensor_msgs::Imu imu_msg;
 void update_imu(void);
 String imu_topic;
 ros::Publisher *imu_pub;
+/* Odometry publisher */
+nav_msgs::Odometry odom_msg;
+void update_odom(void);
+String odom_topic;
+ros::Publisher *odom_pub;
+/* TF to publish odom to base_link transformation */
+tf::TransformBroadcaster broadcaster;
+geometry_msgs::TransformStamped t;
+
+
 
 /* Services */
 /* Proximity sensors calibration */
@@ -114,19 +132,20 @@ ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response> *odom_re
  * Arduino Setup
  ************************************************************************/
  
-void setup() {  
+void setup() {
+  /* Connect the ESP8266 the the wifi AP */
+  WiFi.begin(WIFI_SSID, WIFI_PASSWD);
+  while (WiFi.status() != WL_CONNECTED) delay(500);
   /* Serial Setup */
   Serial.begin(230400); // baudrate used on epuck
   Serial.swap(); // swap to use serial2 on esp8266
-  delay(1000); // wait while
+  delay(2000); // wait while
   while(Serial.available() > 0) Serial.read(); // clear serial buffer
   /* Get epuck id */
-  delay(1000); // wait while
   Serial.write(-'v'); // command to get epuck id
   Serial.write('\0'); // command end
   Serial.flush();
-  //while(Serial.available() != 2) delayMicroseconds(50);
-  delay(1000); // wait while
+  delay(1000); // wait til the completed data come
   uint16_t epuck_id = 0;
   if (Serial.available() == 2){
     char byte0 = Serial.read();
@@ -136,11 +155,10 @@ void setup() {
   }
   epuck_name = String("/epuck_") + String(epuck_id);
   /* Define tcp port as 1000 + epuck id */
-  //uint16_t ROS_MASTER_PORT = 10000 + epuck_id;
-  uint16_t ROS_MASTER_PORT = 11411;
+  uint16_t ROS_MASTER_PORT = 10000 + epuck_id;
+  //uint16_t ROS_MASTER_PORT = 11571;
   /* Start ROS communication module */
-  nh.getHardware()->setROSConnection(ROS_MASTER_ADDRESS, ROS_MASTER_PORT);
-  nh.getHardware()->connectWifi(WIFI_SSID, WIFI_PASSWD);
+  nh.getHardware()->setConnection(ROS_MASTER_ADDRESS, ROS_MASTER_PORT);
   /* Start publishers */
   proximity_topic = epuck_name + String("/proximity");
   proximity_pub = new ros::Publisher(proximity_topic.c_str(), &proximity_msg);
@@ -154,6 +172,9 @@ void setup() {
   microphone_pub = new ros::Publisher(microphone_topic.c_str(), &microphone_msg);
   imu_topic = epuck_name + String("/imu");
   imu_pub = new ros::Publisher(imu_topic.c_str(), &imu_msg);
+  odom_topic = epuck_name + String("/odom");
+  odom_pub = new ros::Publisher(odom_topic.c_str(), &odom_msg);
+  
   /* Start subscribers */
   cmdvel_topic = epuck_name + String("/cmd_vel");
   cmdvel_sub = new ros::Subscriber<geometry_msgs::Twist>(cmdvel_topic.c_str(), cmdvel_callback);
@@ -170,6 +191,7 @@ void setup() {
   reset_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(reset_topic.c_str(), &reset_callback);
   odom_reset_topic = epuck_name + String("/odom_reset");
   odom_reset_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(odom_reset_topic.c_str(), &odom_reset_callback);
+  
   /* Starting ros node */
   nh.initNode();
   /* Address Publishers */
@@ -177,6 +199,8 @@ void setup() {
   nh.advertise(*battery_pub);
   nh.advertise(*light_pub);
   nh.advertise(*imu_pub);
+  nh.advertise(*odom_pub);
+  broadcaster.init(nh);
   nh.advertise(*temperature_pub);
   nh.advertise(*microphone_pub);
   /* Address Subscribers */
@@ -205,6 +229,14 @@ void setup() {
   
   imu_msg.header.frame_id = "imu";
   imu_msg.header.seq = -1;
+
+  odom_msg.header.frame_id = "odom";
+  odom_msg.header.seq = -1;
+  odom_msg.child_frame_id = "/base_link";
+/*  tf_msg.transforms.header.frame_id = "odom";
+  tf_msg.transforms.header.seq = -1;
+  tf_msg.transforms.child_frame_id = "base_link";*/
+  lastTime = micros();
 
   microphone_msg.header.frame_id = "microphone";
   microphone_msg.header.seq = -1;
@@ -247,6 +279,7 @@ void loop(){
   update_ambient_light();
   update_imu();
   update_microphone();
+  update_odom();
   
   nh.spinOnce();
   delayMicroseconds(5000); // this delay is necessary because esp8266 is too faster than dspic6014A
@@ -261,7 +294,7 @@ void update_proximity(void){
   Serial.write('\0'); // command end
   Serial.flush(); // wait til the command be sent
   timer = micros();
-  while(Serial.available() != 16 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  while(Serial.available() != 16 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
 
   if (Serial.available() == 16){ // if the data has 16bytes than it's probabily our sensor
     for (int i = 0; i < 8; i++){
@@ -291,7 +324,7 @@ void update_battery(void){
   Serial.write('\0'); // command end
   Serial.flush(); // wait til the command be sent
   timer = micros();
-  while(Serial.available() != 2 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  while(Serial.available() != 2 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
   
   if (Serial.available() == 2){
     byte0 = Serial.read();
@@ -311,7 +344,7 @@ void update_imu(void){
   Serial.write('\0');
   Serial.flush();
   timer = micros();
-  while(Serial.available() != 12 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  while(Serial.available() != 12 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
   
   if (Serial.available() == 12){
     // Get acc X
@@ -368,7 +401,7 @@ void update_ambient_light(void){
   Serial.write('\0');
   Serial.flush(); 
   timer = micros();
-  while(Serial.available() != 16 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  while(Serial.available() != 16 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
 
   if (Serial.available() == 16){
     for (int i = 0; i < 8; i++){
@@ -391,7 +424,7 @@ void update_temperature(void){
   Serial.write('\0');
   Serial.flush(); 
   timer = micros();
-  while(Serial.available() != 1 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  while(Serial.available() != 1 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
 
   if (Serial.available() == 1){
     temperature_msg.temp = Serial.read();
@@ -407,7 +440,7 @@ void update_microphone(void){
   Serial.write('\0');
   Serial.flush();
   timer = micros();
-  while(Serial.available() != 6 && (micros() - timer) < 1000) delayMicroseconds(50); // wait til the completed data come
+  while(Serial.available() != 6 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
   
   if (Serial.available() == 6){ 
     for (int i = 0; i < 3; i++){
@@ -419,6 +452,85 @@ void update_microphone(void){
     microphone_msg.header.stamp = nh.now();
     microphone_msg.header.seq++;
     microphone_pub->publish( &microphone_msg );
+  }
+}
+
+/* Update and publish microphone data */
+void update_odom(void){
+  char byte0, byte1, byte2, byte3;
+  long motorPositionLeft, motorPositionRight;
+  while(Serial.available() > 0) Serial.read(); // clear serial buffer
+  Serial.write(-'Q');
+  Serial.write('\0');
+  Serial.flush();
+  timer = micros();
+  while(Serial.available() != 8 && (micros() - timer) < 5000) delayMicroseconds(10); // wait til the completed data come
+  
+  if (Serial.available() == 8){ 
+    /* Read left encoder 32 bits */
+    byte0 = Serial.read();
+    byte1 = Serial.read();
+    byte2 = Serial.read();
+    byte3 = Serial.read();
+    motorPositionLeft = byte3 << 8;
+    motorPositionLeft += byte2;
+    motorPositionLeft = motorPositionLeft << 8;
+    motorPositionLeft += byte1;
+    motorPositionLeft = motorPositionLeft << 8;
+    motorPositionLeft += byte0;
+    /* Read right encoder 32 bits */
+    byte0 = Serial.read();
+    byte1 = Serial.read();
+    byte2 = Serial.read();
+    byte3 = Serial.read();
+    motorPositionRight = byte3 << 8;
+    motorPositionRight += byte2;
+    motorPositionRight = motorPositionRight << 8;
+    motorPositionRight += byte1;
+    motorPositionRight = motorPositionRight << 8;
+    motorPositionRight += byte0;
+
+    /* Compute odometry */
+    leftStepsDiff = motorPositionLeft * MOT_STEP_DIST - leftStepsPrev; // Expressed in meters.
+    rightStepsDiff = motorPositionRight * MOT_STEP_DIST - rightStepsPrev;   // Expressed in meters.
+
+    deltaTheta = (rightStepsDiff - leftStepsDiff) / WHEEL_DISTANCE;   // Expressed in radiant.
+    deltaSteps = (rightStepsDiff + leftStepsDiff) / 2.0;        // Expressed in meters.
+
+    xPos += deltaSteps * cos(theta + deltaTheta/2);   // Expressed in meters.
+    yPos += deltaSteps * sin(theta + deltaTheta/2);   // Expressed in meters.
+    theta += deltaTheta;    // Expressed in radiant.
+
+    leftStepsPrev = motorPositionLeft * MOT_STEP_DIST;     // Expressed in meters.
+    rightStepsPrev = motorPositionRight * MOT_STEP_DIST;    // Expressed in meters.
+
+    odom_msg.pose.pose.position.x = xPos;       
+    odom_msg.pose.pose.position.y = yPos;
+
+    // Since all odometry is 6DOF we'll need a quaternion created from yaw.
+    odom_msg.pose.pose.orientation = tf::createQuaternionFromYaw(theta);
+    currentTime = micros(); 
+    odom_msg.twist.twist.linear.x = deltaSteps / ((currentTime-lastTime)/1000000.0);   // "deltaSteps" is the linear distance covered in meters from the last update (delta distance);
+                                                                                        // the time from the last update is measured in seconds thus to get m/s we multiply them.
+    odom_msg.twist.twist.angular.z = deltaTheta / ((currentTime-lastTime)/1000000.0);  // "deltaTheta" is the angular distance covered in radiant from the last update (delta angle);
+                                                                                        // the time from the last update is measured in seconds thus to get rad/s we multiply them.
+    lastTime = micros();
+
+    /* publish odometry */
+    odom_msg.header.stamp = nh.now();
+    odom_msg.header.seq++;
+    odom_pub->publish( &odom_msg );
+    
+    /* tf odom->base_link */
+    String odom_topic = epuck_name  + String("/odom");
+    t.header.frame_id = odom_topic.c_str();
+    String baselink_topic = epuck_name  + String("/base_link");
+    t.child_frame_id = baselink_topic.c_str();
+    t.transform.translation.x = xPos;
+    t.transform.translation.y = yPos;
+    t.transform.rotation = tf::createQuaternionFromYaw(theta);
+    t.header.stamp = nh.now();
+    broadcaster.sendTransform(t);
   }
 }
 
@@ -478,7 +590,7 @@ void stop_callback( const std_srvs::Empty::Request& request, std_srvs::Empty::Re
 }
 
 void reset_callback( const std_srvs::Empty::Request& request, std_srvs::Empty::Response& response){
-  Serial.write(-'S');
+  Serial.write(-'R');
   Serial.flush();
   nh.loginfo("[EPUCK] Reset!");
 }

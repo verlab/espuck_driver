@@ -2,6 +2,7 @@
   	<node pkg="espuck_driver" type="serial_node.py" name="epuck_1571" output="screen">
   		<param name="fork_server" value="False"/>
     	<param name="port" value="tcp"/>
-    	<param name="tcp_port" value="11411"/>
+    	<param name="tcp_port" value="11571"/>
+      <remap from="proximitiy" to="/epcuk1571/proximitiy"/>
   	</node>
 </launch>
