@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<robot name="epuck">
+
+    <link name="base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="1.5707 0 -1.5707" />
+            <geometry>
+                <mesh filename="package://espuck_driver/urdf/meshes/epuck_base.dae"/>
+            </geometry>
+            <!--material name="Green" /-->
+        </visual>
+    </link>
+
+    <link name="right_wheel">
+                <visual>
+            <origin xyz="0.013 0.0 0.0" rpy="1.5707 0 -1.5707" />
+            <geometry>
+                <mesh filename="package://espuck_driver/urdf/meshes/epuck_wheel.dae" />
+            </geometry>
+            <!--material name="Green" /-->
+        </visual>
+    </link>
+
+    <joint name="base_to_right_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin rpy="0 0 1.57075" xyz="0.0 -0.035 0.02"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="left_wheel">
+        <visual>
+            <origin xyz="-0.013 0.0 0.0" rpy="1.5707 0 1.5707" />
+            <geometry>
+                <mesh filename="package://espuck_driver/urdf/meshes/epuck_wheel.dae"/>
+            </geometry>
+            <!--material name="Green" /-->
+        </visual>
+    </link>
+
+    <joint name="base_to_left_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin rpy="0 0 1.57075" xyz="0.0 0.035 0.02"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+</robot>

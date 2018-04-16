@@ -22,6 +22,7 @@
 #include <espuck_driver/Sound.h>
 #include <espuck_driver/Led.h>
 #include <sensor_msgs/Imu.h>
+#include <sensor_msgs/JointState.h>
 #include <geometry_msgs/Twist.h>
 #include <nav_msgs/Odometry.h>
 #include <tf/tf.h>
@@ -29,7 +30,7 @@
 #include <std_srvs/Empty.h>
 
 /* Defines */
-#define WHEEL_DIAMETER 4.0        // cm.
+#define WHEEL_DIAMETER 4.1        // cm.
 #define WHEEL_SEPARATION 5.3    // Separation between wheels (cm).
 #define WHEEL_DISTANCE 0.053    // Distance between wheels in meters (axis length); it's the same value as "WHEEL_SEPARATION" but expressed in meters.
 #define WHEEL_CIRCUMFERENCE ((WHEEL_DIAMETER*M_PI)/100.0)    // Wheel circumference (meters).
@@ -101,11 +102,21 @@ nav_msgs::Odometry odom_msg;
 void update_odom(void);
 String odom_topic;
 ros::Publisher *odom_pub;
+/* Joint State publisher */
+sensor_msgs::JointState joint_msg;
+String joint_topic;
+ros::Publisher *joint_pub;
 /* TF to publish odom to base_link transformation */
 tf::TransformBroadcaster broadcaster;
 geometry_msgs::TransformStamped t;
 
 
+String odom_frame;
+String base_frame;
+String left_frame;
+String right_frame;
+String imu_frame;
+geometry_msgs::Quaternion quaternionfromRPY(double roll, double pitch, double yaw);
 
 /* Services */
 /* Proximity sensors calibration */
@@ -174,6 +185,8 @@ void setup() {
   imu_pub = new ros::Publisher(imu_topic.c_str(), &imu_msg);
   odom_topic = epuck_name + String("/odom");
   odom_pub = new ros::Publisher(odom_topic.c_str(), &odom_msg);
+  joint_topic = epuck_name + String("/joint_states");
+  joint_pub = new ros::Publisher(joint_topic.c_str(), &joint_msg);
   
   /* Start subscribers */
   cmdvel_topic = epuck_name + String("/cmd_vel");
@@ -191,6 +204,12 @@ void setup() {
   reset_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(reset_topic.c_str(), &reset_callback);
   odom_reset_topic = epuck_name + String("/odom_reset");
   odom_reset_srv = new ros::ServiceServer<std_srvs::Empty::Request, std_srvs::Empty::Response>(odom_reset_topic.c_str(), &odom_reset_callback);
+
+  odom_frame = epuck_name + String("/odom");
+  base_frame  = epuck_name + String("/base_link");
+  left_frame  = epuck_name + String("/left_wheel");
+  right_frame = epuck_name + String("/right_wheel");
+  imu_frame =  epuck_name + String("/imu");
   
   /* Starting ros node */
   nh.initNode();
@@ -200,6 +219,7 @@ void setup() {
   nh.advertise(*light_pub);
   nh.advertise(*imu_pub);
   nh.advertise(*odom_pub);
+  nh.advertise(*joint_pub);
   broadcaster.init(nh);
   nh.advertise(*temperature_pub);
   nh.advertise(*microphone_pub);
@@ -217,7 +237,7 @@ void setup() {
   proximity_msg.header.frame_id = "proximity";
   proximity_msg.header.seq = -1;
   proximity_msg.data_length = 8;
-  proximity_msg.max_range =  0.05;        // 5 cm.     
+  proximity_msg.max_range =  0.06;        // 6 cm.     
   proximity_msg.min_range =  0.005;       // 0.5 cm.
   proximity_msg.field_of_view = 0.26;    // About 15 degrees...to be checked!
   proximity_msg.data = (float *)malloc(8*sizeof(float));
@@ -227,15 +247,29 @@ void setup() {
   light_msg.ambient_light_length = 8;
   light_msg.ambient_light = (int16_t *)malloc(8*sizeof(int16_t));
   
-  imu_msg.header.frame_id = "imu";
+  imu_msg.header.frame_id = imu_frame.c_str();
   imu_msg.header.seq = -1;
 
-  odom_msg.header.frame_id = "odom";
+  odom_msg.header.frame_id = odom_frame.c_str();
   odom_msg.header.seq = -1;
-  odom_msg.child_frame_id = "/base_link";
-/*  tf_msg.transforms.header.frame_id = "odom";
-  tf_msg.transforms.header.seq = -1;
-  tf_msg.transforms.child_frame_id = "base_link";*/
+  odom_msg.child_frame_id = base_frame.c_str();
+  
+  joint_msg.header.frame_id = "joint_states";
+  joint_msg.header.seq = -1;
+  joint_msg.name_length = 2;
+  String joint_names[2];
+  joint_names[0] = String("base_to_right_wheel");
+  joint_names[1] = String("base_to_left_wheel");
+  joint_msg.name = (char**)malloc(2*sizeof(char*));
+  joint_msg.name[0] = (char*)malloc(20*sizeof(char));
+  joint_msg.name[0] = "base_to_right_wheel";
+  joint_msg.name[1] = (char*)malloc(20*sizeof(char));
+  joint_msg.name[1] = "base_to_left_wheel";
+  joint_msg.position_length = 2;
+  joint_msg.position = (float*)malloc(2*sizeof(float));
+  joint_msg.position[0] = 0.0;
+  joint_msg.position[1] = 0.0;
+   
   lastTime = micros();
 
   microphone_msg.header.frame_id = "microphone";
@@ -490,6 +524,13 @@ void update_odom(void){
     motorPositionRight = motorPositionRight << 8;
     motorPositionRight += byte0;
 
+    /* Joint State publisher */
+    joint_msg.position[0] = 2*M_PI*motorPositionRight/1000.0;
+    joint_msg.position[1] = 2*M_PI*motorPositionLeft/1000.0;
+    joint_msg.header.stamp = nh.now();
+    joint_msg.header.seq++;
+    joint_pub->publish( &joint_msg );
+
     /* Compute odometry */
     leftStepsDiff = motorPositionLeft * MOT_STEP_DIST - leftStepsPrev; // Expressed in meters.
     rightStepsDiff = motorPositionRight * MOT_STEP_DIST - rightStepsPrev;   // Expressed in meters.
@@ -522,12 +563,11 @@ void update_odom(void){
     odom_pub->publish( &odom_msg );
     
     /* tf odom->base_link */
-    String odom_topic = epuck_name  + String("/odom");
-    t.header.frame_id = odom_topic.c_str();
-    String baselink_topic = epuck_name  + String("/base_link");
-    t.child_frame_id = baselink_topic.c_str();
+    t.header.frame_id = odom_frame.c_str();
+    t.child_frame_id = base_frame.c_str();
     t.transform.translation.x = xPos;
     t.transform.translation.y = yPos;
+    t.transform.translation.z = 0;
     t.transform.rotation = tf::createQuaternionFromYaw(theta);
     t.header.stamp = nh.now();
     broadcaster.sendTransform(t);
@@ -602,7 +642,29 @@ void odom_reset_callback( const std_srvs::Empty::Request& request, std_srvs::Emp
   Serial.write(0);
   Serial.write(0);
   Serial.flush();
+  xPos = 0.0;
+  yPos = 0.0;
+  theta = 0.0;
   nh.loginfo("[EPUCK] Odometry Reset!");
+}
+
+
+/* Convert RPY angles to Quaternion */
+geometry_msgs::Quaternion quaternionfromRPY(double roll, double pitch, double yaw){
+  geometry_msgs::Quaternion q;
+  // Abbreviations for the various angular functions
+  double cy = cos(yaw * 0.5);
+  double sy = sin(yaw * 0.5);
+  double cr = cos(roll * 0.5);
+  double sr = sin(roll * 0.5);
+  double cp = cos(pitch * 0.5);
+  double sp = sin(pitch * 0.5);
+
+  q.w = cy * cr * cp + sy * sr * sp;
+  q.x = cy * sr * cp - sy * cr * sp;
+  q.y = cy * cr * sp + sy * sr * cp;
+  q.z = sy * cr * cp - cy * sr * sp;
+  return q;
 }
 /************************************************************************/
 /* T H E  E N D */
