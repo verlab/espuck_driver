@@ -23,6 +23,7 @@
 #include <espuck_driver/Led.h>
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/JointState.h>
+#include <sensor_msgs/LaserScan.h>
 #include <geometry_msgs/Twist.h>
 #include <nav_msgs/Odometry.h>
 #include <tf/tf.h>
@@ -72,6 +73,11 @@ espuck_driver::Proximity proximity_msg;
 void update_proximity(void);
 String proximity_topic;
 ros::Publisher *proximity_pub;
+sensor_msgs::LaserScan laser_msg;
+String laser_topic;
+float meterFromIntensity(float value);
+ros::Publisher *laser_pub;
+
 /* Battery state publisher */
 espuck_driver::Battery battery_msg;
 void update_battery(void);
@@ -110,13 +116,8 @@ ros::Publisher *joint_pub;
 tf::TransformBroadcaster broadcaster;
 geometry_msgs::TransformStamped t;
 
-
-String odom_frame;
-String base_frame;
-String left_frame;
-String right_frame;
-String imu_frame;
-geometry_msgs::Quaternion quaternionfromRPY(double roll, double pitch, double yaw);
+/* Frame definitions */
+String odom_frame, base_frame, left_frame, right_frame, imu_frame, laser_frame;
 
 /* Services */
 /* Proximity sensors calibration */
@@ -173,6 +174,8 @@ void setup() {
   /* Start publishers */
   proximity_topic = epuck_name + String("/proximity");
   proximity_pub = new ros::Publisher(proximity_topic.c_str(), &proximity_msg);
+  laser_topic = epuck_name + String("/laser");
+  laser_pub = new ros::Publisher(laser_topic.c_str(), &laser_msg);
   battery_topic = epuck_name + String("/battery");
   battery_pub = new ros::Publisher(battery_topic.c_str(), &battery_msg);
   light_topic = epuck_name + String("/ambient_light");
@@ -210,11 +213,13 @@ void setup() {
   left_frame  = epuck_name + String("/left_wheel");
   right_frame = epuck_name + String("/right_wheel");
   imu_frame =  epuck_name + String("/imu");
+  laser_frame =  epuck_name + String("/laser");
   
   /* Starting ros node */
   nh.initNode();
   /* Address Publishers */
   nh.advertise(*proximity_pub);
+  nh.advertise(*laser_pub);
   nh.advertise(*battery_pub);
   nh.advertise(*light_pub);
   nh.advertise(*imu_pub);
@@ -241,6 +246,17 @@ void setup() {
   proximity_msg.min_range =  0.005;       // 0.5 cm.
   proximity_msg.field_of_view = 0.26;    // About 15 degrees...to be checked!
   proximity_msg.data = (float *)malloc(8*sizeof(float));
+  laser_msg.header.frame_id = laser_frame.c_str();
+  laser_msg.header.seq = -1;
+  laser_msg.range_max =  0.05 + ROBOT_RADIUS; // 5 cm + ROBOT_RADIUS. 
+  laser_msg.range_min =  0.005 + ROBOT_RADIUS; // 0.5 cm + ROBOT_RADIUS.
+  laser_msg.angle_min = 0;
+  laser_msg.angle_max = 2*M_PI;
+  laser_msg.angle_increment = 2*M_PI/24; // 15 degrees.
+  laser_msg.ranges_length = 24;
+  laser_msg.ranges = (float *)malloc(24*sizeof(float));
+  laser_msg.intensities_length = 24;
+  laser_msg.intensities = (float *)malloc(24*sizeof(float));
   
   light_msg.header.frame_id = "ambient_light";
   light_msg.header.seq = -1;
@@ -316,7 +332,7 @@ void loop(){
   update_odom();
   
   nh.spinOnce();
-  delayMicroseconds(5000); // this delay is necessary because esp8266 is too faster than dspic6014A
+  delayMicroseconds(10000); // this delay is necessary because esp8266 is too faster than dspic6014A
 }
 /************************************************************************/
 
@@ -336,18 +352,133 @@ void update_proximity(void){
       byte1 = Serial.read();
       proximity_msg.data[i] = byte1 << 8;
       proximity_msg.data[i] += byte0;
-      if (proximity_msg.data[i] > 0){
-        proximity_msg.data[i] = 0.5/sqrt(proximity_msg.data[i]); // Transform the analog value to a distance value in meters (given from field tests).
-      }
-      else{
-        proximity_msg.data[i] = proximity_msg.max_range;
-      }
-      proximity_msg.data[i] = max(min(proximity_msg.data[i], proximity_msg.max_range), proximity_msg.min_range);
     }
+    /* Interpolate proximity sensor into a laser with 15 degrees of resolution */
+    float tempProx;
+    tempProx = proximity_msg.data[3]*2.0/4.0 + proximity_msg.data[4]*2.0/4.0;
+    laser_msg.intensities[0] = tempProx;
+    laser_msg.ranges[0] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[3]*3.0/4.0 + proximity_msg.data[4]*1.0/4.0;
+    laser_msg.intensities[1] = tempProx;
+    laser_msg.ranges[1] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[3];
+    laser_msg.intensities[2] = tempProx;
+    laser_msg.ranges[2] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[2]*1.0/4.0 + proximity_msg.data[3]*3.0/4.0;
+    laser_msg.intensities[3] = tempProx;
+    laser_msg.ranges[3] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[2]*2.0/4.0 + proximity_msg.data[3]*2.0/4.0;
+    laser_msg.intensities[4] = tempProx;
+    laser_msg.ranges[4] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[2]*3.0/4.0 + proximity_msg.data[3]*1.0/4.0;
+    laser_msg.intensities[5] = tempProx;
+    laser_msg.ranges[5] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[2];
+    laser_msg.intensities[6] = tempProx;
+    laser_msg.ranges[6] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[1]*1.0/3.0 + proximity_msg.data[2]*2.0/3.0;
+    laser_msg.intensities[7] = tempProx;
+    laser_msg.ranges[7] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[1]*2.0/3.0 + proximity_msg.data[2]*1.0/3.0;
+    laser_msg.intensities[8] = tempProx;
+    laser_msg.ranges[8] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[1];
+    laser_msg.intensities[9] = tempProx;
+    laser_msg.ranges[9] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[0]*1.0/2.0 + proximity_msg.data[1]*1.0/2.0;
+    laser_msg.intensities[10] = tempProx;
+    laser_msg.ranges[10] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[0];
+    laser_msg.intensities[11] = tempProx;
+    laser_msg.ranges[11] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[7]*1.0/2.0 + proximity_msg.data[0]*1.0/2.0;
+    laser_msg.intensities[12] = tempProx;
+    laser_msg.ranges[12] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[7];
+    laser_msg.intensities[13] = tempProx;
+    laser_msg.ranges[13] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[6]*1.0/2.0 + proximity_msg.data[7]*1.0/2.0;
+    laser_msg.intensities[14] = tempProx;
+    laser_msg.ranges[14] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[6];
+    laser_msg.intensities[15] = tempProx;
+    laser_msg.ranges[15] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[5]*1.0/3.0 + proximity_msg.data[6]*2.0/3.0;
+    laser_msg.intensities[16] = tempProx;
+    laser_msg.ranges[16] = meterFromIntensity(tempProx);
+    
+    tempProx = proximity_msg.data[5]*2.0/3.0 + proximity_msg.data[6]*1.0/3.0;
+    laser_msg.intensities[17] = tempProx;
+    laser_msg.ranges[17] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[5];
+    laser_msg.intensities[18] = tempProx;
+    laser_msg.ranges[18] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[4]*1.0/4.0 + proximity_msg.data[5]*3.0/4.0;
+    laser_msg.intensities[19] = tempProx;
+    laser_msg.ranges[19] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[4]*2.0/4.0 + proximity_msg.data[5]*2.0/4.0;
+    laser_msg.intensities[20] = tempProx;
+    laser_msg.ranges[20] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[4]*3.0/4.0 + proximity_msg.data[5]*1.0/4.0;
+    laser_msg.intensities[21] = tempProx;
+    laser_msg.ranges[21] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[4];
+    laser_msg.intensities[22] = tempProx;
+    laser_msg.ranges[22] = meterFromIntensity(tempProx);
+
+    tempProx = proximity_msg.data[3]*1.0/4.0 + proximity_msg.data[4]*3.0/4.0;
+    laser_msg.intensities[23] = tempProx;
+    laser_msg.ranges[23] = meterFromIntensity(tempProx);
+
     proximity_msg.header.stamp = nh.now(); // update sequency and timestamp
     proximity_msg.header.seq++; 
     proximity_pub->publish( &proximity_msg ); // send message to be published
+    laser_msg.header.stamp = nh.now(); // update sequency and timestamp
+    laser_msg.header.seq++; 
+    laser_pub->publish( &laser_msg ); // send message to be published
+    
+    /* tf base_link->laser */
+    t.header.frame_id = base_frame.c_str();
+    t.child_frame_id = laser_frame.c_str();
+    t.transform.translation.x = 0;
+    t.transform.translation.y = 0;
+    t.transform.translation.z = 0.034;
+    t.transform.rotation = tf::createQuaternionFromYaw(M_PI);
+    t.header.stamp = nh.now();
+    broadcaster.sendTransform(t);
+    
   }
+}
+
+float meterFromIntensity(float value){
+  if (value > 0){
+        value = 0.5/sqrt(value) + ROBOT_RADIUS; // Transform the analog value to a distance value in meters (given from field tests).
+    } else{
+        value = laser_msg.range_max;
+    }
+    value = max(min(value, laser_msg.range_max), laser_msg.range_min);
+    return value;
 }
 
 /* Update and publish battery data */
@@ -646,25 +777,6 @@ void odom_reset_callback( const std_srvs::Empty::Request& request, std_srvs::Emp
   yPos = 0.0;
   theta = 0.0;
   nh.loginfo("[EPUCK] Odometry Reset!");
-}
-
-
-/* Convert RPY angles to Quaternion */
-geometry_msgs::Quaternion quaternionfromRPY(double roll, double pitch, double yaw){
-  geometry_msgs::Quaternion q;
-  // Abbreviations for the various angular functions
-  double cy = cos(yaw * 0.5);
-  double sy = sin(yaw * 0.5);
-  double cr = cos(roll * 0.5);
-  double sr = sin(roll * 0.5);
-  double cp = cos(pitch * 0.5);
-  double sp = sin(pitch * 0.5);
-
-  q.w = cy * cr * cp + sy * sr * sp;
-  q.x = cy * sr * cp - sy * cr * sp;
-  q.y = cy * cr * sp + sy * sr * cp;
-  q.z = sy * cr * cp - cy * sr * sp;
-  return q;
 }
 /************************************************************************/
 /* T H E  E N D */

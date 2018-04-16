@@ -1,17 +1,15 @@
 <launch>
-<group ns="epuck_1571">
+  <group ns="epuck_1571">
+    	<node pkg="espuck_driver" type="serial_node.py" name="epuck_1571" output="screen">
+    		<param name="fork_server" value="False"/>
+      	<param name="port" value="tcp"/>
+      	<param name="tcp_port" value="11571"/>
+    	</node>
 
-  	<node pkg="espuck_driver" type="serial_node.py" name="epuck_1571" output="screen">
-  		<param name="fork_server" value="False"/>
-    	<param name="port" value="tcp"/>
-    	<param name="tcp_port" value="11571"/>
-  	</node>
+      <param name="tf_prefix" value="epuck_1571" />
+      <param name="robot_description" textfile="$(find espuck_driver)/urdf/epuck_urdf.xml"/>
+      <node name="epuck_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  </group>
 
-    <param name="tf_prefix" value="epuck_1571" />
-    <param name="robot_description" textfile="$(find espuck_driver)/urdf/epuck_urdf.xml"/>
-    <node name="epuck_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-    <!--node name="epuck_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-      <param name="use_gui" value="true"/>
-    </node-->
-</group>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find espuck_driver)/launch/rviz_config.rviz" required="true" />
 </launch>
