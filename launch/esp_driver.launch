@@ -11,5 +11,5 @@
       <node name="epuck_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   </group>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find espuck_driver)/launch/rviz_config.rviz" required="true" />
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find espuck_driver)/launch/rviz_config.rviz" required="true" /-->
 </launch>

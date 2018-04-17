@@ -24,6 +24,7 @@
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/JointState.h>
 #include <sensor_msgs/LaserScan.h>
+#include <sensor_msgs/Image.h>
 #include <geometry_msgs/Twist.h>
 #include <nav_msgs/Odometry.h>
 #include <tf/tf.h>
@@ -77,7 +78,6 @@ sensor_msgs::LaserScan laser_msg;
 String laser_topic;
 float meterFromIntensity(float value);
 ros::Publisher *laser_pub;
-
 /* Battery state publisher */
 espuck_driver::Battery battery_msg;
 void update_battery(void);
@@ -108,6 +108,12 @@ nav_msgs::Odometry odom_msg;
 void update_odom(void);
 String odom_topic;
 ros::Publisher *odom_pub;
+/* Odometry publisher */
+sensor_msgs::Image image_msg;
+void update_image(void);
+String image_topic;
+ros::Publisher *image_pub;
+
 /* Joint State publisher */
 sensor_msgs::JointState joint_msg;
 String joint_topic;
@@ -186,6 +192,8 @@ void setup() {
   microphone_pub = new ros::Publisher(microphone_topic.c_str(), &microphone_msg);
   imu_topic = epuck_name + String("/imu");
   imu_pub = new ros::Publisher(imu_topic.c_str(), &imu_msg);
+  image_topic = epuck_name + String("/camera");
+  image_pub = new ros::Publisher(image_topic.c_str(), &image_msg);
   odom_topic = epuck_name + String("/odom");
   odom_pub = new ros::Publisher(odom_topic.c_str(), &odom_msg);
   joint_topic = epuck_name + String("/joint_states");
@@ -223,6 +231,7 @@ void setup() {
   nh.advertise(*battery_pub);
   nh.advertise(*light_pub);
   nh.advertise(*imu_pub);
+  nh.advertise(*image_pub);
   nh.advertise(*odom_pub);
   nh.advertise(*joint_pub);
   broadcaster.init(nh);
@@ -266,6 +275,15 @@ void setup() {
   imu_msg.header.frame_id = imu_frame.c_str();
   imu_msg.header.seq = -1;
 
+  image_msg.header.frame_id = "camera";
+  image_msg.header.seq = -1;
+  image_msg.width = 40;
+  image_msg.height = 40;
+  image_msg.step = 120;//40*3;
+  image_msg.encoding = "rgb8";
+  image_msg.data_length = 4800;
+  image_msg.data = (unsigned char*)malloc(4800*sizeof(unsigned  char));
+  
   odom_msg.header.frame_id = odom_frame.c_str();
   odom_msg.header.seq = -1;
   odom_msg.child_frame_id = base_frame.c_str();
@@ -315,6 +333,7 @@ void setup() {
     Serial.write(buf);
     delay(100);
   }
+  delay(1000);
   
 }
 /************************************************************************/
@@ -330,11 +349,60 @@ void loop(){
   update_imu();
   update_microphone();
   update_odom();
+  update_image();
   
   nh.spinOnce();
-  delayMicroseconds(10000); // this delay is necessary because esp8266 is too faster than dspic6014A
+  delayMicroseconds(1000); // this delay is necessary because esp8266 is too faster than dspic6014A
 }
 /************************************************************************/
+/* Update and publish image sensors data */
+void update_image(void){
+  while(Serial.available() > 0) Serial.read(); // clear serial buffer
+  Serial.write(-'I'); // command to receive image sensors
+  Serial.write('\0'); // command end
+  Serial.flush(); // wait til the command be sent
+  timer = micros();
+  delayMicroseconds(500);
+  //while(Serial.available() != 3203 && (micros() - timer) < 500000) delayMicroseconds(10); // wait til the completed data come
+  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+  int idx = 0;
+  char cam_mode = Serial.read();
+  char cam_width = Serial.read();
+  char cam_heigth = Serial.read();
+  char pixel1, pixel2;
+  while (idx < 4800){//3200
+    if (Serial.available() > 2){
+      pixel1 = Serial.read();
+      pixel2 = Serial.read();
+      image_msg.data[idx] = (unsigned char)(pixel1 & 0xF8);
+      image_msg.data[idx+1] = (unsigned char)(pixel1 & 0x07) << 5 | (unsigned char)((pixel2 & 0xE0) >> 3);
+      image_msg.data[idx+2] = (unsigned char)((pixel1 & 0x1F) << 3);
+      idx += 3;
+    }
+    
+  }
+/*  if (Serial.available() == 3203){ // if the data has 3203 bytes than it's probabily our sensor
+    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+    char cam_mode = Serial.read();
+    char cam_width = Serial.read();
+    char cam_heigth = Serial.read();
+    char pixel1, pixel2;
+    int idx = 0;
+    for (int i = 0; i < 1600; i++){}
+      /* transform from rgb565 to rgb888*/
+    /*  pixel1 = Serial.read();
+      pixel2 = Serial.read();
+      image_msg.data[idx] = (unsigned char)(pixel1 & 0xF8);
+      image_msg.data[idx+1] = (unsigned char)(pixel1 & 0x07) << 5 | (unsigned char)((pixel2 & 0xE0) >> 3);
+      image_msg.data[idx+2] = (unsigned char)((pixel1 & 0x1F) << 3);
+      idx += 3;
+    }}
+  */
+  image_msg.header.stamp = nh.now(); // update sequency and timestamp
+  image_pub->publish( &image_msg ); // send message to be published
+  
+  
+}
 
 /* Update and publish proximity sensors data */
 void update_proximity(void){
